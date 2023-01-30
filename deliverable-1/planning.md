@@ -18,12 +18,19 @@
    For example: This is not the time or the place to talk about which programming language and/or framework you are planning to use.
  * **Feel free (and very much encouraged) to include useful diagrams, mock-ups and/or links**.
 
+The product is a robust and straightforward rest API that allows university faculty to efficiently anonymize sensitive data, e.g. student peer reviews. The problem that many faculty members face is the handling of this data: often, it needs to be processed in large quantities and stored anonymously. Manually anonymizing this data is not only needlessly laborious, but it is also a privacy concern, because students expect that their answers are kept confidential.
+
+Our product will facilitate the anonymization of this data by way of a rest API. This will provide a flexible interface for faculty to use our product, regardless of what technology they are using. Our product will be able to anonymize a list of text fields, given the sensitive data (names), and the terms to replace them with. Our product will also have the capability to anonymize spreadsheets via csv upload, with a target column and the value to replace the sensitive data with.
 
 #### Q2: Who are your target users?
 
   > Short (1 - 2 min' read max)
  * Be specific (e.g. a 'a third-year university student studying Computer Science' and not 'a student')
  * **Feel free to use personas. You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).**
+
+ - University professors
+ - University IT professionals
+ - University software developers
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
@@ -36,12 +43,24 @@
     * Does this application exist in another form? If so, how does your differ and provide value to the users?
     * How does this align with your partner's organization's values/mission/mandate?
 
+<!--
+TODO: contact David and ask about how future users are solving this currently
+--!>
+
 #### Q4: What are the user stories that make up the Minumum Viable Product (MVP)?
 
  * At least 5 user stories concerning the main features of the application - note that this can broken down further
  * You must follow proper user story format (as taught in lecture) ```As a <user of the app>, I want to <do something in the app> in order to <accomplish some goal>```
  * User stories must contain acceptance criteria. Examples of user stories with different formats can be found here: https://www.justinmind.com/blog/user-story-examples/. **It is important that you provide a link to an artifact containing your user stories**.
  * If you have a partner, these must be reviewed and accepted by them. You need to include the evidence of partner approval (e.g., screenshot from email) or at least communication to the partner (e.g., email you sent)
+
+- As a university software developer, I want to use an endpoint to anonymize a batch of sensitive student responses, in order to speed up the review process and preserve privacy.
+
+- As a university faculty member, I want to be able to anonymize columns of a spreadsheet, in order to make the data in it not sensitive anymore.
+
+<!--
+TODO: add more / break these up
+--!>
 
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
 
@@ -50,6 +69,13 @@
  * How will you deploy the application?
  * Describe the architecture - what are the high level components or patterns you will use? Diagrams are useful here. 
  * Will you be using third party applications or APIs? If so, what are they?
+
+We plan to build this API primarily using Flask, a python framework for web backends. Since this is a rest API, we plan to specifically use the flask-restful library as well to expedite development and focus more on processing the data.
+Any future frontend implementations will likely be done in React.
+We plan to deploy our application on a hosting service with a free tier, such as Heroku or Azure. This could be done directly, or within a docker container.
+As for product architecture, we plan on having multiple endpoints to our API, with each having one or more methods to interact with it (GET, POST, etc). 
+We do not expect to use any third party applications or APIs, assuming python libraries do not count as third party.
+
 
 ----
 ## Intellectual Property Confidentiality Agreement 
@@ -66,6 +92,8 @@
 
 Briefly describe which option you have agreed to.
 
+Our group has agreed to option two.
+
 ----
 
 ## Teamwork Details
@@ -76,6 +104,14 @@ Do a team-building activity in-person or online. This can be playing an online g
 * Get to know each other on a more personal level.
 * Provide a few sentences on what you did and share a picture or other evidence of your team building activity.
 * Share at least three fun facts from members of you team (total not 3 for each member).
+
+Our team met up last weekend to do an escape room, followed by dinner at a nearby restaurant. The escape room was fun and challenging, we nearly solved it within the time limit.
+
+TODO: add evidence
+
+Fun facts:
+- Nathan was born in Hawaii
+TODO: add more
 
 
 #### Q7: What are the roles & responsibilities on the team?
