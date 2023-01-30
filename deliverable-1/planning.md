@@ -43,9 +43,7 @@ Our product will facilitate the anonymization of this data by way of a rest API.
     * Does this application exist in another form? If so, how does your differ and provide value to the users?
     * How does this align with your partner's organization's values/mission/mandate?
 
-<!--
 TODO: contact David and ask about how future users are solving this currently
---!>
 
 #### Q4: What are the user stories that make up the Minumum Viable Product (MVP)?
 
