@@ -132,6 +132,10 @@ Describe meetings (and other events) you are planning to have.
  * You should have 2 meetings with your project partner (if you have one) before D1 is due. Describe them here:
    * You must keep track of meeting minutes and add them to your repo under "documents/minutes" folder
    * You must have a regular meeting schedule established for the rest of the term.  
+
+Our team plans to have one hour calls over Discord every Friday afternoon (we determined this is the time period where we all have the best availability). Each meeting, we will assess our current tasks, assign any unassigned tasks, and go over any upcoming project requirements. Meeting in person is not feasible weekly because a few of our members have a long commute. Things like coding sessions and reviews will be scheduled on the fly, since they require fewer people and are easier to coordinate.
+
+TODO: second meeting with David
   
 #### Q9: How will you organize your team?
 
@@ -143,6 +147,10 @@ List/describe the artifacts you will produce in order to organize your team.
    * **How do you prioritize tasks?**
    * How do tasks get assigned to team members?
    * How do you determine the status of work from inception to completion?
+
+Our main artifact will be a GitHub Project board linked to our repository. Each new task will have a corresponding ticket, with any relevant sub-steps or sub-tasks included as needed. 
+We will prioritize by having a "High Priority" column on our kanban board. This way, task assignees know which tickets to handle first.
+Tasks will be assigned according to people's skills and availability. Our team members should be careful not to self-assign too much and ensure everyone is doing a fair share of work.
 
 #### Q10: What are the rules regarding how your team works?
 
