@@ -56,9 +56,7 @@ TODO: contact David and ask about how future users are solving this currently
 
 - As a university faculty member, I want to be able to anonymize columns of a spreadsheet, in order to make the data in it not sensitive anymore.
 
-<!--
 TODO: add more / break these up
---!>
 
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
 
