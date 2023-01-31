@@ -165,7 +165,11 @@ Tasks will be assigned according to people's skills and availability. Our team m
 **Communications:**
  * What is the expected frequency? What methods/channels will be used? 
  * If you have a partner project, what is your process for communicating with your partner?
- 
+
+Currently, we have set up meetings on Fridays from 5-6, which will be held either on discord or Zoom. We currently communicate through discord primarily. We also communicate with our partner through email, but the members of our team with slack will communicate with our partner through slack for more urgent matters. 
+
 **Collaboration: (Share your responses to Q8 & Q9 from A1)**
  * How are people held accountable for attending meetings, completing action items? Is there a moderator or process?
  * How will you address the issue if one person doesn't contribute or is not responsive? 
+
+People will be held accountable for completing action items through the Github Projects tab, where different team members will be assigned tasks. 
