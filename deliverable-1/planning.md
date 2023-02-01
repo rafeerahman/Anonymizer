@@ -96,6 +96,7 @@ By providing flexible anonymization methods, we will support our project partner
 
 - As a university faculty member, I want to be able to anonymize columns of a spreadsheet, in order to make the data in it not sensitive anymore.
 
+<u>User Story 1:</u>
 
 **As a** PhD student conducting a research experiment about improving student’s mental health,
 
@@ -103,7 +104,7 @@ By providing flexible anonymization methods, we will support our project partner
 
 **so that** I can provide this spreadsheet to my research assistants to conduct analyses on the data.
 
-<u>**Acceptance Criteria:**</u>
+ **<u>Acceptance Criteria:</u>**
 
 **Given** that the PhD student wants to anonymize some data,
 
