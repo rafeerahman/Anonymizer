@@ -116,7 +116,22 @@ By providing flexible anonymization methods, we will support our project partner
 3.  On response code 404, a message stating “Server Error” is returned.
 
 #### User Story 2: 
+ **As a** Partner that will own and distribute the project.
+ 
+ **I want to** posses an unbreakable and efficient program that will annonymize the data provided for the client.
+ 
+ **so that** I can use for my own work and provide to the public for their own use.
+ 
+**Acceptance Criteria:** The project annonymizes the provided data, given every edge case, in a elegant and efficient manner.
 
+**Given** that the partner is intrested in possesing such a project,
+
+**When** the project is not up to their standard,
+
+**Then**
+1. The partner and the team will meet for the issues to be communicated
+2. The team will solve the issues and test the program
+3. The team will present the new solution to the partner for review
 
 TODO: add more / break these up
 
@@ -163,13 +178,14 @@ Do a team-building activity in-person or online. This can be playing an online g
 * Provide a few sentences on what you did and share a picture or other evidence of your team building activity.
 * Share at least three fun facts from members of you team (total not 3 for each member).
 
-Our team met up last weekend to do an escape room, followed by dinner at a nearby restaurant. The escape room was fun and challenging, we nearly solved it within the time limit.
+Our team met up last weekend to do an escape room at YorkVille called E-Exit, followed by dinner at a nearby korean restaurant. The escape room was fun and challenging, we nearly solved it within the time limit.
 
 TODO: add evidence
 
 Fun facts:
 - Nathan was born in Hawaii
-TODO: add more
+- Sayna does Muay Thai
+- 
 
 
 #### Q7: What are the roles & responsibilities on the team?
