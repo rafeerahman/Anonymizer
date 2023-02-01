@@ -96,6 +96,26 @@ By providing flexible anonymization methods, we will support our project partner
 
 - As a university faculty member, I want to be able to anonymize columns of a spreadsheet, in order to make the data in it not sensitive anymore.
 
+
+**As a** PhD student conducting a research experiment about improving student’s mental health,
+
+**I want to** anonymize a spreadsheet containing personally identifiable data such as survey respondent names, student numbers, and e-mails
+
+**so that** I can provide this spreadsheet to my research assistants to conduct analyses on the data.
+
+<u>**Acceptance Criteria:**</u>
+
+**Given** that the PhD student wants to anonymize some data,
+
+**When** they send a request to our API route with the CSV, names of columns to anonymize, and the anonymization technique name,
+
+**Then**
+
+1.  On response code 200, a CSV with the anonymized data should be returned. It must match the columns that they wanted anonymized and the anonymization technique they specified.
+2.  On response code 400, a message stating “Bad Request” is returned.
+3.  On response code 404, a message stating “Server Error” is returned.
+
+
 TODO: add more / break these up
 
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
