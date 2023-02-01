@@ -53,6 +53,38 @@ Scenario: Tom has just finished his CSC301 Partnership Program project with a sm
 
 TODO: contact David and ask about how future users are solving this currently
 
+Users will choose our product because:
+
+- It guarantees that the data being anonymized is not stored anywhere. This is important because it allows our user’s and their customers to be assured about the confidentiality their information.
+- It saves time. Instead of users manually finding personally identifiable data, our product will automate this process and apply anonymization techniques to the types they specify.
+- It supports several formats of data, including text, JSON data, CSV files, and potentially PDFs. This also gives users the ability to indicate whether they want a specific column, or category of text to be anonymized.
+- Our API’s will be flexible and support a variety of anonymization techniques, which can be indicated by the user in the request body. This provides our users with a diverse approach towards how they might want to anonymize their data. For example, they may choose “Data Masking”, which can replace the data they want with alternative characters.
+- *******Maybe:*******  It provides a higher level of automation as it gives users the option to pick our algorithm that uses AI/NLP to find personally identifiable information, and anonymize it.
+
+In the present, most people are designing their own code to handle anonymizing their unique datasets using the following methods:
+
+- Data Masking: The process of altering values to hide the original data. Altering techniques include character shuffling, encryption, and character substitution.
+- Pseudonymization: Replacing private data with pseudonyms, also known as fake identifiers. For example, a common pseudonym is John Smith, which can be used to replace someone's first and last name.
+- Generalization: Making the data less specific by removing or replacing parts of the data, but keeping the rest. For example, we can remove the house number in an address, but keep the road name.
+- Data Swapping: Shuffling the dataset by rearranging rows or columns.
+- Perturbation: Randomly modifying sensitive data, such as by rounding or multiplying numerical values or replacing words with synonyms.
+- Synthetic Data: Replacing sensitive data with data that resembles the original.
+- Encryption: Using algorithms to make data uninterpretable. However, encryption algorithms can be decrypted into the original data.
+
+**Example, Original Data**
+| lastName    | firstName | age |  SIN        | creditCard           | 
+| ----------- | --------- | --- | ----------- | -------------------- |
+| Rahman      | Rafee     | 20  | 999888777   | 1234 4567 8910 1112  |
+
+**Example: Name is pseudonymized, age is generalized, SIN and creditCard are masked**
+| lastName    | firstName | age |  SIN        | creditCard           | 
+| ----------- | --------- | --- | ----------- | -------------------- |
+| Smith      | John     | < 30  | @!*^#@$!(  | XXXX XXXX XXXX XXXX  |
+
+There are some libraries out there that people may use to anonymize their data such as pynonymizer and Faker. The pynonimizer library only supports pseudonymization by using the Faker library to generate random pseudonyms for attributes like e-mails, names, and more. However, institutions cannot rely on libraries because they must follow strict GDPR regulations, and similarly may not trust third-party software.  
+
+By providing flexible anonymization methods, we will support our project partner’s goal of creating an automated and seamless process of anonymizing data following GDPR guidelines for organizational needs.
+
 #### Q4: What are the user stories that make up the Minumum Viable Product (MVP)?
 
  * At least 5 user stories concerning the main features of the application - note that this can broken down further
