@@ -71,12 +71,12 @@ In the present, most people are designing their own code to handle anonymizing t
 - Synthetic Data: Replacing sensitive data with data that resembles the original.
 - Encryption: Using algorithms to make data uninterpretable. However, encryption algorithms can be decrypted into the original data.
 
-**Example, Original Data**
+**Example: Original Data**
 | lastName    | firstName | age |  SIN        | creditCard           | 
 | ----------- | --------- | --- | ----------- | -------------------- |
 | Rahman      | Rafee     | 20  | 999888777   | 1234 4567 8910 1112  |
 
-**Example: Name is pseudonymized, age is generalized, SIN and creditCard are masked**
+**Example: New Data (name is pseudonymized, age is generalized, SIN and creditCard are masked)**
 | lastName    | firstName | age |  SIN        | creditCard           | 
 | ----------- | --------- | --- | ----------- | -------------------- |
 | Smith      | John     | < 30  | @!*^#@$!(  | XXXX XXXX XXXX XXXX  |
@@ -96,7 +96,7 @@ By providing flexible anonymization methods, we will support our project partner
 
 - As a university faculty member, I want to be able to anonymize columns of a spreadsheet, in order to make the data in it not sensitive anymore.
 
-<u>User Story 1:</u>
+#### User Story 1:
 
 **As a** PhD student conducting a research experiment about improving student’s mental health,
 
@@ -104,17 +104,18 @@ By providing flexible anonymization methods, we will support our project partner
 
 **so that** I can provide this spreadsheet to my research assistants to conduct analyses on the data.
 
- **<u>Acceptance Criteria:</u>**
+ **Acceptance Criteria:**
 
 **Given** that the PhD student wants to anonymize some data,
 
 **When** they send a request to our API route with the CSV, names of columns to anonymize, and the anonymization technique name,
 
 **Then**
-
 1.  On response code 200, a CSV with the anonymized data should be returned. It must match the columns that they wanted anonymized and the anonymization technique they specified.
 2.  On response code 400, a message stating “Bad Request” is returned.
 3.  On response code 404, a message stating “Server Error” is returned.
+
+#### User Story 2: 
 
 
 TODO: add more / break these up
