@@ -28,7 +28,7 @@ Our product will facilitate the anonymization of this data by way of a rest API.
  * Be specific (e.g. a 'a third-year university student studying Computer Science' and not 'a student')
  * **Feel free to use personas. You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).**
 
-Partner Pete: 26 Year old Manager working at small software Company with a Bachelor's in Computer Science. He tends to take on a lot so he generally ha a busy schedule, partially because of the small size of his team. However, as manager he has plenty of experience working and communicating with different people. 
+Partner Pete: 26 Year old Manager working at small software Company with a Bachelor's in Computer Science. He tends to take on a lot so he generally has a busy schedule, partially because of the small size of his team. However, as manager he has plenty of experience working and communicating with different people. 
 
 Scenario: His company has a small staff, so he uses the CSC301 partnership program in order to get an important project done for the company. He wants to leave a testimonial where he discusses the team he was partnered with and his experience with the partnership program. However, he is very busy and does not have the time to edit out or write around sensitive information such as teammate and course staff names.  
 
@@ -184,9 +184,9 @@ By providing flexible anonymization methods, we will support our project partner
 **Then**
 1.  On response a success message is displayed on the webpage, with a button allowing them to download their anonymized file
 2.  On response, display a bad request 400 page that outlines their error.
-3.  On response, display a bad request 404 page that notifies them of a server error.
-
-TODO: maybe add 1 or 2 more
+3.  On response, display a bad request 404 page that notifies them of a wrong endpoint.
+4.  On response, display a bad request 500 page that notifies them of a server error.
+5.  On response, display a bad request 408 page that notifies them of a timeout error.
 
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
 
@@ -238,7 +238,7 @@ TODO: add evidence
 Fun facts:
 - Nathan was born in Hawaii
 - Sayna does Muay Thai
-- 
+- Tian is a lockpick enthusiast
 
 
 #### Q7: What are the roles & responsibilities on the team?
