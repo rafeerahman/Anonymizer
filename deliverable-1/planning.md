@@ -253,6 +253,20 @@ List each team member and:
  * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
  * Why did you choose them to take that role? Specify if they are interested in learning that part, experienced in it, or any other reasons. Do no make things up. This part is not graded but may be reviewed later.
 
+| Name | Role(s) | Responsibilities | Why |
+| --- | --- | --- | --- |
+| Nathan | Project Manager | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks | - Experienced in project management <br> - Interested in learning more about project management |
+
+TODO: Assign roles to other team members
+
+The possible roles are:
+- Project Manager x 1
+- Algorithm Engineer x 1 - this person will be responsible for the anonymization algorithm, using either a pre-existing algorithm or creating their own
+- Backend Engineer x 2 - this person will be responsible for the backend API, using Flask
+- Frontend Engineer x 1 - this person will be responsible for the frontend, using React
+- DevOps Engineer x 2 - this person will be responsible for deploying the application, using cloud and container services. This person will also be responsible for setting up the CI/CD pipeline.
+
+Note that the number of roles is not fixed, and we may add or remove roles as needed. For example, if we decide to use a pre-existing algorithm, we may not need an algorithm engineer.
 
 #### Q8: How will you work as a team?
 
