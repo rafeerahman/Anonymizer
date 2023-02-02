@@ -1,0 +1,80 @@
+openapi: 3.0.2
+info:
+  title: University of Toronto Anonymization API
+  version: 1.0.0
+
+paths:
+  /text-replace:
+    summary: Given a list of sensitive text data, 
+    the strings to remove, and strings to replace them with,
+    return the anonymized data in a list in the same order.
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  text:
+                    type: string
+                  dict:
+                    type: object
+              example:
+                - text: John was a great professor last term! He really helped
+                  me and Mark.
+                  dict:
+                    key1: John
+                    value1: (Prof)
+                    key2: Mark
+                    value2: (Student)
+                - text: Hi, i am Mark and i did pretty well in this class.
+                  dict:
+                    key1: Mark
+                    value1: (Student)
+      responses:
+        200:
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    text:
+                      type: string
+
+  /csv-replace:
+    summary: send a csv file and a dictionary of (column, replacement_value) 
+    pairs, and return a csv, with the specified columns having values replaced
+    with replacement_value.
+    post:
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                csv:
+                  type: string
+                  format: binary
+                dict:
+                  type: object
+              example:
+                csv: UTORID,student_name,...
+                dict:
+                  key1: UTORID
+                  value1: (UTORID omitted)
+                  key2: student_name
+                  value2: (student name omitted)
+      responses:
+        200:
+          description: Successful response
+          content:
+            text/csv:
+              schema:
+                type: string
+
+
