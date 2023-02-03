@@ -1,4 +1,4 @@
-# YOUR PRODUCT/TEAM NAME
+# Control Alt Elite | University of Toronto Anonymization API
 > _Note:_ This document will evolve throughout your project. You commit regularly to this file while working on the project (especially edits/additions/deletions to the _Highlights_ section). 
  > **This document will serve as a master plan between your team, your partner and your TA.**
 
@@ -51,17 +51,14 @@ Scenario: Tom has just finished his CSC301 Partnership Program project with a sm
     * Does this application exist in another form? If so, how does your differ and provide value to the users?
     * How does this align with your partner's organization's values/mission/mandate?
 
-TODO: contact David and ask about how future users are solving this currently
-
 Users will choose our product because:
 
-- It guarantees that the data being anonymized is not stored anywhere. This is important because it allows our user’s and their customers to be assured about the confidentiality their information.
+- It guarantees that sensitive data is not stored anywhere. This is important because it allows our user’s and their customers to be assured about the confidentiality their information.
 - It saves time. Instead of users manually finding personally identifiable data, our product will automate this process and apply anonymization techniques to the types they specify.
-- It supports several formats of data, including text, JSON data, CSV files, and potentially PDFs. This also gives users the ability to indicate whether they want a specific column, or category of text to be anonymized.
 - Our API’s will be flexible and support a variety of anonymization techniques, which can be indicated by the user in the request body. This provides our users with a diverse approach towards how they might want to anonymize their data. For example, they may choose “Data Masking”, which can replace the data they want with alternative characters.
-- *******Maybe:*******  It provides a higher level of automation as it gives users the option to pick our algorithm that uses AI/NLP to find personally identifiable information, and anonymize it.
+- We also plan to investigate adding a higher level of automation via AI/NLP to find personally identifiable information, and anonymize it.
 
-In the present, most people are designing their own code to handle anonymizing their unique datasets using the following methods:
+Besides cases where sensitive data is stored in plain text, most people are designing their own code to handle anonymizing their unique datasets using the following methods:
 
 - Data Masking: The process of altering values to hide the original data. Altering techniques include character shuffling, encryption, and character substitution.
 - Pseudonymization: Replacing private data with pseudonyms, also known as fake identifiers. For example, a common pseudonym is John Smith, which can be used to replace someone's first and last name.
@@ -131,11 +128,11 @@ By providing flexible anonymization methods, we will support our project partner
 
 #### User Story 3: Regex Anonymization
 
-**As a** shipping manager at a distribution center,
+**As a** shipping manager at a campus book store,
 
 **I want to** anonymize credit card numbers on incoming orders
 
-**so that** the warehouse workers can view order details without any confidential information included
+**so that** the workers can view order details without any confidential information included.
 
  **Acceptance Criteria:**
 
@@ -154,7 +151,7 @@ By providing flexible anonymization methods, we will support our project partner
 
 **I want to** collect student feedback at the end of the term, with awareness that possible formatting errors may be included
 
-**so that** data can be anonymized when given to the class next semester
+**so that** data can be anonymized when given to the class next semester.
 
  **Acceptance Criteria:**
 
@@ -173,7 +170,7 @@ By providing flexible anonymization methods, we will support our project partner
 
 **I want to** find a simple and intuitive way to anonymize the names from a dataset of undergrad applicants,
 
-**so that** the dataset can be sent to admission staff for review, without any possible name bias (ex. eliminate nepotism)
+**so that** the dataset can be sent to admission staff for review, without any possible name bias (ex. eliminate nepotism).
 
 **Acceptance Criteria:**
 
@@ -255,7 +252,7 @@ List each team member and:
 
 | Name | Role(s) | Responsibilities | Why |
 | --- | --- | --- | --- |
-| Nathan | Project Manager | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks | - Experienced in project management <br> - Interested in learning more about project management |
+| Nathan | Project Manager, Partner Liason, Backend Engineer | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks  <br> - First point of contact with partner <br> - provide Flask and general backend expertise | - Experienced in Flask <br> - Interested in learning more about project management |
 
 TODO: Assign roles to other team members
 
@@ -279,8 +276,6 @@ Describe meetings (and other events) you are planning to have.
    * You must have a regular meeting schedule established for the rest of the term.  
 
 Our team plans to have one hour calls over Discord every Friday afternoon (we determined this is the time period where we all have the best availability). Each meeting, we will assess our current tasks, assign any unassigned tasks, and go over any upcoming project requirements. Meeting in person is not feasible weekly because a few of our members have a long commute. Things like coding sessions and reviews will be scheduled on the fly, since they require fewer people and are easier to coordinate.
-
-TODO: second meeting with David
   
 #### Q9: How will you organize your team?
 
@@ -310,3 +305,4 @@ Currently, we have set up meetings on Fridays from 5-6, which will be held eithe
  * How will you address the issue if one person doesn't contribute or is not responsive? 
 
 People will be held accountable for completing action items through the Github Projects tab, where different team members will be assigned tasks. 
+TODO: how to address unresponsive teammate?
