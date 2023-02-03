@@ -124,7 +124,10 @@ By providing flexible anonymization methods, we will support our project partner
 **Then**
 1.  On response code 200, a CSV with the anonymized data should be returned. It must match the columns that they wanted anonymized and the anonymization technique they specified.
 2.  On response code 400, a message stating “Bad Request” is returned.
-3.  On response code 404, a message stating “Server Error” is returned.
+3.  On response code 404, a message stating “Wrong Endpoint” is returned.
+4.  On response code 500, a message stating “Server Error” is returned.
+5.  On response code 408, a message stating “Request Timeout” is returned.
+
 
 #### User Story 3: Regex Anonymization
 
@@ -143,7 +146,10 @@ By providing flexible anonymization methods, we will support our project partner
 **Then**
 1.  On response code 200, a dataset that matches the original with the exception of all card values identified by the given regex statement
 2.  On response code 400, a message stating “Bad Request” is returned.
-3.  On response code 404, a message stating “Server Error” is returned.
+3.  On response code 404, a message stating “Wrong Endpoint” is returned.
+4.  On response code 500, a message stating “Server Error” is returned.
+5.  On response code 408, a message stating “Request Timeout” is returned.
+
 
 #### User Story 4: Ambiguity Detection
 
@@ -162,7 +168,9 @@ By providing flexible anonymization methods, we will support our project partner
 **Then**
 1.  On response code 200, return a dataset that automatically catches and replaces minor spelling errors along with a brief summary of the instances where this was triggered
 2.  On response code 400, a message stating “Bad Request” is returned.
-3.  On response code 404, a message stating “Server Error” is returned.
+3.  On response code 404, a message stating “Wrong Endpoint” is returned.
+4.  On response code 500, a message stating “Server Error” is returned.
+5.  On response code 408, a message stating “Request Timeout” is returned.
 
 #### User Story 5: GUI Response
 
@@ -254,6 +262,7 @@ List each team member and:
 | --- | --- | --- | --- |
 | Nathan | Project Manager, Partner Liason, Backend Engineer | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks  <br> - First point of contact with partner <br> - provide Flask and general backend expertise | - Experienced in Flask <br> - Interested in learning more about project management |
 | Sayna | Backend Engineer, Frontend Engineer, Devops | - Backend development <br> - create test cases for back end <br> | - Intrested in learning about Devops <br> - Exerience with Django <br> - Experience with React <br> - Intrested in building APIs <br>|
+| Letian | DevOps Engineer, Algorithm Engineer | - Set up CI/CD pipeline <br> - Deploy application <br> - Provide Docker expertise <br> - Provide algorithm expertise | - Experienced in Docker <br> - Experienced in cloud services <br> - Interested in learning more about algorithms |
 
 TODO: Assign roles to other team members
 
