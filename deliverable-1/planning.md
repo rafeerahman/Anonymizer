@@ -310,4 +310,5 @@ Currently, we have set up meetings on Fridays from 5-6, which will be held eithe
  * How will you address the issue if one person doesn't contribute or is not responsive? 
 
 People will be held accountable for completing action items through the Github Projects tab, where different team members will be assigned tasks. 
-TODO: how to address unresponsive teammate?
+
+Minutes from meetings and assigned actions will be recorded. Members who are not contributing or who are unresponsive will be followed up with. If the issue doesn't get resolved, we'll have a meeting to discuss it and determine how best to proceed as a team. If the problem persists, we might need to enlist the assistance of a TA or the professor. 
