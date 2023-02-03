@@ -257,6 +257,7 @@ List each team member and:
 | Rafee | Frontend Engineer, Backend Engineer, QA Engineer | - Interested in learning about Flask and designing some of the API end points. <br> - Will help create frontend components and server-side requests for documentation. <br> - Once our algorithms are complete I will be responsible for creating tests. | - Have some experience with automated testing and API testings using Selenium and RESTAssured <br> - Experienced with React for Frontend, and Express for backend.
 | Sayna | Backend Engineer, Frontend Engineer, Devops | - Backend development <br> - create test cases for back end <br> | - Intrested in learning about Devops <br> - Exerience with Django <br> - Experience with React <br> - Intrested in building APIs <br>|
 | Jonathan | Backend Engineer, Frontend Engineer | - Backend development <br> - Frontend development <br> - Backend and frontend QA | - Intrested in expanding upon past web development experience <br> - Exerience with Django <br> |
+| Mehrdad | Frontend Engineer, Backend Engineer, Algorithm Engineer| - Build frontend components <br> - Help with the design for endpoints <br>  | - Experience with React <br> - Experience with REST APIs <br> - Interested in working on the main algorithm |
 
 The possible roles are:
 - Project Manager x 1
