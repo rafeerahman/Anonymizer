@@ -230,7 +230,7 @@ Do a team-building activity in-person or online. This can be playing an online g
 
 Our team met up last weekend to do an escape room at YorkVille called E-Exit, followed by dinner at a nearby korean restaurant. The escape room was fun and challenging, we nearly solved it within the time limit.
 
-[escape room booking](escape-room.png)
+![escape room booking](escape-room.png)
 
 Fun facts:
 - Nathan was born in Hawaii
