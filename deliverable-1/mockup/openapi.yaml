@@ -2,6 +2,9 @@ openapi: 3.0.2
 info:
   title: University of Toronto Anonymization API
   version: 1.0.0
+  summary: This is the specification for the MVP API we are going to develop
+  for this project. It should satisfy the requirements set by the partner.
+  We hope to add additional endpoints and a frontend once the MVP is finalized.
 
 paths:
   /text-replace:
