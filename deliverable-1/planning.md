@@ -212,7 +212,7 @@ Fun facts:
 | Sayna | Backend Engineer, Frontend Engineer, Devops | - Backend development <br> - create test cases for back end <br> | - Interested in learning about Devops <br> - Exerience with Django <br> - Experience with React <br> - Intrested in building APIs <br>|
 | Edward | Frontend Engineer, Algorithm Engineer | - Frontend development <br> - Interested in learning more good coding practices in REACT <br> | - Interested in learning about Algorithms for Anonymization <br> - Exerience with Django <br> - Experience with React <br> - Experience with REST APIs <br>|
 | Jonathan | Full-stack Engineer, Algorithm Engineer | - API architecture and development <br> - Frontend development <br> - Backend and frontend QA | - Intrested in expanding upon past web development experience <br> - Exerience with Django <br> - Exerience writing AI prompts and training models <br> |
-| Mehrdad | Frontend Engineer, Backend Engineer, Algorithm Engineer| - Build frontend components <br> - Help with the design for endpoints <br>  | - Experience with React <br> - Experience with REST APIs <br> - Interested in working on the main algorithm |
+| Mehrdad | Frontend Engineer, DevOps Engineer | - Build frontend components <br> - Help with setting up Docker image <br> | - Experience with Typescript React <br> - Experience with Docker <br> |
 
 The possible roles are:
 - Project Manager
