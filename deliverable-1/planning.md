@@ -256,6 +256,7 @@ List each team member and:
 | Letian | DevOps Engineer, Algorithm Engineer | - Set up CI/CD pipeline <br> - Deploy application <br> - Provide Docker expertise <br> - Provide algorithm expertise | - Experienced in Docker <br> - Experienced in cloud services <br> - Interested in learning more about algorithms |
 | Rafee | Frontend Engineer, Backend Engineer, Frontend Automation / API Tester | - Interested in learning about Flask and designing some of the API end points. <br> - Will help create frontend components and server-side requests for documentation. <br> - Once our algorithms are complete I will be responsible for creating tests. | - Have some experience with automated testing and API testings using Selenium and RESTAssured <br> - Experienced with React for Frontend, and Express for backend.
 | Sayna | Backend Engineer, Frontend Engineer, Devops | - Backend development <br> - create test cases for back end <br> | - Intrested in learning about Devops <br> - Exerience with Django <br> - Experience with React <br> - Intrested in building APIs <br>|
+| Jonathan | Backend Engineer, Frontend Engineer | - Backend development <br> - Frontend development <br> - Backend and frontend QA | - Intrested in expanding upon past web development experience <br> - Exerience with Django <br> |
 
 The possible roles are:
 - Project Manager x 1
