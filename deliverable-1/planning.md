@@ -204,8 +204,6 @@ Fun facts:
 
 #### Q7: What are the roles & responsibilities on the team?
 
-List each team member and:
-
 | Name | Role(s) | Responsibilities | Why |
 | --- | --- | --- | --- |
 | Nathan | Project Manager, Partner Liason, Backend Engineer | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks  <br> - First point of contact with partner <br> - provide Flask and general backend expertise | - Experienced in Flask <br> - Interested in learning more about project management |
