@@ -253,10 +253,7 @@ List each team member and:
 | Name | Role(s) | Responsibilities | Why |
 | --- | --- | --- | --- |
 | Nathan | Project Manager, Partner Liason, Backend Engineer | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks  <br> - First point of contact with partner <br> - provide Flask and general backend expertise | - Experienced in Flask <br> - Interested in learning more about project management |
-
-| Name | Role(s) | Responsibilities | Why |
-| --- | --- | --- | --- |
-| Rafee | Frontend Engineer, Backend Engineer, Automation/API Tester | - Experienced with React for Frontend, and Express for backend. Interested in learning about Flask and designing some of the API end points. <br> - Will help create frontend components and server-side requests for documentation. <br> - Have some experience with automated testing and API testings, once our algorithms are complete I will be responsible for creating tests.
+| Rafee | Frontend Engineer, Backend Engineer, Automation/API Tester | - Interested in learning about Flask and designing some of the API end points. <br> - Will help create frontend components and server-side requests for documentation. <br> - Once our algorithms are complete I will be responsible for creating tests. | - Have some experience with automated testing and API testings using Selenium and RESTAssured <br> - Experienced with React for Frontend, and Express for backend.
 
 The possible roles are:
 - Project Manager x 1
