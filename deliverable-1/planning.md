@@ -12,17 +12,17 @@ Our product will facilitate the anonymization of this data by way of a rest API.
 
 #### Q2: Who are your target users?
 
+- University professors
+ - University IT professionals
+ - University software developers
+
 Partner Pete: 26 Year old Manager working at small software Company with a Bachelor's in Computer Science. He tends to take on a lot so he generally has a busy schedule, partially because of the small size of his team. However, as manager he has plenty of experience working and communicating with different people. 
 
 Scenario: His company has a small staff, so he uses the CSC301 partnership program in order to get an important project done for the company. He wants to leave a testimonial where he discusses the team he was partnered with and his experience with the partnership program. However, he is very busy and does not have the time to edit out or write around sensitive information such as teammate and course staff names.  
 
 Teamwork Tom: Tom is a 21 year old Computer Science student in his third year pursuing a degree at the University of Toronto. he is a hard worker, and having worked in many group projects before, he will not hesitate to communicate any grievances he has with teammates that are difficult to work with or whom do not pull their weight. However, he will also take the time to leave positive feedback for teammates he finds success with. 
 
-Scenario: Tom has just finished his CSC301 Partnership Program project with a small team of 6. He wants to be able to leave an honest peer evaluation regarding the good and bad experiences he has had with his group. However, he is taking many CS courses this semester and does not have the time to look up the appropriate regulations within the course regarding the anonymity of his teammates in peer reviews. Ideally he would just write what he thinks, and submit it. 
-
- - University professors
- - University IT professionals
- - University software developers
+Scenario: Tom has just finished his CSC301 Partnership Program project with a small team of 6. He wants to be able to leave an honest peer evaluation regarding the good and bad experiences he has had with his group. However, he is taking many CS courses this semester and does not have the time to look up the appropriate regulations within the course regarding the anonymity of his teammates in peer reviews. Ideally he would just write what he thinks, and submit it.
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
@@ -212,10 +212,10 @@ List each team member and:
 | --- | --- | --- | --- |
 | Nathan | Project Manager, Partner Liason, Backend Engineer | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks  <br> - First point of contact with partner <br> - provide Flask and general backend expertise | - Experienced in Flask <br> - Interested in learning more about project management |
 | Letian | DevOps Engineer, Algorithm Engineer | - Set up CI/CD pipeline <br> - Deploy application <br> - Provide Docker expertise <br> - Provide algorithm expertise | - Experienced in Docker <br> - Experienced in cloud services <br> - Interested in learning more about algorithms |
-| Rafee | Frontend Engineer, Backend Engineer, QA Engineer | - Interested in learning about Flask and designing some of the API end points. <br> - Will help create frontend components and server-side requests for documentation. <br> - Once our algorithms are complete I will be responsible for creating tests. | - Have some experience with automated testing and API testings using Selenium and RESTAssured <br> - Experienced with React for Frontend, and Express for backend.
-| Sayna | Backend Engineer, QA, Devops | - Backend development <br> - create test cases for back end <br> | - Interested in learning about Devops <br> - Exerience with Django <br> - Experience with React <br> - Intrested in building APIs <br>|
+| Rafee | Fullstack Engineer, QA Engineer | - Interested in learning about Flask and designing some of the API end points. <br> - Will help create frontend components and server-side requests for documentation. <br> - Once our algorithms are complete I will be responsible for creating tests. | - Have some experience with automated testing and API testings using Selenium and RESTAssured <br> - Experienced with React for Frontend, and Express for backend.
+| Sayna | Backend Engineer, Frontend Engineer, Devops | - Backend development <br> - create test cases for back end <br> | - Interested in learning about Devops <br> - Exerience with Django <br> - Experience with React <br> - Intrested in building APIs <br>|
 | Edward | Frontend Engineer, Algorithm Engineer | - Frontend development <br> - Interested in learning more good coding practices in REACT <br> | - Interested in learning about Algorithms for Anonymization <br> - Exerience with Django <br> - Experience with React <br> - Experience with REST APIs <br>|
-| Jonathan | Backend Engineer, Frontend Engineer | - API architecture and development <br> - Frontend development <br> - Backend and frontend QA | - Intrested in expanding upon past web development experience <br> - Exerience with Django <br> - Exerience writing AI prompts and training models <br> |
+| Jonathan | Full-stack Engineer, Algorithm Engineer | - API architecture and development <br> - Frontend development <br> - Backend and frontend QA | - Intrested in expanding upon past web development experience <br> - Exerience with Django <br> - Exerience writing AI prompts and training models <br> |
 | Mehrdad | Frontend Engineer, Backend Engineer, Algorithm Engineer| - Build frontend components <br> - Help with the design for endpoints <br>  | - Experience with React <br> - Experience with REST APIs <br> - Interested in working on the main algorithm |
 
 The possible roles are:
