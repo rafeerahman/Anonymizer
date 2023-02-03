@@ -204,19 +204,15 @@ Fun facts:
 
 #### Q7: What are the roles & responsibilities on the team?
 
-List each team member and:
- * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
- * Why did you choose them to take that role? Specify if they are interested in learning that part, experienced in it, or any other reasons. Do no make things up. This part is not graded but may be reviewed later.
-
 | Name | Role(s) | Responsibilities | Why |
 | --- | --- | --- | --- |
 | Nathan | Project Manager, Partner Liason, Backend Engineer | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks  <br> - First point of contact with partner <br> - provide Flask and general backend expertise | - Experienced in Flask <br> - Interested in learning more about project management |
 | Letian | DevOps Engineer, Algorithm Engineer | - Set up CI/CD pipeline <br> - Deploy application <br> - Provide Docker expertise <br> - Provide algorithm expertise | - Experienced in Docker <br> - Experienced in cloud services <br> - Interested in learning more about algorithms |
 | Rafee | Fullstack Engineer, QA Engineer | - Interested in learning about Flask and designing some of the API end points. <br> - Will help create frontend components and server-side requests for documentation. <br> - Once our algorithms are complete I will be responsible for creating tests. | - Have some experience with automated testing and API testings using Selenium and RESTAssured <br> - Experienced with React for Frontend, and Express for backend.
-| Sayna | Backend Engineer, Frontend Engineer, Devops | - Backend development <br> - create test cases for back end <br> | - Interested in learning about Devops <br> - Exerience with Django <br> - Experience with React <br> - Intrested in building APIs <br>|
+| Sayna | Backend Engineer, QA, Devops | - Backend development <br> - create test cases for back end <br> | - Interested in learning about Devops <br> - Exerience with Django <br> - Experience with React <br> - Intrested in building APIs <br>|
 | Edward | Frontend Engineer, Algorithm Engineer | - Frontend development <br> - Interested in learning more good coding practices in REACT <br> | - Interested in learning about Algorithms for Anonymization <br> - Exerience with Django <br> - Experience with React <br> - Experience with REST APIs <br>|
 | Jonathan | Full-stack Engineer, Algorithm Engineer | - API architecture and development <br> - Frontend development <br> - Backend and frontend QA | - Intrested in expanding upon past web development experience <br> - Exerience with Django <br> - Exerience writing AI prompts and training models <br> |
-| Mehrdad | Frontend Engineer, Backend Engineer, Algorithm Engineer| - Build frontend components <br> - Help with the design for endpoints <br>  | - Experience with React <br> - Experience with REST APIs <br> - Interested in working on the main algorithm |
+| Mehrdad | Frontend Engineer, DevOps Engineer | - Build frontend components <br> - Help with setting up Docker image <br> | - Experience with Typescript React <br> - Experience with Docker <br> |
 
 The possible roles are:
 - Project Manager
