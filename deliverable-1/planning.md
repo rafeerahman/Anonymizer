@@ -204,10 +204,6 @@ Fun facts:
 
 #### Q7: What are the roles & responsibilities on the team?
 
-List each team member and:
- * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
- * Why did you choose them to take that role? Specify if they are interested in learning that part, experienced in it, or any other reasons. Do no make things up. This part is not graded but may be reviewed later.
-
 | Name | Role(s) | Responsibilities | Why |
 | --- | --- | --- | --- |
 | Nathan | Project Manager, Partner Liason, Backend Engineer | - Organize meetings and keep track of meeting minutes <br> - Assign tasks to team members <br> - Ensure team members are on track with their tasks  <br> - First point of contact with partner <br> - provide Flask and general backend expertise | - Experienced in Flask <br> - Interested in learning more about project management |
