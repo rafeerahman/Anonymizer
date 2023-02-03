@@ -261,11 +261,11 @@ List each team member and:
 | Mehrdad | Frontend Engineer, Backend Engineer, Algorithm Engineer| - Build frontend components <br> - Help with the design for endpoints <br>  | - Experience with React <br> - Experience with REST APIs <br> - Interested in working on the main algorithm |
 
 The possible roles are:
-- Project Manager x 1
-- Algorithm Engineer x 1 - this person will be responsible for the anonymization algorithm, using either a pre-existing algorithm or creating their own
-- Backend Engineer x 2 - this person will be responsible for the backend API, using Flask
-- Frontend Engineer x 1 - this person will be responsible for the frontend, using React
-- DevOps Engineer x 2 - this person will be responsible for deploying the application, using cloud and container services. This person will also be responsible for setting up the CI/CD pipeline.
+- Project Manager
+- Algorithm Engineer - this person will be responsible for the anonymization algorithm, using either a pre-existing algorithm or creating their own
+- Backend Engineer - this person will be responsible for the backend API, using Flask
+- Frontend Engineer - this person will be responsible for the frontend, using React
+- DevOps Engineer - this person will be responsible for deploying the application, using cloud and container services. This person will also be responsible for setting up the CI/CD pipeline.
 - Quality Assurance Engineer - this person will be responsible for creating testsuites for our API's and frontend.
 
 Note that the number of roles is not fixed, and we may add or remove roles as needed. For example, if we decide to use a pre-existing algorithm, we may not need an algorithm engineer.
@@ -311,4 +311,4 @@ Currently, we have set up meetings on Fridays from 5-6, which will be held eithe
 
 People will be held accountable for completing action items through the Github Projects tab, where different team members will be assigned tasks. 
 
-Minutes from meetings and assigned actions will be recorded. Members who are not contributing or who are unresponsive will be followed up with. If the issue doesn't get resolved, we'll have a meeting to discuss it and determine how best to proceed as a team. If the problem persists, we might need to enlist the assistance of a TA or the professor. 
+Minutes from meetings and assigned actions will be recorded. Group members are generally expected to respond (to discord messages, generally) within 24-48 hours. Members who are not contributing or who are unresponsive will be followed up with first through discord, then though email or phone. If the issue doesn't get resolved, we'll have a meeting to discuss it and determine how best to proceed as a team. If the problem persists, we might need to enlist the assistance of a TA or the professor. 
