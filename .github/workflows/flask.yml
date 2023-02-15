@@ -27,7 +27,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Lint Using Black
-      run:
+      run: |
         working-directory: backend
         black .
     - name: Run Tests
