@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+defaults:
+  run:
+    working-directory: web
+
 jobs:
   build:
 
@@ -23,14 +27,11 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
-        working-directory: backend
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Lint Using Black
       run: |
-        working-directory: backend
         black .
     - name: Run Tests
       run: |
-        working-directory: backend
         pytest
