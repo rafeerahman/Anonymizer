@@ -25,9 +25,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/anon')
-    def hello():
-        return 'Hello, I will do the work!'
+    from . import anonymize
+    app.register_blueprint(anonymize.bp)
 
     return app
