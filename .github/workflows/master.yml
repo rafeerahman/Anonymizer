@@ -19,9 +19,8 @@ jobs:
 
     - name: Test
       run: |
-        cd client && npm run test
-        cd backend && pylint .
-        cd backend && pytest
+        cd client && npm run test && cd ..
+        cd backend && pylint . && pytest
 
     # - name: Build Docker Image
     #   uses: docker/build-push-action@v2
