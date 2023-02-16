@@ -20,7 +20,7 @@ jobs:
     - name: Test
       run: |
         cd client && npm run test && cd ..
-        cd backend && pylint . && pytest
+        cd backend/anonymizer && pylint . && pytest
 
     # - name: Build Docker Image
     #   uses: docker/build-push-action@v2
