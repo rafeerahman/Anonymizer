@@ -3,6 +3,12 @@ name: master
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches:
+      - "main" 
+    paths:
+      - ".github/workflows/master.yaml"
+
 
 jobs:
   build-and-test:
