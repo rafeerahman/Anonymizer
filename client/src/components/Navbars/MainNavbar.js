@@ -7,11 +7,11 @@ function MainNavbar(){
         <>
           <Navbar bg="dark" variant="dark">
             <Container>
-              <Navbar.Brand href="#home">UofT-Anonymize</Navbar.Brand>
+              <Navbar.Brand href="/">UofT-Anonymize</Navbar.Brand>
               <Nav className="me-auto">
-                <Nav.Link href="#docs">Docs</Nav.Link>
-                <Nav.Link href="#examples">Examples</Nav.Link>
-                <Nav.Link href="#playground">Playground</Nav.Link>
+                <Nav.Link href="/docs">Docs</Nav.Link>
+                <Nav.Link href="/examples">Examples</Nav.Link>
+                <Nav.Link href="/playground">Playground</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
