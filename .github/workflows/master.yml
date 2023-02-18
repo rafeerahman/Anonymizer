@@ -34,5 +34,5 @@ jobs:
         echo "place holder";
 
     call-workflow-gcp-deploy:
-      use: .github/workflows/GCP-deploy-yml
+      use: ./.github/workflows/GCP-deploy-yml
 
