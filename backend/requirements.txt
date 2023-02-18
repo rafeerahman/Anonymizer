@@ -2,3 +2,4 @@ black
 Flask
 flask-restful
 pytest
+pylint
