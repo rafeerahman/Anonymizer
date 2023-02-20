@@ -23,13 +23,12 @@ For this assignment, our team split up into three sub-teams: backend, frontend, 
 # 3. Paragraph for each sub-team
 
 ### Frontend
+Given our front end user story, we started by creating an initial design in figma to map out how the website would look, how many pages were needed, and how our website would be navigated. We decided the majority of the front end user story would be served by our playground page. After creating our figma design our team created the website, the playground page, and the navigation in REACT. The playground page has a drop down menu where the user can select either the csv endpoint or text file endpoint and upload the appropriate file to be anonymized accordingly. Additionally, there is a text input box where the user can input text that will be anonymized. There is also a parameter input section where the user can upload key value pairs for which words that will be replaced. FInally, both React states and toast alerts have been set up to handle data and errors once our front end is connected to the back end. 
+
 
 ### Backend
 
-For this assignment, the backend team created the foundation for the project backend, which includes the file structure, testing procedure, and the coding environment. We aimed to create
-a modular file structure to be flexible to the addition of more Resources or external libraries.
-There is one functional endpoint which takes in the string that is being anonymized along with a dictionary of key values, and returns an anonymized text. 
-The backend testing was done through Postman, where every edge case was covered. The JSON file of the postman collection is also included in addition to all the backend code for future changes.
+For this assignment, the backend team created the foundation for the project backend, which includes the file structure, testing procedure, documentation and the coding environment. We aimed to create a modular file structure to be flexible to the addition of more Resources or external libraries. There is one functional endpoint which takes in the string that is being anonymized along with a dictionary of key values, and returns an anonymized text. The backend testing was done through Postman, where every edge case was covered. The JSON file of the postman collection is also included in addition to all the backend code for future changes. Lastly, all necessary API documentation has been included via Swagger endpoints.
 
 ### Dev Ops
 
