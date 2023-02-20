@@ -16,6 +16,8 @@ By providing flexible anonymization methods, we will support our project partner
 
 ### software architecture diagram
 
+![diagram](images/software-arch-diag.png)
+
 # 3. Paragraph for each sub-team
 
 ### Frontend
