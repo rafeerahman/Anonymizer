@@ -31,6 +31,6 @@ a modular file structure to be flexible to the addition of more Resources or ext
 There is one functional endpoint which takes in the string that is being anonymized along with a dictionary of key values, and returns an anonymized text. 
 The backend testing was done through Postman, where every edge case was covered. The JSON file of the postman collection is also included in addition to all the backend code for future changes.
 
-
 ### Dev Ops
 
+Our devops team is responsible for facilitating the containerization of both the application backend and frontend, the deployment of these containerized services to Google Cloud Platform (GCP), and the future communication between the backend and frontend services. We achieved application containerization  by writing Dockerfiles for each side of our application, and we successfully deployed these containers via GCP. The devops team is actively investigating means to connect the backend and frontend containers and facilitate full functionality.
