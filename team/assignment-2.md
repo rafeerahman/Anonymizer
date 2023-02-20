@@ -22,5 +22,11 @@ By providing flexible anonymization methods, we will support our project partner
 
 ### Backend
 
+For this assignment, the backend team created the foundation for the project backend, which includes the file structure, testing procedure, and the coding environment. We aimed to create
+a modular file structure to be flexible to the addition of more Resources or external libraries.
+There is one functional endpoint which takes in the string that is being anonymized along with a dictionary of key values, and returns an anonymized text. 
+The backend testing was done through Postman, where every edge case was covered. The JSON file of the postman collection is also included in addition to all the backend code for future changes.
+
+
 ### Dev Ops
 
