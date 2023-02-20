@@ -14,6 +14,8 @@ By providing flexible anonymization methods, we will support our project partner
 
 # 2. Division of project
 
+For this assignment, our team split up into three sub-teams: backend, frontend, and devops. We knew we needed to each tackle one simple user story, so we decided to split up and work on the most functionally distinct user stories. Our backend team took on the user story that dealt with accessing the API directly with a tool such as Postman, and our frontend team started working on a simple, easy to use frontend for university staff who would be more comfortable accessing the application through a browser. At first, we did not have a user story which was related to devops. However, we agreed that automating software quality assurance and deployment is very valuable both for developers and end users of the application, and so a user story was created. When we were deciding how many people to allocate to each team, we initially thought it would make sense to have three people working on backend, and two people on both frontend and devops. However, after some discussion we realized that the React frontend we planned to build would require more initial effort to get started than our flask-restful backend. Fortunately, several of our team members were flexible enough to adapt to this need, which is how we arrived at a split of three frontend developers, two backend developers, and two devops developers.
+
 ### software architecture diagram
 
 ![diagram](images/software-arch-diag.png)
