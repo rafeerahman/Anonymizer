@@ -7,10 +7,10 @@ on:
         description: '[debug|release]'     
         required: true
         default: 'debug'
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
 
 jobs:
 
