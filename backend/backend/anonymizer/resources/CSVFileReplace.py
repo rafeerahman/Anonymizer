@@ -1,4 +1,5 @@
 from flask_restful import reqparse, Resource
+from flask_restful_swagger import swagger
 from flask import Response
 from common.util import textReplace
 from werkzeug.datastructures import FileStorage
@@ -23,9 +24,37 @@ def advanced_replace(array, replaceTerms):
 
   return result
 
-
 class CSVFileReplace(Resource):
-
+  "Simple text replace anonymization tool"
+  @swagger.operation(
+      responseClass='json',
+      parameters=[
+          {
+            "name": "inputFile",
+            "description": "CSV file that the user wises to anonymize",
+            "required": True,
+            "allowMultiple": False,
+            "dataType": 'text/csv'
+          },
+          {
+            "name": "replaceTerms",
+            "description": "Dictionary of all all key-term pairs that the user wishes to anonymize",
+            "required": False,
+            "allowMultiple": False,
+            "dataType": 'Dict'
+          }
+        ],
+      responseMessages=[
+          {
+            "code": 200,
+            "message": "[ANONYMIZED USER CSV FILE]"
+          },
+          {
+            "code": 400,
+            "message": "missing parameter(s)"
+          }
+        ]
+      )
   def post(self):
     args = parser.parse_args()
     

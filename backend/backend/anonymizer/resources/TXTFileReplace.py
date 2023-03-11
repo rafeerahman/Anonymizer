@@ -14,36 +14,36 @@ parser.add_argument('inputTextFile', type=FileStorage, location='files')
 parser.add_argument('replaceTerms', location='form')
 
 class TXTFileReplace(Resource):
-    # "Simple text replace anonymization tool"
-    # @swagger.operation(
-    #     responseClass='json',
-    #     parameters=[
-    #         {
-    #             "name": "inputText",
-    #             "description": "String containing text that the user wises to anonymize",
-    #             "required": True,
-    #             "allowMultiple": False,
-    #             "dataType": 'String' #TODO: modify the swagger to .txt file
-    #         },
-    #         {
-    #             "name": "replaceTerms",
-    #             "description": "Dictionary of all all key-term pairs that the user wishes to anonymize",
-    #             "required": False,
-    #             "allowMultiple": False,
-    #             "dataType": 'Dict'
-    #         }
-    #     ],
-    #     responseMessages=[
-    #         {
-    #             "code": 200,
-    #             "message": "[ANONYMIZED USER TEXT]"
-    #         },
-    #         {
-    #             "code": 400,
-    #             "message": "missing parameter(s)"
-    #         }
-    #     ]
-    # )
+    "Simple text replace anonymization tool"
+    @swagger.operation(
+        responseClass='json',
+        parameters=[
+            {
+                "name": "inputTextFile",
+                "description": "TXT file that the user wises to anonymize",
+                "required": True,
+                "allowMultiple": False,
+                "dataType": 'text'
+            },
+            {
+                "name": "replaceTerms",
+                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize",
+                "required": False,
+                "allowMultiple": False,
+                "dataType": 'Dict'
+            }
+            ],
+        responseMessages=[
+            {
+                "code": 200,
+                "message": "[ANONYMIZED USER TXT FILE]"
+            },
+            {
+                "code": 400,
+                "message": "missing parameter(s)"
+            }
+            ]
+        )
     def post(self):
         args = parser.parse_args()
         inputTextFile = args['inputTextFile']
