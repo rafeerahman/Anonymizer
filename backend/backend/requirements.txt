@@ -5,3 +5,4 @@ flask-restful-swagger
 pytest
 uwsgi
 markupsafe==2.0.1
+pandas
