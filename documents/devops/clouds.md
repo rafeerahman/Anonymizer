@@ -1,4 +1,4 @@
-# Cloud documentation for University of Toronto Anonymization API
+# Cloud Deployment documentation for University of Toronto Anonymization API
 
 ## Introduction
 
@@ -12,17 +12,37 @@ When deploying the University of Toronto Anonymization API, one of the first dec
 
 For this project, we have chosen to use GCP for its robust security features, high performance, and scalability. GCP offers a wide range of services and tools for cloud deployment, including virtual machines, containerization, and serverless computing options. Additionally, GCP provides a strong network infrastructure and a range of compliance certifications, making it a good choice for organizations with strict data security and privacy requirements.
 
-We use several GCP services to deploy the Anonymization API, including Cloud Run, Artifact Registry, and Cloud Build. These services are described in more detail below.
+We use several GCP services to deploy the Anonymization API, including Cloud Run and Cloud Storage.
 
 ### Cloud Run 
 
 Cloud Run is a fully managed platform that allows you to build and deploy scalable containerized apps written in any language, including Go, Python, Java, Node.js, .NET, and Ruby. With Cloud Run, you don't need to worry about infrastructure management or scaling, since it automatically scales up or down based on traffic.
 
-###  Artifact Registry API 
+### Cloud Storage
 
-The Artifact Registry API is a fully managed container registry service that allows you to store, manage, and secure your container images. With Artifact Registry, you can store your container images in a private registry, which means you can easily share them with other users and deploy them to Cloud Run.
+Cloud Storage is a highly scalable object storage service that allows you to store and access data from anywhere in the world. Cloud Storage is designed to be highly durable and highly available, so you can be confident that your data is safe and secure. In this project, we use Cloud Storage to store the docker image for the Anonymization API.
 
-Please note that the Artifact Registry API will start charging you for storage after you have used 0.5 GB of storage. To avoid this, you can use the Cloud Build API to build and deploy your container images directly from your GitHub repository.
+## Architecture overview
 
-To ensure the portability of this project, we have chosen to use the Artifact Registry API to store our container images.
+The following diagram shows the architecture of the Anonymization API on GCP.
 
+![](./2023-02-18-14-22-39.png)
+
+## Deploying the Anonymization API
+
+The docker build and deployment process is automated using a GitHub Actions workflow called `GCP-Deploy.yml`. The workflow is manually triggered. The workflow builds the docker image and pushes it to Cloud Storage. Then, the workflow deploys the image to Cloud Run.
+
+More explaination of the workflow can be found at <https://cloud.google.com/community/tutorials/cicd-cloud-run-github-actions>
+
+## Managing the Deployment
+
+After successfully deploying the Anonymization API, you can manage the deployment using the GCP console. To get the URL of the API, run the following command:
+
+
+```
+gcloud run services list
+```
+
+This command lists all the services deployed on Cloud Run. You can use the `--platform` flag to specify the platform, e.g. `gcloud run services list --platform managed` to list all the services deployed on Cloud Run (fully managed).
+
+> After you finish testing the API, remember to delete the deployment to avoid unnecessary costs. 

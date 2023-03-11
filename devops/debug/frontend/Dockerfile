@@ -1,0 +1,23 @@
+# syntax=docker/dockerfile:1
+FROM node:19
+
+RUN mkdir -p /var/www && chown -R node:node /var/www
+
+COPY ./assignment-2-17-3-rahma759-leunged7-ghannad2/client/ /var/www/
+
+# RUN apt-get update; apt-get install -y nodejs npm; apt-get clean;
+
+WORKDIR /var/www
+
+RUN npm install && npm install -g serve
+
+ENV REACT_APP_BASE_URL=http://localhost:3000
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["serve", "-s", "build"]
+
+# RUN npm start
+# CMD ["npm", "start"]

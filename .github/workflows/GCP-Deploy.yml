@@ -1,0 +1,64 @@
+name: GCP Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      Version:
+        description: '[debug|release]'     
+        required: true
+        default: 'debug'
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+    deploy:
+
+        name: deploy
+        runs-on: ubuntu-latest
+        env:
+          IMAGE_NAME_FRONTEND: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}-frontend
+          IMAGE_NAME_BACKEND: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}-backend
+        steps:
+
+        - name: Add SSH private keys for submodule repositories
+          uses: webfactory/ssh-agent@v0.7.0
+          with:
+             ssh-private-key: |
+               ${{ secrets.SSH_PRIVATE_KEY_SUBMODULE_BACKEND }}
+               ${{ secrets.SSH_PRIVATE_KEY_SUBMODULE_FRONTEND }}
+
+        - name: Checkout repository
+          uses: actions/checkout@v2
+          with: 
+            submodules: recursive
+
+        - name: Login
+          uses: google-github-actions/setup-gcloud@v0
+          with:
+            project_id: ${{ secrets.GCP_PROJECT_ID }}
+            service_account_email: ${{ secrets.GCP_EMAIL }}
+            service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+
+        - name: Configure Docker
+          run: gcloud auth configure-docker --quiet
+
+        - name: Build Docker image
+          run: |
+            docker build -f ./devops/debug/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND
+            docker build -f ./devops/debug/backend/Dockerfile . -t $IMAGE_NAME_BACKEND
+
+        # - name: Test Docker image
+        #   run: docker run $IMAGE_NAME sh -c "go test -v"
+
+        - name: Push Docker image
+          run: |
+            docker push $IMAGE_NAME_FRONTEND
+            docker push $IMAGE_NAME_BACKEND
+
+        - name: Deploy Docker image
+          run: |
+            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-frontend --image $IMAGE_NAME_FRONTEND --region northamerica-northeast2 --platform managed --port 3000
+            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-backend --image $IMAGE_NAME_BACKEND --region northamerica-northeast2 --platform managed --port 5000
