@@ -24,7 +24,7 @@ def advanced_replace(array, replaceTerms):
   return result
 
 
-class CSVReplace(Resource):
+class CSVFileReplace(Resource):
 
   def post(self):
     args = parser.parse_args()

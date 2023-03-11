@@ -1,1 +1,1 @@
-from resources import TXTReplace, CSVReplace
+from resources import TXTReplace, CSVFileReplace
