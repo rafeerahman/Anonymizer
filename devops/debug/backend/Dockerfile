@@ -3,7 +3,7 @@ FROM python:3
 
 RUN mkdir -p /var/www && chown -R root:root /var/www
 
-COPY ./assignment-2-17-2-sohrabza-ginevroj/backend/ /var/www/
+COPY $BACKEND_DIR /var/www/
 
 WORKDIR /var/www
 

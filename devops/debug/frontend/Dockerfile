@@ -3,7 +3,7 @@ FROM node:19
 
 RUN mkdir -p /var/www && chown -R node:node /var/www
 
-COPY ./assignment-2-17-3-rahma759-leunged7-ghannad2/client/ /var/www/
+COPY $FRONTEND_DIR /var/www/
 
 # RUN apt-get update; apt-get install -y nodejs npm; apt-get clean;
 

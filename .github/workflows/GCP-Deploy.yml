@@ -12,6 +12,10 @@ on:
   # pull_request:
   #   branches: [ main ]
 
+env:
+  FRONTEND_DIR: ./frontend
+  BACKEND_DIR: ./backend
+
 jobs:
 
     deploy:
@@ -21,19 +25,16 @@ jobs:
         env:
           IMAGE_NAME_FRONTEND: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}-frontend
           IMAGE_NAME_BACKEND: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}-backend
-        steps:
-
-        - name: Add SSH private keys for submodule repositories
-          uses: webfactory/ssh-agent@v0.7.0
-          with:
-             ssh-private-key: |
-               ${{ secrets.SSH_PRIVATE_KEY_SUBMODULE_BACKEND }}
-               ${{ secrets.SSH_PRIVATE_KEY_SUBMODULE_FRONTEND }}
 
         - name: Checkout repository
           uses: actions/checkout@v2
           with: 
             submodules: recursive
+
+        - name: Push Docker image
+          run: |
+            docker push $IMAGE_NAME_FRONTEND
+            docker push $IMAGE_NAME_BACKEND
 
         - name: Login
           uses: google-github-actions/setup-gcloud@v0
@@ -47,16 +48,11 @@ jobs:
 
         - name: Build Docker image
           run: |
-            docker build -f ./devops/debug/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND
-            docker build -f ./devops/debug/backend/Dockerfile . -t $IMAGE_NAME_BACKEND
+            docker build -f ./devops/debug/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND --build-arg FRONTEND_DIR=$FRONTEND_DIR
+            docker build -f ./devops/debug/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR
 
         # - name: Test Docker image
         #   run: docker run $IMAGE_NAME sh -c "go test -v"
-
-        - name: Push Docker image
-          run: |
-            docker push $IMAGE_NAME_FRONTEND
-            docker push $IMAGE_NAME_BACKEND
 
         - name: Deploy Docker image
           run: |
