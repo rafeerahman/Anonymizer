@@ -1,0 +1,7 @@
+black
+Flask
+flask-restful
+flask-restful-swagger
+pytest
+uwsgi
+markupsafe==2.0.1

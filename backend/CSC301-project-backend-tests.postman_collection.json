@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "cf8c624b-5499-488d-af15-438e322d8167",
+		"name": "CSC301-project-backend-tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24150524"
+	},
+	"item": [
+		{
+			"name": "Empty text/Empty keys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputText\": \"\",\r\n    \"replaceTerms\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Non-empty text/ Empty keys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner1, John and I had a great semester working with them!\",\r\n    \"replaceTerms\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Non-empty text/ Non-empty keys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner2, Johhn and I had a great semester working with them!\",\r\n    \"replaceTerms\": {\"Partner1\": \"AnonPartner\", \"John\": \"Classmate\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-replace"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "misspelling",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner1, John and I had a great semester working with them!\",\r\n    \"replaceTerms\": {\"Partner1\": \"AnonPartner\", \"John\": \"Classmate\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000//anon/text-replace",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"",
+								"anon",
+								"text-replace"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "No matching key",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner41, Sophia and I had a great semester working with them!\",\r\n    \"replaceTerms\": {\"Partner1\": \"AnonPartner\", \"John\": \"Classmate\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000//anon/text-replace",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"",
+								"anon",
+								"text-replace"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
