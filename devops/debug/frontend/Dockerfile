@@ -1,13 +1,19 @@
 # syntax=docker/dockerfile:1
 FROM node:19
 
+ARG FRONTEND_DIR
+
 RUN mkdir -p /var/www && chown -R node:node /var/www
+
+RUN echo $FRONTEND_DIR
 
 COPY $FRONTEND_DIR /var/www/
 
 # RUN apt-get update; apt-get install -y nodejs npm; apt-get clean;
 
 WORKDIR /var/www
+
+RUN ls -la
 
 RUN npm install && npm install -g serve
 

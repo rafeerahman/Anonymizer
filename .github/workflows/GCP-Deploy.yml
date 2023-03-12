@@ -13,7 +13,7 @@ on:
   #   branches: [ main ]
 
 env:
-  FRONTEND_DIR: ./frontend
+  FRONTEND_DIR: ./frontend/client
   BACKEND_DIR: ./backend
 
 jobs:
