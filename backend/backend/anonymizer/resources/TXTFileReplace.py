@@ -6,7 +6,6 @@ from flask_restful_swagger import swagger
 from werkzeug.datastructures import FileStorage
 
 from common.util import textReplace
-import re
 
 parser = reqparse.RequestParser()
 parser.add_argument('inputTextFile', type=FileStorage, location='files')
@@ -50,19 +49,14 @@ class TXTFileReplace(Resource):
         replaceTerms = eval(args['replaceTerms'])
 
         print(inputTextFile)
-        print(replaceTerms)
-        if not replaceTerms or inputTextFile == "":
+        if not inputTextFile or not replaceTerms or inputTextFile == "":
             return {'message': 'missing parameter(s)'}, 400
 
         # get input text from the txt file
         inputText = inputTextFile.read()
-        print("printing inputText")
-        print(inputText)
         # call replacement function
         decoded_inputText = inputText.decode('utf-8"')
-        print(decoded_inputText)
         outputText = textReplace(decoded_inputText, replaceTerms)
-        # TODO: return .txt file
 
         tmp = tempfile.TemporaryFile()
         b = bytes(outputText, 'utf-8')
