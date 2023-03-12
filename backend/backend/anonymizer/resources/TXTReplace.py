@@ -51,5 +51,5 @@ class TXTReplace(Resource):
     # call replacement function
     outputText = textReplace(inputText, replaceTerms)
 
-    return {'message': outputText}
+    return {'message': outputText}, 200, {'Access-Control-Allow-Origin': '*'} 
         
