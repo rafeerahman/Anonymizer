@@ -45,4 +45,8 @@ gcloud run services list
 
 This command lists all the services deployed on Cloud Run. You can use the `--platform` flag to specify the platform, e.g. `gcloud run services list --platform managed` to list all the services deployed on Cloud Run (fully managed).
 
-> After you finish testing the API, remember to delete the deployment to avoid unnecessary costs. 
+> After you finish testing the API, remember to delete the deployment to avoid unnecessary costs.
+
+## Changing the URL
+
+The frontend needs to know the location of the backend. To change it, edit the config.js in the frontend folder. The default URL is `https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/`.
