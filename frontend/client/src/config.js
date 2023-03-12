@@ -1,6 +1,6 @@
 const prod = {
     env: 'production',
-    api_host: 'https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/',
+    api_host: 'https://csc301-378115-backend-4ic67og2pa-pd.a.run.app',
     endpoints: {text_replace: '/anon/text-replace'}
 };
 

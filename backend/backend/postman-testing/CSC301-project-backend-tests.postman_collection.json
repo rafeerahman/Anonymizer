@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "cf8c624b-5499-488d-af15-438e322d8167",
+		"name": "CSC301-project-backend-tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24150524"
+	},
+	"item": [
+		{
+			"name": "Empty text/Empty keys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputText\": \"\",\r\n    \"replaceTerms\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Non-empty text/ Empty keys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner1, John and I had a great semester working with them!\",\r\n    \"replaceTerms\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Non-empty text/ Non-empty keys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner2, Johhn and I had a great semester working with them!\",\r\n    \"replaceTerms\": {\"Partner1\": \"AnonPartner\", \"John\": \"Classmate\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-replace"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "misspelling",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner1, John and I had a great semester working with them!\",\r\n    \"replaceTerms\": {\"Partner1\": \"AnonPartner\", \"John\": \"Classmate\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000//anon/text-replace",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"",
+								"anon",
+								"text-replace"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "No matching key",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner41, Sophia and I had a great semester working with them!\",\r\n    \"replaceTerms\": {\"Partner1\": \"AnonPartner\", \"John\": \"Classmate\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000//anon/text-replace",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"",
+								"anon",
+								"text-replace"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "TextFile test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputTextFile",
+							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"type": "file",
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/example1.txt"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"George\": \"Name2\", \"george\": \"Partner1\", \"jonathan\": \"Name3\"}",
+							"type": "text"
+						},
+						{
+							"key": "inputTextFile",
+							"value": "\"Sayna jonahan\"",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-file-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TextFile test No File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputTextFile",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"George\": \"Name2\", \"george\": \"Partner1\", \"jonathan\": \"Name3\"}",
+							"type": "text"
+						},
+						{
+							"key": "inputTextFile",
+							"value": "\"Sayna jonahan\"",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-file-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TextFile test No Key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputTextFile",
+							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"type": "file",
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/noKeys.txt"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"George\": \"Name2\", \"george\": \"Partner1\", \"jonathan\": \"Name3\"}",
+							"type": "text"
+						},
+						{
+							"key": "inputTextFile",
+							"value": "\"Sayna jonahan\"",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-file-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TextFile test Repetition",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputTextFile",
+							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"type": "file",
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/repeatKeys.txt"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"George\": \"Name2\", \"george\": \"Partner1\", \"jonathan\": \"Name3\"}",
+							"type": "text"
+						},
+						{
+							"key": "inputTextFile",
+							"value": "\"Sayna jonahan\"",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-file-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TextFileEmpty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputTextFile",
+							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"type": "file",
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/emptyexample.txt"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"George\": \"Name2\", \"george\": \"Partner1\", \"jonathan\": \"Name3\"}",
+							"type": "text"
+						},
+						{
+							"key": "inputTextFile",
+							"value": "\"Sayna jonahan\"",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"text-file-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestCSV1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputFile",
+							"type": "file",
+							"src": "/C:/Users/Rainbow Box/Desktop/School/CSC301/test_files/example1.csv"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"Bob\" :\"Name2\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/csv-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"csv-file-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestCSVEmpty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputFile",
+							"type": "file",
+							"src": "/C:/Users/Rainbow Box/Desktop/School/CSC301/test_files/emptyCSV.csv"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"Bob\" :\"Name2\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/csv-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"csv-file-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestCSVRepeat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputFile",
+							"type": "file",
+							"src": "/C:/Users/Rainbow Box/Desktop/School/CSC301/test_files/repeatingwords.csv"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"Bob\" :\"Name2\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/csv-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"csv-file-replace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestCSVNokeys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputFile",
+							"type": "file",
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/csv-files/noKeys.csv"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Saynaa\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"Bobi\" :\"Name2\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//anon/csv-file-replace",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"anon",
+						"csv-file-replace"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
