@@ -8,9 +8,6 @@ on:
         required: true
         default: 'production'
 
-env:
-  FRONTEND_DIR: ./frontend/client
-  BACKEND_DIR: ./backend
 
 jobs:
 
@@ -21,6 +18,10 @@ jobs:
         env:
           IMAGE_NAME_FRONTEND: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}-frontend
           IMAGE_NAME_BACKEND: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}-backend
+          FRONTEND_DIR: ./frontend/client
+          BACKEND_DIR: ./backend
+
+        steps:
 
         - name: Checkout repository
           uses: actions/checkout@v2
