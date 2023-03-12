@@ -2,6 +2,10 @@
 FROM node:19
 
 ARG FRONTEND_DIR
+ARG VER
+
+RUN export NODE_ENV=${VER} && echo "NODE_ENV=${NODE_ENV}"
+
 
 RUN mkdir -p /var/www && chown -R node:node /var/www
 

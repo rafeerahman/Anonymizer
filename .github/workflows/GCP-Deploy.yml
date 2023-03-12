@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       Version:
-        description: '[debug|release]'     
+        description: '[debug|production]'     
         required: true
         default: 'debug'
   # push:
@@ -48,8 +48,8 @@ jobs:
 
         - name: Build Docker image
           run: |
-            docker build -f ./devops/debug/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND --build-arg FRONTEND_DIR=$FRONTEND_DIR
-            docker build -f ./devops/debug/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR
+            docker build -f ./devops/debug/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND --build-arg FRONTEND_DIR=$FRONTEND_DIR --build-arg VER=$Version
+            docker build -f ./devops/debug/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR --build-arg VER=$Version
 
         # - name: Test Docker image
         #   run: docker run $IMAGE_NAME sh -c "go test -v"

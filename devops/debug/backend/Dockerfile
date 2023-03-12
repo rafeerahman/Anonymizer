@@ -3,6 +3,7 @@
 FROM python:3
 
 ARG BACKEND_DIR
+ARG VER
 
 RUN mkdir -p /var/www && chown -R root:root /var/www
 
