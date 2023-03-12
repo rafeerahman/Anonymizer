@@ -6,3 +6,4 @@ pytest
 uwsgi
 markupsafe==2.0.1
 pandas
+flask_cors
