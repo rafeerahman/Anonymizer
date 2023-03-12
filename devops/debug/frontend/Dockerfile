@@ -5,8 +5,6 @@ ARG FRONTEND_DIR
 
 RUN mkdir -p /var/www && chown -R node:node /var/www
 
-RUN echo $FRONTEND_DIR
-
 COPY $FRONTEND_DIR /var/www/
 
 # RUN apt-get update; apt-get install -y nodejs npm; apt-get clean;
