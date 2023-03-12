@@ -53,5 +53,5 @@ jobs:
 
         - name: Deploy Docker image
           run: |
-            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-frontend --image $IMAGE_NAME_FRONTEND --region northamerica-northeast2 --platform managed --port 3000
-            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-backend --image $IMAGE_NAME_BACKEND --region northamerica-northeast2 --platform managed --port 5000
+            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-frontend --image $IMAGE_NAME_FRONTEND --region northamerica-northeast2 --platform managed --port 3000 --allow-unauthenticated
+            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-backend --image $IMAGE_NAME_BACKEND --region northamerica-northeast2 --platform managed --port 5000 --allow-unauthenticated

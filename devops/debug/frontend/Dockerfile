@@ -15,8 +15,6 @@ COPY $FRONTEND_DIR /var/www/
 
 WORKDIR /var/www
 
-RUN ls -la
-
 RUN npm install && npm install -g serve
 
 ENV REACT_APP_BASE_URL=http://localhost:3000
