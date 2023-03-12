@@ -28,11 +28,6 @@ jobs:
           with: 
             submodules: recursive
 
-        - name: Push Docker image
-          run: |
-            docker push $IMAGE_NAME_FRONTEND
-            docker push $IMAGE_NAME_BACKEND
-
         - name: Login
           uses: google-github-actions/setup-gcloud@v0
           with:
@@ -50,6 +45,11 @@ jobs:
 
         # - name: Test Docker image
         #   run: docker run $IMAGE_NAME sh -c "go test -v"
+
+        - name: Push Docker image
+          run: |
+            docker push $IMAGE_NAME_FRONTEND
+            docker push $IMAGE_NAME_BACKEND
 
         - name: Deploy Docker image
           run: |
