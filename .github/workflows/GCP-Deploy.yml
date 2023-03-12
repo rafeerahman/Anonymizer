@@ -7,10 +7,6 @@ on:
         description: '[debug|production]'     
         required: true
         default: 'production'
-  # push:
-  #   branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
 
 env:
   FRONTEND_DIR: ./frontend/client
