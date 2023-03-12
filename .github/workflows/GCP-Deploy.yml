@@ -6,7 +6,7 @@ on:
       Version:
         description: '[debug|production]'     
         required: true
-        default: 'debug'
+        default: 'production'
   # push:
   #   branches: [ main ]
   # pull_request:

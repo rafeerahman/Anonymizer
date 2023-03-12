@@ -1,9 +1,9 @@
 name: main workflow
 
 on:
-  # push:
-  #   branches: [ main ]
-  # pull_request:
+  push:
+    branches: [ main ]
+  pull_request:
 
 
 jobs:
@@ -33,6 +33,6 @@ jobs:
       run: |
         echo "place holder";
 
-    call-workflow-gcp-deploy:
-      use: ./.github/workflows/GCP-deploy-yml
+    # call-workflow-gcp-deploy:
+    #   use: ./.github/workflows/GCP-deploy-yml
 
