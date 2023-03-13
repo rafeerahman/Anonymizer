@@ -8,7 +8,6 @@ from pandas._libs import lib
 from pandas.core.dtypes.missing import isna
 import pandas.io.common
 import numpy as np
-from collections import defaultdict
 
 parser = reqparse.RequestParser()
 parser.add_argument('inputFile', type=FileStorage, location='files')
