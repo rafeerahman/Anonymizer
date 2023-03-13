@@ -1,0 +1,42 @@
+# .github/workflows/GCR-Cleaner.yml
+# this workflow is a modified version of the workflow from
+# https://github.com/GoogleCloudPlatform/gcr-cleaner
+name: GCR Cleaner
+
+on:
+  workflow_dispatch:
+    branches:
+      - "main"
+      - "gcr-cleaner"
+
+jobs:
+  # auth/login steps referenced from https://github.com/docker/login-action#google-container-registry-gcr
+
+  gcr-cleaner:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        token_format: 'access_token'
+        workload_identity_provider: 'projects/825278863364/locations/global/workloadIdentityPools/csc301-pool/providers/csc301-provider'
+        service_account: 'csc301-service-account@csc301-378115.iam.gserviceaccount.com'
+
+    - id: 'login'
+      uses: 'docker/login-action@v2'
+      with:
+        registry: gcr.io
+        username: oauth2accesstoken
+        password: ${{ steps.auth.outputs.access_token }}
+
+    # customize based on the gcr-cleaner flags
+    - uses: 'docker://us-docker.pkg.dev/gcr-cleaner/gcr-cleaner/gcr-cleaner-cli'
+      with:
+        args: >-
+          -repo=gcr.io/csc301-378115/uoft-anonymization-api-frontend
+          -repo=gcr.io/csc301-378115/uoft-anonymization-api-backend
+          -keep 3

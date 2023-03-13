@@ -10,14 +10,17 @@ function MainNavbar(){
   // the Nav.Link with href pathname which corresponds with current url path
     return (
         <>
-          <Navbar bg="dark" variant="dark">
+          <Navbar expand="sm" bg="dark" variant="dark">
             <Container>
               <Navbar.Brand href="/" >UofT-Anonymize</Navbar.Brand>
-              <Nav activeKey={pathname}>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ms-auto" activeKey={pathname}>
                 <Nav.Link href="/docs">Docs</Nav.Link>
                 <Nav.Link href="/examples">Examples</Nav.Link>
                 <Nav.Link href="/playground">Playground</Nav.Link>
             </Nav>
+            </Navbar.Collapse>
             </Container>
           </Navbar>
         </>

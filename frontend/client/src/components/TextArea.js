@@ -1,10 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
-export default function TextArea({text, setText}) {
+export default function TextArea({file, text, setText}) {
   return (
     <TextAreaStyled>
-        <textarea maxLength={500} placeholder='Enter text here' value={text} onChange={e => (setText(e.target.value))}></textarea>
+        <textarea
+          disabled={file}
+          maxLength="500"
+          placeholder='Enter text here'
+          value={text}
+          onChange={e => (setText(e.target.value))}>
+        </textarea>
     </TextAreaStyled>
     
   )
@@ -20,6 +26,9 @@ const TextAreaStyled = styled.div`
         padding: 1rem;
         font-weight: 300;
         font-size: 24px;
-        
+    }
+
+    textarea[disabled] {
+      background-color: #dddddd;
     }
 `
