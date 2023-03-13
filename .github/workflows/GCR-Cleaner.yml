@@ -39,3 +39,4 @@ jobs:
         args: >-
           -repo=gcr.io/csc301-378115/uoft-anonymization-api-frontend
           -repo=gcr.io/csc301-378115/uoft-anonymization-api-backend
+          -keep 3
