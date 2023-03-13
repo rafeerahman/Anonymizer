@@ -37,6 +37,9 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
             return res.text();
         })
         .then(text => {
+            if (!text) {
+                return 
+            }
             setResponseText(text)
             notify("Success! The output is ready for download.")
         })

@@ -24,6 +24,9 @@ export const sendCsvToAnonymize = (file, replaceTerms, setResponseText, notify) 
         return res.text();
     })
     .then(text => {
+        if (!text) {
+            return 
+        }
         setResponseText(text)
         notify("Success! The output is ready for download.")
     })
