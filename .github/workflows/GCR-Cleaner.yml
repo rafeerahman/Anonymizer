@@ -5,6 +5,9 @@ name: GCR Cleaner
 
 on:
   workflow_dispatch:
+    branches:
+      - "main"
+      - "gcr-cleaner"
 
 jobs:
   # auth/login steps referenced from https://github.com/docker/login-action#google-container-registry-gcr
