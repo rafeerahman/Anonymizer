@@ -1,6 +1,5 @@
 
-# Team number: 17
-# Team name: Control Alt Elite
+# Team 17, Control Alt Elite
 
 ## Iteration 02 - Review & Retrospect
 
