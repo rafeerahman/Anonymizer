@@ -65,7 +65,7 @@ class CSVFileReplace(Resource):
     
     # Read from the csv and input into a dataset
     try:
-      data = pd.read_csv(inputFile, header=None)
+      data = pd.read_csv(inputFile, dtype=str, header=None)
     except pandas.errors.EmptyDataError:
       return {'message': 'invalid csv formatting'}, 400
     
