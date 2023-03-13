@@ -234,6 +234,7 @@
 					"formdata": [
 						{
 							"key": "inputTextFile",
+							"description": "do not upload any file",
 							"type": "file",
 							"src": []
 						},
@@ -279,7 +280,7 @@
 					"formdata": [
 						{
 							"key": "inputTextFile",
-							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"description": "noKeys.txt in the backend/postman-testing/txt-files folder ",
 							"type": "file",
 							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/noKeys.txt"
 						},
@@ -325,7 +326,7 @@
 					"formdata": [
 						{
 							"key": "inputTextFile",
-							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"description": "repeatKeys.txt in the backend/postman-testing/txt-files folder ",
 							"type": "file",
 							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/repeatKeys.txt"
 						},
@@ -371,7 +372,7 @@
 					"formdata": [
 						{
 							"key": "inputTextFile",
-							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"description": "emptyExample.txt in the backend/postman-testing/txt-files folder ",
 							"type": "file",
 							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/emptyexample.txt"
 						},
@@ -417,6 +418,7 @@
 					"formdata": [
 						{
 							"key": "inputFile",
+							"description": "example1.csv in the backend/postman-testing/csv-files folder ",
 							"type": "file",
 							"src": "/C:/Users/Rainbow Box/Desktop/School/CSC301/test_files/example1.csv"
 						},
@@ -456,6 +458,7 @@
 					"formdata": [
 						{
 							"key": "inputFile",
+							"description": "emptyCSV.csv in the backend/postman-testing/csv-files folder ",
 							"type": "file",
 							"src": "/C:/Users/Rainbow Box/Desktop/School/CSC301/test_files/emptyCSV.csv"
 						},
@@ -495,6 +498,7 @@
 					"formdata": [
 						{
 							"key": "inputFile",
+							"description": "repeatingwords.csv in the backend/postman-testing/csv-files folder ",
 							"type": "file",
 							"src": "/C:/Users/Rainbow Box/Desktop/School/CSC301/test_files/repeatingwords.csv"
 						},
@@ -534,6 +538,7 @@
 					"formdata": [
 						{
 							"key": "inputFile",
+							"description": "noKeys.csv in the backend/postman-testing/csv-files folder ",
 							"type": "file",
 							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/csv-files/noKeys.csv"
 						},
