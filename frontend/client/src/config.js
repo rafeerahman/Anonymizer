@@ -6,6 +6,9 @@ const prod = {
         text_file_replace: '/anon/text-file-replace',
         csv_file_replace: '/anon/csv-file-replace',
     },
+    errors: {
+        requestFailed: "Failed to request resource"
+    }
 };
 
 const dev = {
