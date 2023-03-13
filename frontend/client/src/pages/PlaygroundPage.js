@@ -8,6 +8,9 @@ import TextArea from '../components/TextArea.js'
 import UploadFileButton from '../components/UploadFileButton.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
 import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
 
@@ -52,10 +55,11 @@ export default function PlaygroundPage() {
         console.log('Successfully read file')
     }
     reader.readAsText(file)
+    setResponseText("") //to reset download button/output
   }
 
   const handleInputErrors = () => {
-    const flag = false;
+    let flag = false;
 
     if (currentEndpoint.fileType === 'text/plain') {
       if (text.length === 0) {
@@ -86,7 +90,7 @@ export default function PlaygroundPage() {
     if (currentEndpoint.fileType === "text/plain") {
       sendTextToAnonymize(text, file, replaceTerms, setResponseText, notify)
     } else if (currentEndpoint.fileType === "text/csv") {
-      // sendCsvToAnonymize('not done');
+      sendCsvToAnonymize(file, replaceTerms, setResponseText, notify);
     }
   }
 
@@ -96,7 +100,8 @@ export default function PlaygroundPage() {
     if (file) {
       setFile(undefined)
     }
-    setReplaceTerms({})
+    // setReplaceTerms({})
+    setResponseText("") //to reset download button/output 
   }
 
   const handleDownload = () => {
@@ -126,9 +131,10 @@ export default function PlaygroundPage() {
   return (
     <>
       <MainNavbar />
-      <ContentStyled>
-        <ToastContainer />
-          <LeftContentStyled>
+      <br />
+       <Container fluid="md">
+        <Row>
+          <Col md={8}>
             <DropdownStyled>
               <DropdownMenu className="dropDown"
                 endpoints={endpoints}
@@ -137,23 +143,41 @@ export default function PlaygroundPage() {
                 resetParams={resetParams}
               />
             </DropdownStyled>
-
-            <TextArea
-              text = {text}
-              setText = {setText}
-            />
-            <ButtonsContainer>
-              {/* if Else statement, if endpoint.filetype == "", do not display button */}
-                {currentEndpoint.fileType !== "" && 
-                  <UploadFileButton 
+          </Col>
+          <ToastContainer />
+        </Row>
+      <Row>
+        <Col md={8}>
+          <TextArea
+            file = {file}
+            text = {text}
+            setText = {setText}
+          />
+        </Col>
+        <Col md={4}>
+          <Parameters
+            replaceTerms={replaceTerms}
+            setReplaceTerms={setReplaceTerms}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col md={8}>
+          <ButtonsContainer>
+              {/* if Else statement, if endpoint.filetype == "", do not display button */
+                currentEndpoint.fileType !== "" && 
+                <UploadFileButton className="uploadBtn" 
                   fileName={fileName}
+                  file={file}
                   setFile={setFile}
                   setFileName={setFileName}
+                  setText={setText}
                   currentEndpoint={currentEndpoint}
+                  setResponseText={setResponseText}
                 />
               }
               {/* if responseText == "", do not display download output button */
-                responseText === "" && 
+                responseText !== "" && 
                 <BtnStyled>
                   <button onClick={() => handleDownload()}>download output</button>
                 </BtnStyled>
@@ -163,40 +187,56 @@ export default function PlaygroundPage() {
                 <SubmitButton onClick={handleSubmit}/>
               }
             </ButtonsContainer>
-          </LeftContentStyled>
-
-          <RightContentStyled>
-            <Parameters
-              replaceTerms={replaceTerms}
-              setReplaceTerms={setReplaceTerms}
-            />
-          </RightContentStyled>
-      </ContentStyled>
+        </Col>
+      </Row>
+      </Container>
     </>
   )
 }
-
-const ContentStyled = styled.div`
-  display: flex;
-  margin: 2rem;
-  
-`
-const RightContentStyled = styled.div`
-  width: 30%;
-  margin-left: 2rem;
-`
-const LeftContentStyled = styled.div`
-  width: 70%;
-`
 
 const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  
+  @media (max-width: 990px) {
+    justify-content: center;
+  }
+  
+  @media (max-width: 767px) {
+    margin-top: 1.5rem;
+    align-items: center;
+    display: block;
+    width: 100%;
+    
+    div, button {
+      width: 100%;
+      margin: 0;
+    }
+
+    div button {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .custom-file-upload {
+      display: flex;  
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    
+    & > * {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+  }
 `
+
 const BtnStyled = styled.div`
     position: relative;
-
     button {
       height: 50px;
       width: 225px;
@@ -207,7 +247,6 @@ const BtnStyled = styled.div`
       font-weight: 600;
       margin-top: 1rem;
     }
-
     button:hover {
       background-color: #127D63;
     }

@@ -1,12 +1,97 @@
-import React from 'react'
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import ModalBox from '../components/ModalBox'
 import MainNavbar from '../components/Navbars/MainNavbar'
 
 export default function ExamplesPage() {
+  
+  const textAPI = `
+  fetch('<API HOST PROD>/anon/text-replace', {
+      method: 'post',  
+      body: {
+          "inputText": "My name is Jack, and you can reach me at 647-123-321",
+          "replaceTerms": {"Jack": "NAME", "647-123-321": "XXX-XXX-XXX"}
+      },
+      headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+      }
+  })
+  `;
+
+  const textAPIContent = `
+    <b>Inputted text</b>
+    <p>"My name is Jack, and you can reach me at 647-123-321"</p>
+    <b>Replacement parameters</b>
+    <p>Replace "Jack" with "NAME", and replace "647-123-321" with "XXX-XXX-XXX"</p>
+    <b>Expected response</b>
+    <p>"My name is NAME, and you can reach me at XXX-XXX-XXX"</p>
+    <b>API Request Example</b>
+  `
+
+  const csvAPI = `
+  fetch('<API HOST PROD>/anon/csv-file-replace', {
+      method: 'post',  
+      body: {
+          "inputFile": file.csv,
+          "replaceTerms": {"John": "NAME", "Toronto": "CITY"}
+      },
+      headers: {
+          Accept: "*/*"
+      }
+  })
+  `;
+
+  const csvAPIContent = `
+    <b>Inputted CSV file</b>
+    <p>Name, City, Occupation</p>
+    <p>John, Toronto, Student</p>
+    <p>Jack, Toronto, Developer</p>
+    <b>Replacement parameters</b>
+    <p>Replace "John" with "NAME", and replace "Toronto" with "CITY"</p>
+    <b>Expected response</b>
+    <p>Name, City, Occupation</p>
+    <p>NAME, CITY, Student</p>
+    <p>Jack, CITY, Developer</p>
+    <b>API Request Example</b>
+  `
+
   return (
-    <div>
+    <ExamplesStyled>
       <MainNavbar />
-    
-    
-    </div>
+      <h2>Examples</h2>
+      <div className="modals">
+        <ModalBox title={"text anonymization"} info={"see how to anonymize plain text or text files"} color={"#5436DA"} code={textAPI} content={textAPIContent}/>
+        <ModalBox title={"csv anonymization"} info={"see how to anonymize csv files such as spreadsheet data"} color={"#0f803c"} code={csvAPI} content={csvAPIContent}/>
+      </div>
+    </ExamplesStyled>
   )
 }
+
+const ExamplesStyled = styled.div`
+  .modals {
+    margin-top: 2rem;
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+
+  }
+  h2 {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 4rem;
+    font-size: 42px;
+  }
+
+  @media (max-width: 767px) {
+    .modals {
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+      margin-bottom: 2rem;
+
+    }
+    
+    
+  }
+`

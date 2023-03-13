@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import styled from 'styled-components';
 
 const DropdownMenu = ({ endpoints, currentEndpoint, setCurrentEndpoint, resetParams}) => {
+    const [selectedItem, setSelectedItem] = useState("")
     return (
         <>
             <Dropdown>
@@ -20,15 +21,20 @@ const DropdownMenu = ({ endpoints, currentEndpoint, setCurrentEndpoint, resetPar
                                 key={endpointURL}
                                 active={currentEndpoint.URL === endpointURL}
                                 onClick={() => {
-                                    setCurrentEndpoint(
-                                        {
-                                            displayName: displayName,
-                                            URL: endpointURL,
-                                            fileType: fileType
-                                        }
-                                    
-                                    )
-                                    resetParams()
+                                    if (selectedItem != item){ 
+                                        //use selected item to see if dropdown selection changed
+                                        // if so, trigger this
+                                        setCurrentEndpoint(
+                                            {
+                                                displayName: displayName,
+                                                URL: endpointURL,
+                                                fileType: fileType
+                                            }
+                                        
+                                        )
+                                        resetParams()
+                                        setSelectedItem(item)
+                                    }
                                 }}
                             >
                                 {displayName}

@@ -66,6 +66,10 @@ const ParametersStyled = styled.div`
     border: 1px solid black;
     height: 100%;
 
+    @media (max-width: 767px) {
+        margin-top: 1rem;
+    }
+
     h3 {
         font-weight: 700;
         margin-bottom: 1rem;
