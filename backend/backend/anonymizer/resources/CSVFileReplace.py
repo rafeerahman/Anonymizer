@@ -8,6 +8,7 @@ from pandas._libs import lib
 from pandas.core.dtypes.missing import isna
 import pandas.io.common
 import numpy as np
+from collections import defaultdict
 
 parser = reqparse.RequestParser()
 parser.add_argument('inputFile', type=FileStorage, location='files')
@@ -65,7 +66,7 @@ class CSVFileReplace(Resource):
     
     # Read from the csv and input into a dataset
     try:
-      data = pd.read_csv(inputFile, header=None)
+      data = pd.read_csv(inputFile, dtype=str, header=None)
     except pandas.errors.EmptyDataError:
       return {'message': 'invalid csv formatting'}, 400
     
