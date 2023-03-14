@@ -10,7 +10,7 @@ parser.add_argument('replaceTerms')
 class TXTReplace(Resource):
   "Simple text replace anonymization tool"
   @swagger.operation(
-      responseClass='json',
+      responseClass='text/csv',
       parameters=[
           {
             "name": "inputText",

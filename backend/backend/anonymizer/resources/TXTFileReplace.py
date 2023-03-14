@@ -15,7 +15,7 @@ parser.add_argument('replaceTerms', location='form')
 class TXTFileReplace(Resource):
     "Simple text replace anonymization tool"
     @swagger.operation(
-        responseClass='json',
+        responseClass='text',
         parameters=[
             {
                 "name": "inputTextFile",
