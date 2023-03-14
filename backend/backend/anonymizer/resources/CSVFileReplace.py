@@ -28,7 +28,7 @@ def advanced_replace(array, replaceTerms):
 class CSVFileReplace(Resource):
   "Simple text replace anonymization tool"
   @swagger.operation(
-      responseClass='json',
+      responseClass='text/csv',
       parameters=[
           {
             "name": "inputFile",
