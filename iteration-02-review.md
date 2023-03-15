@@ -22,6 +22,8 @@ Also, our team's willingness to learn and adapt to new techniques was a key fact
 
 * Kanban (Github Issues Board) usage inconsistency: Some group members reported only using the kanban board intermittently. This could be partially due to some redundancy in group communication: our primary communication channel is our team discord server, so features discussed there first were not always reflected on the Github Project. We could try to remedy this by linking github issues in our discussions on the server and see if kanban use becomes more consistent.
 
+* Our team also misunderstood the timing of our first project demo, and we needed to use our group extension to schedule the demo and receive feedback. Going forward, we will be sure to read assignment and deliverable handouts clearly and confirm our partner's expectations regarding deliverable requirements.
+
 
 
 #### Q3(a). Planned changes
