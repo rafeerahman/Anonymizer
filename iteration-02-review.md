@@ -8,13 +8,11 @@
 
 ## Process - Reflection
 
-
 #### Q1. What worked well
 
 One decision that worked well was establishing clear roles and responsibilities with Discord. This helped to minimize confusion and duplication of efforts, as each team member knew exactly what their responsibilities were and who to turn to for help with specific tasks. This approach also helped to build trust among team members, as everyone knew that they could rely on their colleagues to complete their assigned tasks. This can be seen in our project documentation, which clearly outlines the responsibilities of each team member and the expected timelines for completing their work.
 
 Also, our team's willingness to learn and adapt to new techniques was a key factor in our success. This allowed us to stay up-to-date with the latest best practices and technologies, which helped us to deliver a high-quality product. For example, we were able to incorporate new features into our project by learning how to use new software and tools such as uwsgi, react-bootstrap, and Flask Restful framework. This flexibility and willingness to learn is evident in our project code, which uses modern techniques and tools to deliver a robust and scalable solution.
-
 
 #### Q2. What did not work well
 
@@ -22,9 +20,7 @@ Also, our team's willingness to learn and adapt to new techniques was a key fact
 
 * Kanban (Github Issues Board) usage inconsistency: Some group members reported only using the kanban board intermittently. This could be partially due to some redundancy in group communication: our primary communication channel is our team discord server, so features discussed there first were not always reflected on the Github Project. We could try to remedy this by linking github issues in our discussions on the server and see if kanban use becomes more consistent.
 
-* Our team also misunderstood the timing of our first project demo, and we needed to use our group extension to schedule the demo and receive feedback. Going forward, we will be sure to read assignment and deliverable handouts clearly and confirm our partner's expectations regarding deliverable requirements.
-
-
+* Planning mishap: Our team also misunderstood the timing of our first project demo, and we needed to use our group extension to schedule the demo and receive feedback. Going forward, we will be sure to read assignment and deliverable handouts clearly and confirm our partner's expectations regarding deliverable requirements.
 
 #### Q3(a). Planned changes
 
@@ -36,11 +32,9 @@ We plan to implement more frequent feedback and performance reviews to ensure th
 Another planned process-related change we are considering is setting up a GitHub hook on Discord. This would allow us to receive notifications for any changes or updates made to our project's GitHub repository, such as new pull requests, commits, or issues. By receiving these notifications in real-time, we can stay up-to-date on the latest developments and respond to any issues or requests in a timely manner. This can also help to improve collaboration and communication among team members, as everyone will be aware of any changes or updates made to the project.
 
 **Usage of branches:**
-
 After creating branches, specify a specific person to review the pull request and merge it to main early on. We plan to do this by pinging one of the team members on discord. This is in contrast with waiting until close to the deadline to merge many branches, or waiting on someone to review the pull request. 
 
 Another planned process-related change we are considering is to use more fine-grained branches for functions instead of dividing the codebase into large components such as frontend and backend. While dividing the codebase into components can be helpful for organization and modularity, it can also make it difficult to track changes and manage conflicts, especially if multiple team members are working on the same component. By using more fine-grained branches for functions, we can isolate changes to specific functions or features, making it easier to review and merge changes. This can also help to minimize conflicts and reduce the risk of introducing bugs or issues into the codebase. Additionally, using fine-grained branches can help to improve collaboration among team members, as each team member can work on their own branch and merge their changes into the main branch when ready.
-
 
 #### Q3(b). Integration & Next steps
 

@@ -1,6 +1,6 @@
 # University of Toronto Anonymization API
 
-The University of Toronto Anonymization API is a free and open source service that allows users to desentize private information from a file or body. Our service is accessible via request methods and a graphical user interface. The application is designed to provide staff and students at the University of Toronto with easy access to an array of online privatization tools. As a group, we are passionate about improving user privacy and making a difference to protect people’s sensitive information.
+The University of Toronto Anonymization API is a free and open source service that allows users to desensitize private information from a file or body. Our service is accessible via request methods and a graphical user interface. The application is designed to provide staff and students at the University of Toronto with easy access to an array of online privatization tools. As a group, we are passionate about improving user privacy and making a difference to protect people’s sensitive information.
 
 ## Frontend Deployment: https://csc301-378115-frontend-4ic67og2pa-pd.a.run.app/
 ### Description & Instructions:
@@ -17,17 +17,17 @@ When the user is done inputting the parameters as defined, they can click submit
 
 To test the back end, access the folder of postman-testing in the backend folder. This folder includes the postman collection which can be opened in the application. To test the two new endpoints of TextFileReplace and CSVReplace, the mock files should be uploaded to the body. These files are placed in the csv-files and txt-files and the corresponding file can be uploaded for the tests. Note: there is a comment indicating which file should be uploaded in the postman collection parameter description.
 
-## Description of key-features
+## Key-Features
 TextReplace: By sending a POST request to the specific endpoint, or accessing it via our frontend webpage, users can anonymize a set of key terms from a body of text. 
 
 TextFileReplace: The text file endpoint is designed to extend the functionality of the TextReplace endpoint over a text file (rather than just a string). This endpoint also maps a set of replacement terms, while preserving the structure and formatting of a txt file.
 
 CSVFileReplace: The CSV file endpoint is designed to again extend our original TextReplace endpoint, but now across an entire spreadsheet. This endpoint quickly searches across the cells of an entire dataset, so that any user can quickly and effectively anonymize sensitive information.
 
-## Describe your Git/GitHub workflow
+## Git/GitHub Workflow
 
 Our git workflow consisted of creating issues on the GitHub Issues board for features and tasks that each of our sub-teams (frontend, backend, devops) had. We assigned these issues to members of the team, and kept track of their progress within the issues board. In addition, we also used git branches for the separate features, and reviewed/merged pull requests for each of these branches. (Note: Some of us continued working in our A2 sub-team repositories, so most of our commit’s are included in those repos. We moved everything to the main repo near the end of the deadline).
 
-## Very short description of the license chosen and reason.
+## License
 
-We chose MIT open source license. The code will not be published until the project is done 
+Our project will be using the MIT License. We chose this license because we wish to be transparent with our software, and limit the restriction on it. The MIT License allows our project to be open source and premissive free. Additionally, the code will not be published until the project is done 
