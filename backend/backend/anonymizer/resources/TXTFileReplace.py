@@ -13,7 +13,7 @@ parser.add_argument('inputTextFile', type=FileStorage, location='files')
 parser.add_argument('replaceTerms', location='form')
 
 class TXTFileReplace(Resource):
-    "Simple text replace anonymization tool"
+    "Simple text replace anonymization tool for TXT files"
     @swagger.operation(
         responseClass='text',
         parameters=[
@@ -62,6 +62,7 @@ class TXTFileReplace(Resource):
         b = bytes(outputText, 'utf-8')
         tmp.write(b)
         tmp.seek(0)
+    
         return send_file(tmp, attachment_filename='anonymized.txt')
 
         #return jsonify(inputTextFile)

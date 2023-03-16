@@ -26,13 +26,13 @@ def advanced_replace(array, replaceTerms):
   return result
 
 class CSVFileReplace(Resource):
-  "Simple text replace anonymization tool"
+  "Simple text replace anonymization tool for CSV Files"
   @swagger.operation(
       responseClass='text/csv',
       parameters=[
           {
             "name": "inputFile",
-            "description": "CSV file that the user wises to anonymize",
+            "description": "Uploaded CSV file that the user wises to anonymize",
             "required": True,
             "allowMultiple": False,
             "dataType": 'text/csv'
@@ -52,7 +52,7 @@ class CSVFileReplace(Resource):
           },
           {
             "code": 400,
-            "message": "missing parameter(s)"
+            "message": "invalid csv formatting"
           }
         ]
       )

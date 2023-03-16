@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "cf8c624b-5499-488d-af15-438e322d8167",
+		"_postman_id": "7a42cec0-b00c-4a69-9a6c-3b84b22b0e81",
 		"name": "CSC301-project-backend-tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "24150524"
+		"_exporter_id": "24119118"
 	},
 	"item": [
 		{
@@ -21,17 +21,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/text-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"text-replace"
 					]
@@ -54,17 +52,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/text-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"text-replace"
 					]
@@ -87,17 +83,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/text-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"text-replace"
 					]
@@ -119,26 +113,24 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000//anon/text-replace",
-							"protocol": "http",
+							"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"csc301-378115-backend-4ic67og2pa-pd",
+								"a",
+								"run",
+								"app"
 							],
-							"port": "5000",
 							"path": [
-								"",
 								"anon",
 								"text-replace"
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				},
 				{
 					"name": "No matching key",
@@ -155,26 +147,24 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000//anon/text-replace",
-							"protocol": "http",
+							"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"csc301-378115-backend-4ic67og2pa-pd",
+								"a",
+								"run",
+								"app"
 							],
-							"port": "5000",
 							"path": [
-								"",
 								"anon",
 								"text-replace"
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -206,17 +196,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"text-file-replace"
 					]
@@ -252,17 +240,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"text-file-replace"
 					]
@@ -298,17 +284,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"text-file-replace"
 					]
@@ -344,17 +328,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"text-file-replace"
 					]
@@ -390,17 +372,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/text-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"text-file-replace"
 					]
@@ -430,17 +410,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/csv-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"csv-file-replace"
 					]
@@ -470,17 +448,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/csv-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"csv-file-replace"
 					]
@@ -510,17 +486,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/csv-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"csv-file-replace"
 					]
@@ -550,17 +524,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000//anon/csv-file-replace",
-					"protocol": "http",
+					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"csc301-378115-backend-4ic67og2pa-pd",
+						"a",
+						"run",
+						"app"
 					],
-					"port": "5000",
 					"path": [
-						"",
 						"anon",
 						"csv-file-replace"
 					]

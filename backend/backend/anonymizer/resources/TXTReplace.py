@@ -8,20 +8,20 @@ parser.add_argument('inputText')
 parser.add_argument('replaceTerms')
 
 class TXTReplace(Resource):
-  "Simple text replace anonymization tool"
+  "Simple text-replace anonymization tool for strings"
   @swagger.operation(
       responseClass='json',
       parameters=[
           {
             "name": "inputText",
-            "description": "String containing text that the user wises to anonymize",
+            "description": "String containing text that the user wises to anonymize.",
             "required": True,
             "allowMultiple": False,
             "dataType": 'String'
           },
           {
             "name": "replaceTerms",
-            "description": "Dictionary of all all key-term pairs that the user wishes to anonymize",
+            "description": "Dictionary of all all key-term pairs that the user wishes to anonymize.",
             "required": False,
             "allowMultiple": False,
             "dataType": 'Dict'
