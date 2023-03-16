@@ -1,6 +1,6 @@
 # University of Toronto Anonymization API
 
-The University of Toronto Anonymization API is a free and open source service that allows users to desensitize private information from a file or body. Our service is accessible via request methods and a graphical user interface. The application is designed to provide staff and students at the University of Toronto with easy access to an array of online privatization tools. As a group, we are passionate about improving user privacy and making a difference to protect people’s sensitive information.
+The University of Toronto Anonymization API is a free and open-source service that allows users to desensitize private information from a file or body of text. Our service is accessible via request methods or a graphical user interface. The application is designed to provide staff and students at the University of Toronto with easy access to an array of online privatization tools. As a group, we are passionate about improving user privacy and making a difference to protect people’s sensitive information. We have instilled this passion into our project, to work towards a product that is valuable, accessible and intuitive for our userbase.
 
 ## Frontend Deployment: https://csc301-378115-frontend-4ic67og2pa-pd.a.run.app/
 ### Description & Instructions:
