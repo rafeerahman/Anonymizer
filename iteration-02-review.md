@@ -49,9 +49,8 @@ Our integration involved mostly configuration between the backend and frontend t
 ## Product - Review
 
 #### Q4. How was your product demo?
- * How did you prepare your demo?
- * What did you manage to demo to your partner?
- * Did your partner accept the features? And were there change requests?
- * What were your learnings through this process? This can be either from a process and/or product perspective.
- * *This section will be marked very leniently so keep it brief and just make sure the points are addressed*
+ * We prepared for our demo by creating a 10-minute video for our partner that covers all the functionality of our project thus far. 
+ * Our video details functionality of our REST API and our responsive web frontend, as well as our devops setup and GitHub Actions workflows.
+ * Our partner accepted the features, but also requested minor changes to our backend and the "playground" portion of our frontend. Our partner introduced a stretch goal as well, suggesting we try identifying people's names automatically with our API.
+ * We think this demo was very valuable, and highlighted areas to focus on for our next demo. David's feedback was concise and actionable, so we look forward to improving the project to his specifications. It was interesting to see how his feedback pointed to possible blind spots we may not have focused on.
 
