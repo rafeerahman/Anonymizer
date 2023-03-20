@@ -3,7 +3,6 @@ import re
 
 
 def textReplace(inputText: str, replaceTerms: dict) -> str:
-
     # ensure that regex is not picked up from any replacement terms
     refined = ((re.escape(key), value) for key, value in replaceTerms.items())
     replaceTerms = dict(refined)

@@ -15,7 +15,6 @@ parser.add_argument("replaceTerms", location="form")
 
 
 def advanced_replace(array, replaceTerms):
-
     f = lambda x: textReplace(x, replaceTerms)
 
     arr = np.asarray(array, dtype=object)
@@ -54,7 +53,6 @@ class CSVFileReplace(Resource):
         ],
     )
     def post(self):
-
         # Collect the input parameters
         args = parser.parse_args()
         inputFile = args["inputFile"]
