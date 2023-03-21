@@ -35,11 +35,11 @@ export default function ExampleButton({setReplaceTerms, setText, resetParams, se
             else{ //clear example was pressed
                 resetParams();
                 setReplaceTerms({});
-                setCurrentEndpoint({
-                    displayName: "Select Endpoint",
-                    URL: "",
-                    fileType: ""
-                  })
+                // setCurrentEndpoint({
+                //     displayName: "Select Endpoint",
+                //     URL: "",
+                //     fileType: ""
+                //   })
             }
         
         
