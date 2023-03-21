@@ -19,6 +19,11 @@ export default function ExampleButton({setReplaceTerms, setText, resetParams, se
           onChange={(e) => {
             setChecked(e.currentTarget.checked);
             if (!checked){ //load example was pressed
+                // erase the currently existing file and parameters 
+                resetParams();
+                setReplaceTerms({}); 
+
+                //populate based on example
                 setText("My name is Jack, and you can reach me at 647-123-321");
                 setReplaceTerms({"Jack": "NAME", "647-123-321": "XXX-XXX-XXX"});
                 setCurrentEndpoint({
@@ -28,7 +33,7 @@ export default function ExampleButton({setReplaceTerms, setText, resetParams, se
                   });
             }
             else{ //clear example was pressed
-                resetParams()
+                resetParams();
                 setReplaceTerms({});
                 setCurrentEndpoint({
                     displayName: "Select Endpoint",
