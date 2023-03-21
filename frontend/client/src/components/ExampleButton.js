@@ -5,7 +5,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function ExampleButton({setText, file, setFile, resetParams, setReplaceTerms, setCurrentEndpoint}){
+export default function ExampleButton({setText, file, setFile, resetParams, setReplaceTerms, setCurrentEndpoint, setResponseText}){
     const [checked, setChecked] = useState(false);
 
     return (
@@ -43,6 +43,7 @@ export default function ExampleButton({setText, file, setFile, resetParams, setR
                 //     URL: "",
                 //     fileType: ""
                 //   })
+                setResponseText("")
             }
         
         

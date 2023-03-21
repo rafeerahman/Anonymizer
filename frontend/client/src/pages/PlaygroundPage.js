@@ -153,8 +153,9 @@ export default function PlaygroundPage() {
               resetParams={resetParams}
               setReplaceTerms={setReplaceTerms}
               setCurrentEndpoint={setCurrentEndpoint}
+              setResponseText={setResponseText}
             />
-          {/* <ToastContainer /> */}
+          <ToastContainer />
           </Col>
         </Row>
       <Row>
