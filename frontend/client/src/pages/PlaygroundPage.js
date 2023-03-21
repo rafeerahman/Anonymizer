@@ -148,6 +148,8 @@ export default function PlaygroundPage() {
           <Col md={4}>
             <ExampleButton
               setText = {setText}
+              file={file}
+              setFile = {setFile}
               resetParams={resetParams}
               setReplaceTerms={setReplaceTerms}
               setCurrentEndpoint={setCurrentEndpoint}
