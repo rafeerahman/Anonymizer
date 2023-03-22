@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "7a42cec0-b00c-4a69-9a6c-3b84b22b0e81",
+		"_postman_id": "cf8c624b-5499-488d-af15-438e322d8167",
 		"name": "CSC301-project-backend-tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "24119118"
+		"_exporter_id": "24150524"
 	},
 	"item": [
 		{
@@ -21,17 +21,20 @@
 					}
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/text",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"text-replace"
+						"",
+						"api",
+						"anonymize",
+						"text"
 					]
 				}
 			},
@@ -52,17 +55,20 @@
 					}
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/text",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"text-replace"
+						"",
+						"api",
+						"anonymize",
+						"text"
 					]
 				}
 			},
@@ -83,17 +89,20 @@
 					}
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/text",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"text-replace"
+						"",
+						"api",
+						"anonymize",
+						"text"
 					]
 				}
 			},
@@ -113,24 +122,27 @@
 							}
 						},
 						"url": {
-							"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
-							"protocol": "https",
+							"raw": "http://127.0.0.1:5000//api/anonymize/text",
+							"protocol": "http",
 							"host": [
-								"csc301-378115-backend-4ic67og2pa-pd",
-								"a",
-								"run",
-								"app"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "5000",
 							"path": [
-								"anon",
-								"text-replace"
+								"",
+								"api",
+								"anonymize",
+								"text"
 							]
 						}
 					},
-					"_postman_previewlanguage": "Text",
-					"header": [],
+					"_postman_previewlanguage": null,
+					"header": null,
 					"cookie": [],
-					"body": ""
+					"body": null
 				},
 				{
 					"name": "No matching key",
@@ -147,24 +159,27 @@
 							}
 						},
 						"url": {
-							"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace",
-							"protocol": "https",
+							"raw": "http://127.0.0.1:5000//api/anonymize/text",
+							"protocol": "http",
 							"host": [
-								"csc301-378115-backend-4ic67og2pa-pd",
-								"a",
-								"run",
-								"app"
+								"127",
+								"0",
+								"0",
+								"1"
 							],
+							"port": "5000",
 							"path": [
-								"anon",
-								"text-replace"
+								"",
+								"api",
+								"anonymize",
+								"text"
 							]
 						}
 					},
-					"_postman_previewlanguage": "Text",
-					"header": [],
+					"_postman_previewlanguage": null,
+					"header": null,
 					"cookie": [],
-					"body": ""
+					"body": null
 				}
 			]
 		},
@@ -180,7 +195,7 @@
 							"key": "inputTextFile",
 							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
 							"type": "file",
-							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/example1.txt"
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/postman-testing/txt-files/example1.txt"
 						},
 						{
 							"key": "replaceTerms",
@@ -196,17 +211,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/txt",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"text-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"txt"
 					]
 				}
 			},
@@ -240,17 +259,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/txt",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"text-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"txt"
 					]
 				}
 			},
@@ -268,7 +291,7 @@
 							"key": "inputTextFile",
 							"description": "noKeys.txt in the backend/postman-testing/txt-files folder ",
 							"type": "file",
-							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/backend/postman-testing/txt-files/noKeys.txt"
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/postman-testing/txt-files/noKeys.txt"
 						},
 						{
 							"key": "replaceTerms",
@@ -284,17 +307,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/txt",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"text-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"txt"
 					]
 				}
 			},
@@ -328,17 +355,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/txt",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"text-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"txt"
 					]
 				}
 			},
@@ -372,17 +403,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/txt",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"text-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"txt"
 					]
 				}
 			},
@@ -400,7 +435,7 @@
 							"key": "inputFile",
 							"description": "example1.csv in the backend/postman-testing/csv-files folder ",
 							"type": "file",
-							"src": "/C:/Users/Rainbow Box/Desktop/School/CSC301/test_files/example1.csv"
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/postman-testing/csv-files/example1.csv"
 						},
 						{
 							"key": "replaceTerms",
@@ -410,17 +445,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/csv",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"csv-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"csv"
 					]
 				}
 			},
@@ -448,17 +487,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/csv",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"csv-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"csv"
 					]
 				}
 			},
@@ -486,17 +529,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/csv",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"csv-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"csv"
 					]
 				}
 			},
@@ -524,17 +571,21 @@
 					]
 				},
 				"url": {
-					"raw": "https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace",
-					"protocol": "https",
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/csv",
+					"protocol": "http",
 					"host": [
-						"csc301-378115-backend-4ic67og2pa-pd",
-						"a",
-						"run",
-						"app"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "5000",
 					"path": [
-						"anon",
-						"csv-file-replace"
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"csv"
 					]
 				}
 			},
