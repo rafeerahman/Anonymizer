@@ -10,8 +10,8 @@ function App() {
       <HomeStyled>
 
         <div className="content">
-          <h1>Welcome to uoft-anonymize</h1>
-          <p>uoft-anonymize is an open source API that enables automated data anonymization</p>
+          <h1>Welcome to the Student Anonymization API</h1>
+          <p>Student Anonymization API is an open source API that enables automated data anonymization</p>
         </div>
       </HomeStyled>
     </div>

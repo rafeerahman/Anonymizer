@@ -12,7 +12,7 @@ function MainNavbar(){
         <>
           <Navbar expand="sm" bg="dark" variant="dark">
             <Container>
-              <Navbar.Brand href="/" >UofT-Anonymize</Navbar.Brand>
+              <Navbar.Brand href="/" >Student Anonymization API</Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto" activeKey={pathname}>
