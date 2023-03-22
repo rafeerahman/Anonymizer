@@ -16,9 +16,9 @@ def render_directory():
     return render_template("index.html")
 
 
-api.add_resource(TXTReplace, "/anon/text-replace")
-api.add_resource(TXTFileReplace, "/anon/text-file-replace")
-api.add_resource(CSVFileReplace, "/anon/csv-file-replace")
+api.add_resource(TXTReplace, "api/anonymize/text")
+api.add_resource(TXTFileReplace, "api/anonymize/file/txt")
+api.add_resource(CSVFileReplace, "api/anonymize/file/csv")
 # adding more endpoints here
 
 if __name__ == "__main__":
