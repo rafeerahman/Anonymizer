@@ -1,56 +1,46 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function ExampleButton({setText, file, setFile, resetParams, setReplaceTerms, setCurrentEndpoint, setResponseText}){
+export default function ExampleButton({text, setText, file, setFile, resetParams, replaceTerms, setReplaceTerms, setCurrentEndpoint, setResponseText}){
     const [checked, setChecked] = useState(false);
 
     return (
-    <>
+      <>
         <BtnStyled>
-        <label className="custom-example">
-        <input
-          id="toggle-check"
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => {
-            setChecked(e.currentTarget.checked);
-            if (!checked){ //load example was pressed
+          <label className="custom-example">
+          <input
+            id="toggle-check"
+            type="checkbox"
+            checked={checked}
+            onChange={() => {
+              if (checked || text.length || file || Object.keys(replaceTerms).length) { //clear all fields
+                setText("")
+                if (file) {
+                  setFile(undefined)
+                }
+                setReplaceTerms({});
+                setResponseText("")
+                setChecked(false)
+              }
+              else { // load example data
                 // erase the currently existing file and parameters 
                 resetParams();
                 setReplaceTerms({}); 
 
-                //populate based on example
-                setText("My name is Jack, and you can reach me at 647-123-321");
-                setReplaceTerms({"Jack": "NAME", "647-123-321": "XXX-XXX-XXX"});
+                // populate based on example
+                setText("My name is Jack, and you can reach me at 647-123-4321");
+                setReplaceTerms({"Jack": "NAME", "647-123-4321": "XXX-XXX-XXXX"});
                 setCurrentEndpoint({
-                    displayName: "Text Replace",
-                    URL: "endpoint-url-for/text-replace",
-                    fileType: "text/plain"
-                  });
-            }
-            else{ //clear example was pressed
-                setText("")
-                if (file) {
-                    setFile(undefined)
-                  }
-                setReplaceTerms({});
-                // setCurrentEndpoint({
-                //     displayName: "Select Endpoint",
-                //     URL: "",
-                //     fileType: ""
-                //   })
-                setResponseText("")
-            }
-        
-        
-        }}
+                  displayName: "Text Replace",
+                  URL: "endpoint-url-for/text-replace",
+                  fileType: "text/plain"
+                });
+                setChecked(true)
+              }
+            }}
           />
-            {/* if checked is true, example is already loaded, otherwise example needs to be loaded */}
-          {checked ? "Clear Text Example": "Load Text Example"}
+          {checked || text.length || file || Object.keys(replaceTerms).length ? "Clear": "Load Text Example"}
           </label>
         </BtnStyled>
       </>
@@ -66,7 +56,7 @@ const BtnStyled = styled.div`
     }
 
     .custom-example {
-        height: 50px;
+        height: 68px;
         background-color: #5436DA;
         color: white;
         border-radius: 10px;
@@ -75,7 +65,6 @@ const BtnStyled = styled.div`
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        margin-top: 0.5rem;
         margin-bottom: 1rem;
     }
 `
