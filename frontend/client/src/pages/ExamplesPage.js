@@ -6,7 +6,7 @@ import MainNavbar from '../components/Navbars/MainNavbar'
 export default function ExamplesPage() {
   
   const textAPI = `
-  fetch('https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/text-replace', {
+  fetch('https://csc301-378115-backend-4ic67og2pa-pd.a.run.app//anonymize/text', {
       method: 'post',  
       body: {
           "inputText": "My name is Jack, and you can reach me at 647-123-321",
@@ -30,7 +30,7 @@ export default function ExamplesPage() {
   `
 
   const csvAPI = `
-  fetch('https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anon/csv-file-replace', {
+  fetch('https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/anonymize/file/csv', {
       method: 'post',  
       body: {
           "inputFile": file.csv,
