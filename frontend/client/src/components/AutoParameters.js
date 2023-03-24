@@ -12,6 +12,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
     let newReplaceTerms = {} //initialize new JS object we can update
 
     const handleSubmit = (e) => {
+        newReplaceTerms = autoReplaceTerms;
         e.preventDefault()
         if (replaceName !== "") {
             newReplaceTerms["names"] = replaceName;
