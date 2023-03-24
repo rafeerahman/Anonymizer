@@ -21,9 +21,11 @@ const DropdownMenu = ({ endpoints, currentEndpoint, setCurrentEndpoint, resetPar
                                 key={endpointURL}
                                 active={currentEndpoint.URL === endpointURL}
                                 onClick={() => {
-                                    if (selectedItem != item){ 
-                                        //use selected item to see if dropdown selection changed
-                                        // if so, trigger this
+                                    if (selectedItem != item || currentEndpoint.fileType != selectedItem.fileType){ 
+                                        //use selected item to see if dropdown selection changed or if they clicked the same option
+                                        // also check if the current endpoint.filetype has changed from when selectedItem was last updated
+                                        // (in the case of example being loaded)
+                                        // if so, trigger this and update selectedItem
                                         setCurrentEndpoint(
                                             {
                                                 displayName: displayName,
