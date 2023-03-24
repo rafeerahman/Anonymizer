@@ -12,8 +12,9 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
     let newReplaceTerms = {} //initialize new JS object we can update
 
     const handleSubmit = (e) => {
-        newReplaceTerms = autoReplaceTerms;
+        newReplaceTerms = autoReplaceTerms; //set JS object to previous value of autoReplaceTerms
         e.preventDefault()
+        //if the text boxes/state variables have content, append or replace in the newReplaceTerms object 
         if (replaceName !== "") {
             newReplaceTerms["names"] = replaceName;
             setReplaceName("")
@@ -27,7 +28,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
             setReplaceOrg("")
         }
         console.log(newReplaceTerms);
-        //set state variable autoReplaceTerms based on newTerms object
+        //set state variable autoReplaceTerms based on newReplaceTerms object
         setAutoReplaceTerms(newReplaceTerms);
     }
 
@@ -37,9 +38,10 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
             <h3>Parameters</h3>
             <div className="mb-4">
                 <h5>Replace</h5>
+                <p></p>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group>
-                        <Form.Label>Names</Form.Label>
+                        <h6>Names</h6>
                         <Form.Control
                             type="text"
                             value={replaceName}
@@ -49,7 +51,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Locations</Form.Label>
+                        <h6>Locations</h6>
                         <Form.Check 
                             type="switch"
                             id="name-switch"
@@ -70,7 +72,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
                         : <></>}
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Organizations</Form.Label> 
+                        <h6>Organizations</h6>
                         <Form.Check 
                             type="switch"
                             id="name-switch"
@@ -90,7 +92,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
                             </>
                         : <></>}
                     </Form.Group>
-                    <Button type="submit" className="float-end">Submit</Button>
+                    <Button type="submit" className="float-end">Add</Button>
                 </Form>
 
                 <div className="mt-5">
