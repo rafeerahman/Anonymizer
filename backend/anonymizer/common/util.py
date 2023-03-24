@@ -37,7 +37,25 @@ def huggingface_model(inputTxt: str):
         else:
             count_r += 1
             replace.append(r['word'])
-    print(replace)
+    # building the dictionary
+    d = {}
+    i = 0
+    while i < len(ner_results):
+        key = ner_results[i]['word']
+        j = i + 1
+        while j < len(ner_results) and ner_results[j]['word'][0] == '#':
+            key += ner_results[j]['word'][2:]
+            j += 1
+        e = ner_results[i]['entity']
+        if e == 'B-PER' or e == 'I-PER':
+            d[key] = 'PER'
+        if e == 'B-ORG' or e == 'I-ORG':
+            d[key] = 'ORG'
+        if e == 'B-LOC' or e == 'I-LOC':
+            d[key] = 'LOC'
+        i = j
+    return d
 
 
-huggingface_model( "Nader Jokhadar had given Syria the lead with a well-struck header in the seventh minute.")
+#huggingface_model( "Nader Jokhadar had given Syria the lead with a well-struck header in the seventh minute.")
+# the example above will return {'Nader': 'PER', 'Jokhadar': 'PER', 'Syria': 'LOC'}
