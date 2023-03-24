@@ -39,19 +39,27 @@ class TXTReplace(Resource):
     def post(self):
         args = parser.parse_args()
         inputText = args["inputText"]
-        replaceTerms = eval(args["replaceTerms"])
-        autoReplace = args["autoReplace"]
-        autoReplaceTerms = eval(args["autoReplaceTerms"])
+        autoReplace = args["autoReplace"] or False
+        replaceTerms = eval(args["replaceTerms"] or "{}")
+        autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
 
         # error checking
-        # if not replaceTerms or inputText == "":
-        #     return {"message": "missing parameter(s)"}, 400
+        if (not autoReplace and not replaceTerms):
+            return {"message": "missing replaceTerms"}, 400
+        elif (autoReplace and not autoReplaceTerms):
+            return {"message": "missing autoReplaceTerms"}, 400
+        elif inputText == "":
+            return {"message": "invalid input"}, 400
 
         # call replacement function
         if autoReplace:
             cleanedAutoReplaceTerms = huggingface_model(inputText)
-            cleanedAutoReplaceTerms = {key: autoReplaceTerms[value] for key, value in cleanedAutoReplaceTerms.items() if value in autoReplaceTerms}
-            outputText = textReplace(inputText, cleanedAutoReplaceTerms)
+            
+            if not cleanedAutoReplaceTerms:
+                return {"message": "unable to detect any replaceable terms"}, 400
+            
+            autoReplaceTerms = {key: autoReplaceTerms[value] for key, value in cleanedAutoReplaceTerms.items() if value in autoReplaceTerms}
+            outputText = textReplace(inputText, autoReplaceTerms)
         else:
             outputText = textReplace(inputText, replaceTerms)
 
