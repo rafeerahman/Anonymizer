@@ -56,7 +56,7 @@ const BtnStyled = styled.div`
     }
 
     .custom-example {
-        height: 68px;
+        height: 34px;
         background-color: #5436DA;
         color: white;
         border-radius: 10px;

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import DropdownMenu from '../components/Dropdown.js'
 import MainNavbar from '../components/Navbars/MainNavbar.js'
 import Parameters from '../components/Parameters.js'
+import AutoParameters from '../components/AutoParameters.js'
 import SubmitButton from '../components/SubmitButton.js'
 import TextArea from '../components/TextArea.js'
 import UploadFileButton from '../components/UploadFileButton.js'
@@ -14,6 +15,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
 import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
+import { Button } from 'react-bootstrap'
+import AutoButton from '../components/AutoButton.js'
 
 const endpoints = [
   {
@@ -38,6 +41,7 @@ const notify = (message) => toast(message);
 
 export default function PlaygroundPage() {
   const [replaceTerms, setReplaceTerms] = useState({})
+  const [autoReplaceTerms, setAutoReplaceTerms] = useState({})
   const [text, setText] = useState("")
   const [fileName, setFileName] = useState("upload file")
   const [file, setFile] = useState(undefined)
@@ -47,6 +51,7 @@ export default function PlaygroundPage() {
     fileType: ""
   })
   const [responseText, setResponseText] = useState("")
+  const [useAuto, setUseAuto] = useState(false)
 
   const readFile = () => {
     let reader = new FileReader()
@@ -157,6 +162,7 @@ export default function PlaygroundPage() {
               setCurrentEndpoint={setCurrentEndpoint}
               setResponseText={setResponseText}
             />
+            <AutoButton useAuto={useAuto} setUseAuto={setUseAuto}/>
           <ToastContainer />
           </Col>
         </Row>
@@ -169,10 +175,17 @@ export default function PlaygroundPage() {
           />
         </Col>
         <Col md={4}>
+          {/* if Else statement, if useAuto, display autoParameters, otherwise display Parameters */
+            useAuto ?
+            <AutoParameters
+            autoReplaceTerms={autoReplaceTerms}
+            setAutoReplaceTerms={setAutoReplaceTerms}
+          /> : 
           <Parameters
-            replaceTerms={replaceTerms}
-            setReplaceTerms={setReplaceTerms}
-          />
+          replaceTerms={replaceTerms}
+          setReplaceTerms={setReplaceTerms}
+        />
+          }
         </Col>
       </Row>
       <Row>
