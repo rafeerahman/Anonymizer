@@ -8,6 +8,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
     const [locationSwitch, setLocationSwitch] = useState(false);
     const [replaceLocation, setReplaceLocation] = useState("");
     const [orgSwitch, setOrgSwitch] = useState(false);
+    const [nameSwitch, setNameSwitch] = useState(false);
     const [replaceOrg, setReplaceOrg] = useState("");
     let newReplaceTerms = {} //initialize new JS object we can update
 
@@ -15,7 +16,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
         newReplaceTerms = autoReplaceTerms; //set JS object to previous value of autoReplaceTerms
         e.preventDefault()
         //if the text boxes/state variables have content, append or replace in the newReplaceTerms object 
-        if (replaceName !== "") {
+        if (replaceName !== "" && nameSwitch) {
             newReplaceTerms["names"] = replaceName;
             setReplaceName("")
         }
@@ -35,26 +36,34 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
 
     return (
         <AutoParametersStyled>
-            <h3>Parameters</h3>
+            <h3>Auto-Replace Parameters</h3>
             <div className="mb-4">
                 <h5>Replace</h5>
                 <p></p>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group>
                         <h6>Names</h6>
+                        <Form.Check 
+                            type="switch"
+                            id="name-switch"
+                            label=""
+                            defaultChecked={nameSwitch}
+                            onChange={(e) => setNameSwitch(!nameSwitch)}
+                        />
+                        {nameSwitch ? 
                         <Form.Control
                             type="text"
                             value={replaceName}
                             onChange={(e) => setReplaceName(e.target.value)}
                             placeholder="Enter replacement name"
                             className="mb-2"
-                        />
+                        /> : <></>}
                     </Form.Group>
                     <Form.Group>
                         <h6>Locations</h6>
                         <Form.Check 
                             type="switch"
-                            id="name-switch"
+                            id="location-switch"
                             label=""
                             defaultChecked={locationSwitch}
                             onChange={(e) => setLocationSwitch(!locationSwitch)}
@@ -75,7 +84,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms}) => {
                         <h6>Organizations</h6>
                         <Form.Check 
                             type="switch"
-                            id="name-switch"
+                            id="org-switch"
                             label=""
                             defaultChecked={orgSwitch}
                             onChange={(e) => setOrgSwitch(!orgSwitch)}
