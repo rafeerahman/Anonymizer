@@ -6,6 +6,7 @@ import Parameters from '../components/Parameters.js'
 import SubmitButton from '../components/SubmitButton.js'
 import TextArea from '../components/TextArea.js'
 import UploadFileButton from '../components/UploadFileButton.js'
+import ExampleButton from '../components/ExampleButton.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Container from 'react-bootstrap/Container';
@@ -144,7 +145,20 @@ export default function PlaygroundPage() {
               />
             </DropdownStyled>
           </Col>
+          <Col md={4}>
+            <ExampleButton
+              text={text}
+              setText={setText}
+              file={file}
+              setFile={setFile}
+              resetParams={resetParams}
+              replaceTerms={replaceTerms}
+              setReplaceTerms={setReplaceTerms}
+              setCurrentEndpoint={setCurrentEndpoint}
+              setResponseText={setResponseText}
+            />
           <ToastContainer />
+          </Col>
         </Row>
       <Row>
         <Col md={8}>
