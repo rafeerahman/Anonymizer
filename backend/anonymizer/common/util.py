@@ -6,6 +6,10 @@ from transformers import pipeline
 
 
 def textReplace(inputText: str, replaceTerms: dict) -> str:
+    
+    if not replaceTerms:
+        return inputText
+    
     # clean the keys so they are all lowercase
     replaceTerms = {key.lower(): value for key, value in replaceTerms.items()}
 
