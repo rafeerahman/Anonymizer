@@ -1,7 +1,7 @@
 from flask_restful import reqparse, Resource
 from flask_restful_swagger import swagger
 from flask import Response
-from common.util import textReplace, huggingface_model
+from common.util import textReplace, huggingface_model, dict_converter
 from werkzeug.datastructures import FileStorage
 import pandas as pd
 from pandas._libs import lib
@@ -32,7 +32,7 @@ def smart_replace(array, autoReplaceTerms):
     map_convert = not np.all(mask)
     
     cleanedAutoReplaceTerms = huggingface_model(','.join(arr))
-    autoReplaceTerms = {key: autoReplaceTerms[value] for key, value in cleanedAutoReplaceTerms.items() if value in autoReplaceTerms}
+    autoReplaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)   
 
     f = lambda x: textReplace(x, autoReplaceTerms)
     

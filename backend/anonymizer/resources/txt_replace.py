@@ -1,6 +1,6 @@
 from flask_restful import reqparse, Resource
 from flask_restful_swagger import swagger
-from common.util import textReplace, huggingface_model
+from common.util import textReplace, huggingface_model, dict_converter
 import re
 
 parser = reqparse.RequestParser()
@@ -37,28 +37,34 @@ class TXTReplace(Resource):
         ],
     )
     def post(self):
+        
+        # collect arguments
         args = parser.parse_args()
         inputText = args["inputText"]
         autoReplace = args["autoReplace"] or False
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
 
-        # error checking
+        # error checking        
+        if inputText == "":
+            return {"message": "invalid input"}, 400
         if (not autoReplace and not replaceTerms):
             return {"message": "missing replaceTerms"}, 400
         elif (autoReplace and not autoReplaceTerms):
             return {"message": "missing autoReplaceTerms"}, 400
-        elif inputText == "":
-            return {"message": "invalid input"}, 400
 
         # call replacement function
         if autoReplace:
+            
+            # search for terms to replace
             cleanedAutoReplaceTerms = huggingface_model(inputText)
             
+            # ensure match was found
             if not cleanedAutoReplaceTerms:
                 return {"message": "unable to detect any replaceable terms"}, 400
             
-            autoReplaceTerms = {key: autoReplaceTerms[value] for key, value in cleanedAutoReplaceTerms.items() if value in autoReplaceTerms}
+            # apply found terms to specified mapping, and then apply mapping to inputText
+            autoReplaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)            
             outputText = textReplace(inputText, autoReplaceTerms)
         else:
             outputText = textReplace(inputText, replaceTerms)
