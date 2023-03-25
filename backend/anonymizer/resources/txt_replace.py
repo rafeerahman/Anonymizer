@@ -1,6 +1,6 @@
 from flask_restful import reqparse, Resource
 from flask_restful_swagger import swagger
-from common.util import textReplace, huggingface_model, dict_converter
+from common.util import textReplace, huggingface_model, dict_converter, regexReplace
 import re
 
 parser = reqparse.RequestParser()
@@ -56,6 +56,9 @@ class TXTReplace(Resource):
         # call replacement function
         if autoReplace:
             
+            # perform regex sweep
+            inputText = regexReplace(inputText, autoReplaceTerms)
+            
             # search for terms to replace
             cleanedAutoReplaceTerms = huggingface_model(inputText)
             
@@ -64,9 +67,9 @@ class TXTReplace(Resource):
                 return {"message": "unable to detect any replaceable terms"}, 400
             
             # apply found terms to specified mapping, and then apply mapping to inputText
-            autoReplaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)            
-            outputText = textReplace(inputText, autoReplaceTerms)
-        else:
-            outputText = textReplace(inputText, replaceTerms)
+            replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
+        
+        # replace inputText
+        outputText = textReplace(inputText, replaceTerms)
 
         return {"message": outputText}, 200, {"Access-Control-Allow-Origin": "*"}
