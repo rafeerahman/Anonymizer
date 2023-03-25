@@ -15,27 +15,21 @@ parser.add_argument("replaceTerms", location="form")
 parser.add_argument("autoReplace", location="form")
 parser.add_argument("autoReplaceTerms", location="form")
 
-def advanced_replace(array, replaceTerms):
+def column_replace(array, replaceTerms: dict, autoReplaceTerms: dict, autoReplace: bool):
+    # map and convert null cells
+    arr = np.asarray(array, dtype=object)
+    mask = isna(arr)
+    map_convert = not np.all(mask)
+    
+    # if autoReplace, then scan the row for potential replaceTerms
+    if autoReplace:
+        cleanedAutoReplaceTerms = huggingface_model(','.join(arr))
+        replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
+
+    # lambda textReplace function    
     f = lambda x: textReplace(x, replaceTerms)
-
-    arr = np.asarray(array, dtype=object)
-    mask = isna(arr)
-    map_convert = not np.all(mask)
-
-    result = lib.map_infer_mask(arr, f, mask.view(np.uint8), map_convert)
-
-    return result
-
-def smart_replace(array, autoReplaceTerms):
-    arr = np.asarray(array, dtype=object)
-    mask = isna(arr)
-    map_convert = not np.all(mask)
-    
-    cleanedAutoReplaceTerms = huggingface_model(','.join(arr))
-    autoReplaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)   
-
-    f = lambda x: textReplace(x, autoReplaceTerms)
-    
+        
+    # apply replaceTerms 
     result = lib.map_infer_mask(arr, f, mask.view(np.uint8), map_convert)
 
     return result
@@ -67,7 +61,8 @@ class CSVFileReplace(Resource):
         ],
     )
     def post(self):
-        # Collect the input parameters
+        
+        # Collect input
         args = parser.parse_args()
         inputFile = args["inputFile"]
         autoReplace = args["autoReplace"] or False
@@ -87,14 +82,9 @@ class CSVFileReplace(Resource):
             return {"message": "missing autoReplaceTerms"}, 400
 
         # Update row by row
-        if autoReplace:
-            df_updated = data.apply(
-                lambda m: pd.Series(smart_replace(m._data.array, autoReplaceTerms))
-            )
-        else:
-            df_updated = data.apply(
-                lambda m: pd.Series(advanced_replace(m._data.array, replaceTerms))
-            )
+        df_updated = data.apply(
+            lambda m: pd.Series(column_replace(m._data.array, replaceTerms, autoReplaceTerms, autoReplace))
+        )
 
         return Response(
             df_updated.to_csv(index=False, header=False),

@@ -38,7 +38,7 @@ class TXTReplace(Resource):
     )
     def post(self):
         
-        # collect arguments
+        # collect input
         args = parser.parse_args()
         inputText = args["inputText"]
         autoReplace = args["autoReplace"] or False
