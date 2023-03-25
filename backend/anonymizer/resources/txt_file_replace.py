@@ -5,7 +5,7 @@ from flask_restful import reqparse, Resource
 from flask_restful_swagger import swagger
 from werkzeug.datastructures import FileStorage
 
-from common.util import textReplace, huggingface_model
+from common.util import textReplace, huggingface_model, dict_converter
 
 parser = reqparse.RequestParser()
 parser.add_argument("inputTextFile", type=FileStorage, location="files")
@@ -49,10 +49,11 @@ class TXTFileReplace(Resource):
         autoReplace  = args["autoReplace"]
         print(autoReplace)
         print(type(autoReplace))
-        if autoReplace == 'True':
-            autoReplace = True
-        else:
-            autoReplace = False
+        # TODO: see if front end can run with boolean
+        # if autoReplace == 'True':
+        #     autoReplace = True
+        # else:
+        #     autoReplace = False
         if autoReplace:
             replaceTerms = None
             autoReplaceTerms = eval(args["autoReplaceTerms"])
@@ -74,7 +75,7 @@ class TXTFileReplace(Resource):
             outputText = textReplace(decoded_inputText, replaceTerms)
         else:
             terms = huggingface_model(decoded_inputText)
-
+            terms = dict_converter(terms, autoReplaceTerms)
             outputText = textReplace(decoded_inputText, terms)
         tmp = tempfile.TemporaryFile()
         b = bytes(outputText, "utf-8")

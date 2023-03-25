@@ -59,6 +59,23 @@ def huggingface_model(inputTxt: str):
         i = j
     return d
 
+def dict_converter(huggingfacedict: dict, autoreplaceTerms: dict):
+    d = {}
+    keys = huggingfacedict.keys()
+    if 'names' in autoreplaceTerms:
+        for k in keys:
+            if huggingfacedict[k] == 'PER':
+                d[k] = autoreplaceTerms['names']
+    if 'org' in autoreplaceTerms:
+        for k in keys:
+            if huggingfacedict[k] == 'ORG':
+                d[k] = autoreplaceTerms['org']
+    if 'location' in autoreplaceTerms:
+        for k in keys:
+            if huggingfacedict[k] == 'LOC':
+                d[k] = autoreplaceTerms['location']
+
+    return d
 
 #huggingface_model( "Nader Jokhadar had given Syria the lead with a well-struck header in the seventh minute.")
 # the example above will return {'Nader': 'PER', 'Jokhadar': 'PER', 'Syria': 'LOC'}
