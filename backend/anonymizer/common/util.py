@@ -3,8 +3,8 @@ import re
 from transformers import AutoTokenizer, AutoModelForTokenClassification
 from transformers import pipeline
 
-def filter(match_str: str, regex_library: dict):
-    
+def regex_match(match_str: str, regex_library: dict):
+    # match string to its equivalent regex statement
     for key in regex_library.keys():
         pattern = re.compile(regex_library[key])
         
@@ -13,21 +13,24 @@ def filter(match_str: str, regex_library: dict):
     
 
 def regexReplace(inputText: str, replaceTerms: dict):
-    
+    # dictionary of supported regex replacement
     regex_library = {
         "phone_number": r"\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})",
         "credit_card": r"^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$",
         "postal_code": r"[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d"
     }
     
+    # compile library and join into pattern
     replaceTerms = {regex_library[key]: value for key, value in replaceTerms.items() if key in regex_library}
     replacePattern = re.compile("|".join(replaceTerms.keys()))
     
+    # error checking
     if not replaceTerms:
         return inputText
     
+    # perform replacement
     outputText = replacePattern.sub(
-        lambda m: replaceTerms[filter(m.group(0), regex_library)], inputText
+        lambda m: replaceTerms[regex_match(m.group(0), regex_library)], inputText
     )
     
     return outputText
