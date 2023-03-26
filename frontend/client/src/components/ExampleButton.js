@@ -19,9 +19,7 @@ export default function ExampleButton({
                 // if any fields are filled, clear all fields
                 if (checked || text.length || file || Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length) { //clear all fields
                   setText("")
-                  if (file) {
-                    setFile(undefined)
-                  }
+                  setFile(undefined)
                   setReplaceTerms({});
                   setAutoReplaceTerms({});
                   setResponseText("")

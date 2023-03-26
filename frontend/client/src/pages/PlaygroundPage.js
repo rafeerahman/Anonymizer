@@ -124,8 +124,10 @@ export default function PlaygroundPage() {
   }
 
   useEffect(() => {
-    setFileName(`Upload ${currentEndpoint.fileType} file`)
-  }, [currentEndpoint])
+    if (!file) {
+      setFileName(`Upload ${currentEndpoint.fileType} file`)
+    }
+  }, [currentEndpoint, file])
 
   useEffect(() => {
     if (file) {
