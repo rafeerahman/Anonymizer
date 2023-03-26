@@ -15,8 +15,6 @@ parser.add_argument("autoReplace", location="form")
 parser.add_argument("autoReplaceTerms", location="form")
 
 
-
-
 class TXTFileReplace(Resource):
     "Simple text replace anonymization tool for TXT files"
 
@@ -46,7 +44,7 @@ class TXTFileReplace(Resource):
     def post(self):
         args = parser.parse_args()
         inputTextFile = args["inputTextFile"]
-        autoReplace  = args["autoReplace"]
+        autoReplace = args["autoReplace"]
         print(autoReplace)
         print(type(autoReplace))
         # TODO: see if front end can run with boolean
@@ -60,7 +58,6 @@ class TXTFileReplace(Resource):
         else:
             autoReplaceTerms = None
             replaceTerms = eval(args["replaceTerms"])
-
 
         print(inputTextFile)
         #  (not autoReplace and not replaceTerms) or not ( autoReplace and not autoReplaceTerms)

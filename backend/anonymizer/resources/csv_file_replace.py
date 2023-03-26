@@ -20,6 +20,7 @@ def regex_text_replace(inputText: str, replaceTerms: dict, autoReplaceTerms: dic
     inputText = regexReplace(inputText, autoReplaceTerms)
     return textReplace(inputText, replaceTerms)
 
+
 def column_replace(
     array, replaceTerms: dict, autoReplaceTerms: dict, autoReplace: bool
 ):

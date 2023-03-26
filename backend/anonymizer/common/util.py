@@ -11,7 +11,7 @@ def regex_match(match_str: str, regex_library: dict):
 
         if pattern.match(match_str):
             return regex_library[key]
-    
+
 
 def regexReplace(inputText: str, replaceTerms: dict):
     # dictionary of supported regex replacement
@@ -23,8 +23,8 @@ def regexReplace(inputText: str, replaceTerms: dict):
 
     # compile library and join into pattern
     replaceTerms = {
-        regex_library[key]: value 
-        for key, value in replaceTerms.items() 
+        regex_library[key]: value
+        for key, value in replaceTerms.items()
         if key in regex_library
     }
     replacePattern = re.compile("|".join(replaceTerms.keys()))
@@ -42,7 +42,6 @@ def regexReplace(inputText: str, replaceTerms: dict):
 
 
 def textReplace(inputText: str, replaceTerms: dict) -> str:
-
     if not replaceTerms:
         return inputText
 
@@ -104,6 +103,7 @@ def huggingface_model(inputTxt: str):
         i = j
     return d
 
+
 def dict_converter(huggingfacedict: dict, autoreplaceTerms: dict):
     d = {}
     keys = huggingfacedict.keys()
@@ -121,6 +121,7 @@ def dict_converter(huggingfacedict: dict, autoreplaceTerms: dict):
                 d[k] = autoreplaceTerms["location"]
 
     return d
+
 
 # huggingface_model( "Nader Jokhadar had given Syria the lead with a well-struck header in the seventh minute.")
 # the example above will return {'Nader': 'PER', 'Jokhadar': 'PER', 'Syria': 'LOC'}
