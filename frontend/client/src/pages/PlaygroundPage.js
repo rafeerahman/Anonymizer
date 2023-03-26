@@ -15,7 +15,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
 import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
-import { Button } from 'react-bootstrap'
 import AutoButton from '../components/AutoButton.js'
 
 const endpoints = [
@@ -157,6 +156,8 @@ export default function PlaygroundPage() {
               file={file}
               setFile={setFile}
               resetParams={resetParams}
+              autoReplaceTerms={autoReplaceTerms}
+              setAutoReplaceTerms={setAutoReplaceTerms}
               replaceTerms={replaceTerms}
               setReplaceTerms={setReplaceTerms}
               setCurrentEndpoint={setCurrentEndpoint}

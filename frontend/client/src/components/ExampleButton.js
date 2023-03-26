@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function ExampleButton({text, setText, file, setFile, resetParams, replaceTerms, setReplaceTerms, setCurrentEndpoint, setResponseText}){
+export default function ExampleButton({
+    text, setText, file, setFile, resetParams, autoReplaceTerms, setAutoReplaceTerms, replaceTerms, setReplaceTerms, setCurrentEndpoint, setResponseText
+}){
     const [checked, setChecked] = useState(false);
 
     return (
@@ -14,12 +16,14 @@ export default function ExampleButton({text, setText, file, setFile, resetParams
             type="checkbox"
             checked={checked}
             onChange={() => {
-              if (checked || text.length || file || Object.keys(replaceTerms).length) { //clear all fields
+              // if any fields are filled, clear all fields
+              if (checked || text.length || file || Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length) { //clear all fields
                 setText("")
                 if (file) {
                   setFile(undefined)
                 }
                 setReplaceTerms({});
+                setAutoReplaceTerms({});
                 setResponseText("")
                 setChecked(false)
               }
@@ -40,7 +44,7 @@ export default function ExampleButton({text, setText, file, setFile, resetParams
               }
             }}
           />
-          {checked || text.length || file || Object.keys(replaceTerms).length ? "Clear": "Load Text Example"}
+          {checked || text.length || file || Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length ? "Clear": "Load Text Example"}
           </label>
         </BtnStyled>
       </>

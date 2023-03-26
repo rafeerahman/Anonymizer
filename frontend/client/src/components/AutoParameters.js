@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Form } from 'react-bootstrap';
-import ParameterKeyValueItem from './ParameterKeyValueItem';
+import AutoParameterItem from './AutoParameterItem';
 
 const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
     const [replaceName, setReplaceName] = useState("");
@@ -10,22 +10,37 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
     const [nameSwitch, setNameSwitch] = useState(false);
     const [locationSwitch, setLocationSwitch] = useState(false);
     const [orgSwitch, setOrgSwitch] = useState(false);
-
+    const autoReplaceTermsResetRef = useRef({});
+    
     useEffect(() => {
-        let newTerms = {}
-        
+        // update autoReplaceTerms when any fields are updated
+        let newTerms = {};
+    
         if (nameSwitch) {
-            newTerms["names"] = replaceName
+            newTerms["names"] = replaceName;
         }
         if (locationSwitch) {
-            newTerms["locations"] = replaceLocation
+            newTerms["locations"] = replaceLocation;
         }
         if (orgSwitch) {
-            newTerms["org"] = replaceOrg
+            newTerms["org"] = replaceOrg;
         }
-        
-        setAutoReplaceTerms(newTerms)
-    }, [replaceName, replaceLocation, replaceOrg, nameSwitch, locationSwitch, orgSwitch])
+        setAutoReplaceTerms(newTerms);
+    }, [replaceName, replaceLocation, replaceOrg, nameSwitch, locationSwitch, orgSwitch, setAutoReplaceTerms]);
+
+    useEffect(() => {
+        if (Object.keys(autoReplaceTerms).length === 0 && autoReplaceTermsResetRef.current !== autoReplaceTerms) {
+            // clear button was pressed, reset all fields
+            setReplaceName("");
+            setReplaceLocation("");
+            setReplaceOrg("");
+            setNameSwitch(false);
+            setLocationSwitch(false);
+            setOrgSwitch(false);
+        } else {
+            autoReplaceTermsResetRef.current = autoReplaceTerms;
+        }
+    }, [autoReplaceTerms]);
 
 
     return (
@@ -40,7 +55,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
                                 type="switch"
                                 id="name-switch"
                                 label=""
-                                defaultChecked={nameSwitch}
+                                checked={nameSwitch}
                                 onChange={() => setNameSwitch(!nameSwitch)}
                             />
                         </Category>
@@ -60,7 +75,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
                                 type="switch"
                                 id="location-switch"
                                 label=""
-                                defaultChecked={locationSwitch}
+                                checked={locationSwitch}
                                 onChange={() => setLocationSwitch(!locationSwitch)}
                             />
                         </Category>
@@ -84,7 +99,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
                                 type="switch"
                                 id="org-switch"
                                 label=""
-                                defaultChecked={orgSwitch}
+                                checked={orgSwitch}
                                 onChange={() => setOrgSwitch(!orgSwitch)}
                             />
                         </Category>
@@ -105,7 +120,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
 
                 <div className="mt-5">
                     {autoReplaceTerms.length !== 0 && Object.entries(autoReplaceTerms).map(([name, value]) => {
-                        return <ParameterKeyValueItem
+                        return <AutoParameterItem
                             key={`${name}-${value}`}
                             name={name}
                             replacementName={value}
