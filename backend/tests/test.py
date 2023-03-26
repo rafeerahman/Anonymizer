@@ -1,5 +1,4 @@
 import pytest
-# import hello
 from backend.anonymizer.common.util import textReplace
 
 # def test_textReplace():
