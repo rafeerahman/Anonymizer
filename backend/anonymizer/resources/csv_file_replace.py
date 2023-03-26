@@ -1,7 +1,7 @@
 from flask_restful import reqparse, Resource
 from flask_restful_swagger import swagger
 from flask import Response
-from common.util import textReplace, huggingface_model, dict_converter
+from common.util import textReplace, huggingface_model, dict_converter, regexReplace
 from werkzeug.datastructures import FileStorage
 import pandas as pd
 from pandas._libs import lib
@@ -15,6 +15,10 @@ parser.add_argument("replaceTerms", location="form")
 parser.add_argument("autoReplace", location="form")
 parser.add_argument("autoReplaceTerms", location="form")
 
+def regex_text_replace(inputText: str, replaceTerms: dict, autoReplaceTerms: dict):
+    inputText = regexReplace(inputText, autoReplaceTerms)
+    return textReplace(inputText, replaceTerms)
+
 def column_replace(array, replaceTerms: dict, autoReplaceTerms: dict, autoReplace: bool):
     # map and convert null cells
     arr = np.asarray(array, dtype=object)
@@ -25,9 +29,12 @@ def column_replace(array, replaceTerms: dict, autoReplaceTerms: dict, autoReplac
     if autoReplace:
         cleanedAutoReplaceTerms = huggingface_model(','.join(arr))
         replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
-
-    # lambda textReplace function    
-    f = lambda x: textReplace(x, replaceTerms)
+        
+        # lambda text and regex replace function    
+        f = lambda x: regex_text_replace(x, replaceTerms, autoReplaceTerms)
+    else:
+        # lambda textReplace function    
+        f = lambda x: textReplace(x, replaceTerms)
         
     # apply replaceTerms 
     result = lib.map_infer_mask(arr, f, mask.view(np.uint8), map_convert)
