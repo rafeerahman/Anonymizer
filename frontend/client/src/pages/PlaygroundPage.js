@@ -7,7 +7,7 @@ import AutoParameters from '../components/AutoParameters.js'
 import SubmitButton from '../components/SubmitButton.js'
 import TextArea from '../components/TextArea.js'
 import UploadFileButton from '../components/UploadFileButton.js'
-import ExampleButton from '../components/ExampleButton.js'
+import ExampleOrResetButton from '../components/ExampleOrResetButton.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Container from 'react-bootstrap/Container';
@@ -20,12 +20,10 @@ import AutoButton from '../components/AutoButton.js'
 const endpoints = [
   {
     displayName: "Text Replace",
-    URL: "endpoint-url-for/text-replace",
     fileType: "text/plain"
   },
   {
     displayName: "CSV Replace",
-    URL: "endpoint-url-for/csv-replace",
     fileType: "text/csv"
   }
 ]
@@ -44,9 +42,8 @@ export default function PlaygroundPage() {
   const [text, setText] = useState("")
   const [fileName, setFileName] = useState("Upload file")
   const [file, setFile] = useState(undefined)
-  const [currentEndpoint, setCurrentEndpoint] = useState({
-    displayName: "Select Endpoint",
-    URL: "",
+  const [currentFileType, setCurrentFileType] = useState({
+    displayName: "Select File Type",
     fileType: ""
   })
   const [responseText, setResponseText] = useState("")
@@ -66,12 +63,12 @@ export default function PlaygroundPage() {
   const handleInputErrors = () => {
     let flag = false;
 
-    if (currentEndpoint.fileType === 'text/plain') {
+    if (currentFileType.fileType === 'text/plain') {
       if (text.length === 0) {
         notify(errors.missingText)
         flag = true
       }
-    } else if (currentEndpoint.fileType === 'text/csv') {
+    } else if (currentFileType.fileType === 'text/csv') {
       if (!file) {
         notify(errors.missingCsvFile)
         flag = true
@@ -92,29 +89,26 @@ export default function PlaygroundPage() {
       return
     }
 
-    if (currentEndpoint.fileType === "text/plain") {
+    if (currentFileType.fileType === "text/plain") {
       sendTextToAnonymize(text, file, replaceTerms, setResponseText, notify)
-    } else if (currentEndpoint.fileType === "text/csv") {
+    } else if (currentFileType.fileType === "text/csv") {
       sendCsvToAnonymize(file, replaceTerms, setResponseText, notify);
     }
   }
 
   const resetParams = () => {
     setText("")
-    setFileName("Upload file")
-    if (file) {
-      setFile(undefined)
-    }
+    setFile(undefined)
     // setReplaceTerms({})
     setResponseText("") //to reset download button/output 
   }
 
   const handleDownload = () => {
     const element = document.createElement("a");
-    console.log(currentEndpoint.fileType)
-    const file = new Blob([responseText], {type: currentEndpoint.fileType});
+    console.log(currentFileType.fileType)
+    const file = new Blob([responseText], {type: currentFileType.fileType});
     element.href = URL.createObjectURL(file);
-    if (currentEndpoint.fileType === "text/csv") {
+    if (currentFileType.fileType === "text/csv") {
       element.download = "output.csv";
     } else {
       element.download = "output.txt";
@@ -125,9 +119,9 @@ export default function PlaygroundPage() {
 
   useEffect(() => {
     if (!file) {
-      setFileName(`Upload ${currentEndpoint.fileType} file`)
+      setFileName(`Upload ${currentFileType.fileType} file`)
     }
-  }, [currentEndpoint, file])
+  }, [currentFileType, file])
 
   useEffect(() => {
     if (file) {
@@ -145,14 +139,14 @@ export default function PlaygroundPage() {
             <DropdownStyled>
               <DropdownMenu className="dropDown"
                 endpoints={endpoints}
-                currentEndpoint={currentEndpoint}
-                setCurrentEndpoint={setCurrentEndpoint}
+                currentFileType={currentFileType}
+                setCurrentFileType={setCurrentFileType}
                 resetParams={resetParams}
               />
             </DropdownStyled>
           </Col>
           <Col md={4}>
-            <ExampleButton
+            <ExampleOrResetButton
               text={text}
               setText={setText}
               file={file}
@@ -162,7 +156,7 @@ export default function PlaygroundPage() {
               setAutoReplaceTerms={setAutoReplaceTerms}
               replaceTerms={replaceTerms}
               setReplaceTerms={setReplaceTerms}
-              setCurrentEndpoint={setCurrentEndpoint}
+              setCurrentFileType={setCurrentFileType}
               setResponseText={setResponseText}
             />
             <AutoButton useAuto={useAuto} setUseAuto={setUseAuto}/>
@@ -195,14 +189,14 @@ export default function PlaygroundPage() {
         <Col md={8}>
           <ButtonsContainer>
               {/* if Else statement, if endpoint.filetype == "", do not display button */
-                currentEndpoint.fileType !== "" && 
+                currentFileType.fileType !== "" && 
                 <UploadFileButton className="uploadBtn" 
                   fileName={fileName}
                   file={file}
                   setFile={setFile}
                   setFileName={setFileName}
                   setText={setText}
-                  currentEndpoint={currentEndpoint}
+                  currentFileType={currentFileType}
                   setResponseText={setResponseText}
                 />
               }
@@ -213,7 +207,7 @@ export default function PlaygroundPage() {
                 </BtnStyled>
               }
               { /* if no endpoint is selected, do not display submit button */
-                currentEndpoint.fileType !== "" &&  
+                currentFileType.fileType !== "" &&  
                 <SubmitButton onClick={handleSubmit}/>
               }
             </ButtonsContainer>

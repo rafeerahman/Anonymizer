@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function ExampleButton({
-    text, setText, file, setFile, resetParams, autoReplaceTerms, setAutoReplaceTerms, replaceTerms, setReplaceTerms, setCurrentEndpoint, setResponseText
+export default function ExampleOrResetButton({
+    text, setText, file, setFile, resetParams, autoReplaceTerms,
+    setAutoReplaceTerms, replaceTerms, setReplaceTerms, setCurrentFileType,
+    setResponseText
 }){
     const [checked, setChecked] = useState(false);
 
@@ -17,7 +19,8 @@ export default function ExampleButton({
               checked={checked}
               onChange={() => {
                 // if any fields are filled, clear all fields
-                if (checked || text.length || file || Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length) { //clear all fields
+                if (checked || text.length || file ||
+                  Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length) { //clear all fields
                   setText("")
                   setFile(undefined)
                   setReplaceTerms({});
@@ -33,7 +36,7 @@ export default function ExampleButton({
                   // populate based on example
                   setText("My name is Jack, and you can reach me at 647-123-4321");
                   setReplaceTerms({"Jack": "NAME", "647-123-4321": "XXX-XXX-XXXX"});
-                  setCurrentEndpoint({
+                  setCurrentFileType({
                     displayName: "Text Replace",
                     URL: "endpoint-url-for/text-replace",
                     fileType: "text/plain"
@@ -43,8 +46,8 @@ export default function ExampleButton({
               }}
             />
             {checked ||text.length || file || 
-            Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length
-            ? "Clear": "Load Text Example"}
+              Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length
+              ? "Clear": "Load Text Example"}
           </label>
         </BtnStyled>
       </>
