@@ -24,10 +24,90 @@ TextFileReplace: The text file endpoint is designed to extend the functionality 
 
 CSVFileReplace: The CSV file endpoint is designed to again extend our original TextReplace endpoint, but now across an entire spreadsheet. This endpoint quickly searches across the cells of an entire dataset, so that any user can quickly and effectively anonymize sensitive information.
 
+## Repo Organization
+### Frontend / Backend
+Our frontend and backend for this project are in the `frontend` and `backend` folders respectively.
+
+### Devops
+Our dockerfiles used to deploy our full web application are located in the `devops` folder. Our GitHub Actions workflows can be found in `.github/workflows`.
+
+### Documents
+Documents from prior assignments and deliverables are in the `documents` folder.
+
+## Development Requirements
+
+### Backend
+Our backend uses Python version 3.10.
+```
+black
+Flask
+flask-restful
+flask-restful-swagger
+pytest
+uwsgi
+markupsafe==2.0.1
+pandas
+```
+
+### Frontend
+TODO: node version
+```
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
+    "html-react-parser": "^3.0.12",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
+    "react-scripts": "5.0.1",
+    "react-syntax-highlighter": "^15.5.0",
+    "react-toastify": "^9.1.1",
+    "styled-components": "^5.3.6",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
+
+```
+
 ## Git/GitHub Workflow
 
 Our git workflow consisted of creating issues on the GitHub Issues board for features and tasks that each of our sub-teams (frontend, backend, devops) had. We assigned these issues to members of the team, and kept track of their progress within the issues board. In addition, we also used git branches for the separate features, and reviewed/merged pull requests for each of these branches. (Note: Some of us continued working in our A2 sub-team repositories, so most of our commit’s are included in those repos. We moved everything to the main repo near the end of the deadline).
 
 ## License
 
-Our project will be using the MIT License. We chose this license because we wish to be transparent with our software, and limit the restriction on it. The MIT License allows our project to be open source and premissive free. Additionally, the code will not be published until the project is done 
+Our project will be using the MIT License. We chose this license because we wish to be transparent with our software, and limit the restriction on it. The MIT License allows our project to be open source and permissively licensed. Additionally, the code will not be published until the project is done.
