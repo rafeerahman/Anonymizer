@@ -39,7 +39,7 @@ export default function AutoButton({useAuto, setUseAuto}){
           display: none;
       }
   
-      .custom-example {
+      label {
           height: 34px;
           background-color: #0F803C;
           color: white;
@@ -50,11 +50,13 @@ export default function AutoButton({useAuto, setUseAuto}){
           justify-content: center;
           cursor: pointer;
           margin-bottom: 1rem;
-      }
-
-      label {
           width: 100%;
           margin-right: 1rem;
+          transition: background-color 0.3s;
+      }
+
+      label:hover {
+        background-color: #09612c;
       }
   `
   

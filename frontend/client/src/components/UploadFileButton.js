@@ -65,7 +65,7 @@ const BtnStyled = styled.div`
     .custom-file-upload {
         width: 315px;
         height: 50px;
-        background-color: black;
+        background-color: #262626;
         color: white;
         border-radius: 10px;
         font-weight: 600;
@@ -73,6 +73,11 @@ const BtnStyled = styled.div`
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .custom-file-upload:hover {
+        background-color: black;
     }
 
     .clear-file {

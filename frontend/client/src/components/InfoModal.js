@@ -43,7 +43,8 @@ const BtnStyled = styled.div`
     button {
         width: 34px;
         height: 34px;
-        background-color: #5436DA;
+        border: none;
+        background-color: #0F803C;
         color: white;
         border-radius: 10px;
         font-weight: 600;
@@ -52,5 +53,10 @@ const BtnStyled = styled.div`
         justify-content: center;
         cursor: pointer;
         margin-bottom: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #09612c;
     }
 `

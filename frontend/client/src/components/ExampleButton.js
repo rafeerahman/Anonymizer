@@ -11,40 +11,42 @@ export default function ExampleButton({
       <>
         <BtnStyled>
           <label className="custom-example">
-          <input
-            id="toggle-check"
-            type="checkbox"
-            checked={checked}
-            onChange={() => {
-              // if any fields are filled, clear all fields
-              if (checked || text.length || file || Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length) { //clear all fields
-                setText("")
-                if (file) {
-                  setFile(undefined)
+            <input
+              id="toggle-check"
+              type="checkbox"
+              checked={checked}
+              onChange={() => {
+                // if any fields are filled, clear all fields
+                if (checked || text.length || file || Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length) { //clear all fields
+                  setText("")
+                  if (file) {
+                    setFile(undefined)
+                  }
+                  setReplaceTerms({});
+                  setAutoReplaceTerms({});
+                  setResponseText("")
+                  setChecked(false)
                 }
-                setReplaceTerms({});
-                setAutoReplaceTerms({});
-                setResponseText("")
-                setChecked(false)
-              }
-              else { // load example data
-                // erase the currently existing file and parameters 
-                resetParams();
-                setReplaceTerms({}); 
+                else { // load example data
+                  // erase the currently existing file and parameters 
+                  resetParams();
+                  setReplaceTerms({}); 
 
-                // populate based on example
-                setText("My name is Jack, and you can reach me at 647-123-4321");
-                setReplaceTerms({"Jack": "NAME", "647-123-4321": "XXX-XXX-XXXX"});
-                setCurrentEndpoint({
-                  displayName: "Text Replace",
-                  URL: "endpoint-url-for/text-replace",
-                  fileType: "text/plain"
-                });
-                setChecked(true)
-              }
-            }}
-          />
-          {checked || text.length || file || Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length ? "Clear": "Load Text Example"}
+                  // populate based on example
+                  setText("My name is Jack, and you can reach me at 647-123-4321");
+                  setReplaceTerms({"Jack": "NAME", "647-123-4321": "XXX-XXX-XXXX"});
+                  setCurrentEndpoint({
+                    displayName: "Text Replace",
+                    URL: "endpoint-url-for/text-replace",
+                    fileType: "text/plain"
+                  });
+                  setChecked(true)
+                }
+              }}
+            />
+            {checked ||text.length || file || 
+            Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length
+            ? "Clear": "Load Text Example"}
           </label>
         </BtnStyled>
       </>
@@ -59,7 +61,7 @@ const BtnStyled = styled.div`
         display: none;
     }
 
-    .custom-example {
+    label {
         height: 34px;
         background-color: #5436DA;
         color: white;
@@ -70,5 +72,10 @@ const BtnStyled = styled.div`
         justify-content: center;
         cursor: pointer;
         margin-bottom: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    label:hover {
+      background-color: #4a2db3;
     }
 `

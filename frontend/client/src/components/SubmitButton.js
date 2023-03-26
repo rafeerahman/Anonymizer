@@ -5,7 +5,7 @@ export default function SubmitButton({onClick}) {
   return (
     <BtnStyled>
         <button onClick={onClick}>
-            submit
+            Submit
         </button>
     </BtnStyled>
 
@@ -24,6 +24,7 @@ const BtnStyled = styled.div`
         color: white;
         font-weight: 600;
         margin-top: 1rem;
+        transition: background-color 0.3s;
     }
 
     button:hover {

@@ -42,7 +42,7 @@ export default function PlaygroundPage() {
   const [replaceTerms, setReplaceTerms] = useState({})
   const [autoReplaceTerms, setAutoReplaceTerms] = useState({})
   const [text, setText] = useState("")
-  const [fileName, setFileName] = useState("upload file")
+  const [fileName, setFileName] = useState("Upload file")
   const [file, setFile] = useState(undefined)
   const [currentEndpoint, setCurrentEndpoint] = useState({
     displayName: "Select Endpoint",
@@ -101,7 +101,7 @@ export default function PlaygroundPage() {
 
   const resetParams = () => {
     setText("")
-    setFileName("upload file")
+    setFileName("Upload file")
     if (file) {
       setFile(undefined)
     }
@@ -124,7 +124,7 @@ export default function PlaygroundPage() {
   }
 
   useEffect(() => {
-    setFileName(`upload ${currentEndpoint.fileType} file`)
+    setFileName(`Upload ${currentEndpoint.fileType} file`)
   }, [currentEndpoint])
 
   useEffect(() => {
