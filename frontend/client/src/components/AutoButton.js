@@ -1,23 +1,35 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import InfoModal from './InfoModal';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 export default function AutoButton({useAuto, setUseAuto}){
     return (
         <>
-          <BtnStyled>
-            <label className="custom-example">
-            <input
-              id="toggle-check"
-              type="checkbox"
-              checked={useAuto}
-              onChange={() => {
-                setUseAuto(!useAuto);
+          <Row>
+            <Col>
+              <BtnStyled>
+                <label className="custom-example">
+                <input
+                  id="toggle-check"
+                  type="checkbox"
+                  checked={useAuto}
+                  onChange={() => {
+                    setUseAuto(!useAuto);
+                    
+                  }}
+                />
+                {useAuto ? "Disable Auto Replace": "Enable Auto replace"}
                 
-              }}
-            />
-            {useAuto ? "Disable Auto Replace": "Enable Auto replace"}
-            </label>
-          </BtnStyled>
+                </label>
+              </BtnStyled>
+            </Col>
+            <Col xs = {2}>
+              <InfoModal/>
+            </Col>
+          </Row>
+          
         </>
       )
   }
