@@ -15,31 +15,35 @@ parser.add_argument("replaceTerms", location="form")
 parser.add_argument("autoReplace", location="form")
 parser.add_argument("autoReplaceTerms", location="form")
 
+
 def regex_text_replace(inputText: str, replaceTerms: dict, autoReplaceTerms: dict):
     inputText = regexReplace(inputText, autoReplaceTerms)
     return textReplace(inputText, replaceTerms)
 
-def column_replace(array, replaceTerms: dict, autoReplaceTerms: dict, autoReplace: bool):
+def column_replace(
+    array, replaceTerms: dict, autoReplaceTerms: dict, autoReplace: bool
+):
     # map and convert null cells
     arr = np.asarray(array, dtype=object)
     mask = isna(arr)
     map_convert = not np.all(mask)
-    
+
     # if autoReplace, then scan the row for potential replaceTerms
     if autoReplace:
-        cleanedAutoReplaceTerms = huggingface_model(','.join(arr))
+        cleanedAutoReplaceTerms = huggingface_model(",".join(arr))
         replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
-        
-        # lambda text and regex replace function    
+
+        # lambda text and regex replace function
         f = lambda x: regex_text_replace(x, replaceTerms, autoReplaceTerms)
     else:
-        # lambda textReplace function    
+        # lambda textReplace function
         f = lambda x: textReplace(x, replaceTerms)
-        
-    # apply replaceTerms 
+
+    # apply replaceTerms
     result = lib.map_infer_mask(arr, f, mask.view(np.uint8), map_convert)
 
     return result
+
 
 class CSVFileReplace(Resource):
     "Simple text replace anonymization tool for CSV Files"
@@ -68,7 +72,6 @@ class CSVFileReplace(Resource):
         ],
     )
     def post(self):
-        
         # Collect input
         args = parser.parse_args()
         inputFile = args["inputFile"]
@@ -81,16 +84,20 @@ class CSVFileReplace(Resource):
             data = pd.read_csv(inputFile, dtype=str, header=None)
         except pandas.errors.EmptyDataError:
             return {"message": "invalid csv formatting"}, 400
-        
+
         # error checking
-        if (not autoReplace and not replaceTerms):
+        if not autoReplace and not replaceTerms:
             return {"message": "missing replaceTerms"}, 400
-        elif (autoReplace and not autoReplaceTerms):
+        elif autoReplace and not autoReplaceTerms:
             return {"message": "missing autoReplaceTerms"}, 400
 
         # Update row by row
         df_updated = data.apply(
-            lambda m: pd.Series(column_replace(m._data.array, replaceTerms, autoReplaceTerms, autoReplace))
+            lambda m: pd.Series(
+                column_replace(
+                    m._data.array, replaceTerms, autoReplaceTerms, autoReplace
+                )
+            )
         )
 
         return Response(

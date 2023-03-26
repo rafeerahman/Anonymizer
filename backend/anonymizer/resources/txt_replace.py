@@ -37,7 +37,6 @@ class TXTReplace(Resource):
         ],
     )
     def post(self):
-        
         # collect input
         args = parser.parse_args()
         inputText = args["inputText"]
@@ -45,27 +44,27 @@ class TXTReplace(Resource):
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
 
-        # error checking        
+        # error checking     
         if inputText == "":
             return {"message": "invalid input"}, 400
-        if (not autoReplace and not replaceTerms):
+        if not autoReplace and not replaceTerms:
             return {"message": "missing replaceTerms"}, 400
-        elif (autoReplace and not autoReplaceTerms):
+        elif autoReplace and not autoReplaceTerms:
             return {"message": "missing autoReplaceTerms"}, 400
 
         # call replacement function
         if autoReplace:
-            
+
             # perform regex sweep
             inputText = regexReplace(inputText, autoReplaceTerms)
-            
+
             # search for terms to replace
             cleanedAutoReplaceTerms = huggingface_model(inputText)
-            
+
             # ensure match was found
             if not cleanedAutoReplaceTerms:
                 return {"message": "unable to detect any replaceable terms"}, 400
-            
+
             # apply found terms to specified mapping, and then apply mapping to inputText
             replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
         
