@@ -5,12 +5,14 @@ from flask_restful import reqparse, Resource
 from flask_restful_swagger import swagger
 from werkzeug.datastructures import FileStorage
 
-from common.util import textReplace
+from common.util import textReplace, huggingface_model, dict_converter, regexReplace
 
 parser = reqparse.RequestParser()
 parser.add_argument("inputTextFile", type=FileStorage, location="files")
 # this endpoint will take a .txt file rather than a string
 parser.add_argument("replaceTerms", location="form")
+parser.add_argument("autoReplace", location="form")
+parser.add_argument("autoReplaceTerms", location="form")
 
 
 class TXTFileReplace(Resource):
@@ -42,18 +44,37 @@ class TXTFileReplace(Resource):
     def post(self):
         args = parser.parse_args()
         inputTextFile = args["inputTextFile"]
-        replaceTerms = eval(args["replaceTerms"])
+        autoReplace = args["autoReplace"]
+        print(autoReplace)
+        print(type(autoReplace))
+        # TODO: see if front end can run with boolean
+        # if autoReplace == 'True':
+        #     autoReplace = True
+        # else:
+        #     autoReplace = False
+        if autoReplace:
+            replaceTerms = None
+            autoReplaceTerms = eval(args["autoReplaceTerms"])
+        else:
+            autoReplaceTerms = None
+            replaceTerms = eval(args["replaceTerms"])
 
         print(inputTextFile)
-        if not inputTextFile or not replaceTerms or inputTextFile == "":
+        #  (not autoReplace and not replaceTerms) or not ( autoReplace and not autoReplaceTerms)
+        if not inputTextFile or inputTextFile == "":
             return {"message": "missing parameter(s)"}, 400
 
         # get input text from the txt file
         inputText = inputTextFile.read()
         # call replacement function
         decoded_inputText = inputText.decode('utf-8"')
-        outputText = textReplace(decoded_inputText, replaceTerms)
-
+        if not autoReplace:
+            outputText = textReplace(decoded_inputText, replaceTerms)
+        else:
+            decoded_inputText = regexReplace(decoded_inputText, autoReplaceTerms)
+            terms = huggingface_model(decoded_inputText)
+            terms = dict_converter(terms, autoReplaceTerms)
+            outputText = textReplace(decoded_inputText, terms)
         tmp = tempfile.TemporaryFile()
         b = bytes(outputText, "utf-8")
         tmp.write(b)
