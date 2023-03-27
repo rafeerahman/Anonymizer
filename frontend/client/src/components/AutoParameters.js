@@ -5,10 +5,10 @@ import AutoParameterItem from './AutoParameterItem';
 
 const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
     const [replaceName, setReplaceName] = useState(autoReplaceTerms.names ? autoReplaceTerms.names : "");
-    const [replaceLocation, setReplaceLocation] = useState(autoReplaceTerms.locations ? autoReplaceTerms.locations : "");
+    const [replaceLocation, setReplaceLocation] = useState(autoReplaceTerms.location ? autoReplaceTerms.location : "");
     const [replaceOrg, setReplaceOrg] = useState(autoReplaceTerms.org ? autoReplaceTerms.org : "");
     const [nameSwitch, setNameSwitch] = useState(autoReplaceTerms.names);
-    const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.locations);
+    const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.location);
     const [orgSwitch, setOrgSwitch] = useState(autoReplaceTerms.org);
     const autoReplaceTermsResetRef = useRef({});
     
@@ -20,7 +20,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
             newTerms["names"] = replaceName;
         }
         if (locationSwitch) {
-            newTerms["locations"] = replaceLocation;
+            newTerms["location"] = replaceLocation;
         }
         if (orgSwitch) {
             newTerms["org"] = replaceOrg;
