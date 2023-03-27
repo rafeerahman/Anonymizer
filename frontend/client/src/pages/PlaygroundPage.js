@@ -16,6 +16,7 @@ import Col from 'react-bootstrap/Col';
 import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
 import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
 import AutoButton from '../components/AutoButton.js'
+import ConfirmDialog from '../components/ConfirmDialog.js'
 
 const endpoints = [
   {
@@ -128,10 +129,24 @@ export default function PlaygroundPage() {
       readFile() // sets textarea to contents of file. 
     }
   }, [file])
+  
+  // Leaving page or refresh confirmation.
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      const message = "Are you sure you want to leave? All provided data will be lost."
+      e.returnValue = message
+      return message
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => {window.removeEventListener('beforeunload', handleBeforeUnload)}
+  }, []);
 
   return (
     <>
       <MainNavbar />
+
       <br />
        <Container fluid="md">
         <Row>
@@ -167,6 +182,7 @@ export default function PlaygroundPage() {
         <Col md={8}>
           <TextArea
             file = {file}
+            fileType = {currentFileType.fileType}
             text = {text}
             setText = {setText}
           />
