@@ -4,72 +4,80 @@ import { Form } from 'react-bootstrap';
 import AutoParameterItem from './AutoParameterItem';
 
 const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
-    const [replaceName, setReplaceName] = useState(autoReplaceTerms.names ? autoReplaceTerms.names : "");
-    const [replaceLocation, setReplaceLocation] = useState(autoReplaceTerms.location ? autoReplaceTerms.location : "");
-    const [replaceOrg, setReplaceOrg] = useState(autoReplaceTerms.org ? autoReplaceTerms.org : "");
-    const [replacePhone, setReplacePhone] = useState(autoReplaceTerms.phone_number ? autoReplaceTerms.phone_number : "")
-    const [replacePostal, setReplacePostal] = useState(autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code : "")
-    const [replaceCredit, setReplaceCredit] = useState(autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : "")
-    const [nameSwitch, setNameSwitch] = useState(autoReplaceTerms.names);
-    const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.location);
-    const [orgSwitch, setOrgSwitch] = useState(autoReplaceTerms.org);
-    const [phoneSwitch, setPhoneSwitch] = useState(autoReplaceTerms.phone_number);
-    const [postalSwitch, setPostalSwitch] = useState(autoReplaceTerms.postal_code);
-    const [creditSwitch, setCreditSwitch] = useState(autoReplaceTerms.credit_card);
+    // const [replaceName, setReplaceName] = useState(autoReplaceTerms.names ? autoReplaceTerms.names : "");
+    // const [replaceLocation, setReplaceLocation] = useState(autoReplaceTerms.location ? autoReplaceTerms.location : "");
+    // const [replaceOrg, setReplaceOrg] = useState(autoReplaceTerms.org ? autoReplaceTerms.org : "");
+    // const [replacePhone, setReplacePhone] = useState(autoReplaceTerms.phone_number ? autoReplaceTerms.phone_number : "")
+    // const [replacePostal, setReplacePostal] = useState(autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code : "")
+    // const [replaceCredit, setReplaceCredit] = useState(autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : "")
+    // const [nameSwitch, setNameSwitch] = useState(autoReplaceTerms.names);
+    // const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.location);
+    // const [orgSwitch, setOrgSwitch] = useState(autoReplaceTerms.org);
+    // const [phoneSwitch, setPhoneSwitch] = useState(autoReplaceTerms.phone_number);
+    // const [postalSwitch, setPostalSwitch] = useState(autoReplaceTerms.postal_code);
+    // const [creditSwitch, setCreditSwitch] = useState(autoReplaceTerms.credit_card);
+    const [switchDict, setSwitchDict] = useState({"names": autoReplaceTerms.names ? true : false, "location": autoReplaceTerms.location ? true : false, "org": autoReplaceTerms.org ? true : false, "phone_number": autoReplaceTerms.phone_number ? true : false, "postal_code": autoReplaceTerms.postal_code ? true : false, "credit_card": autoReplaceTerms.credit_card ? true : false})
+    //, "postal_code": autoReplaceTerms.postal_code, "credit_card": autoReplaceTerms.credit_card})
+    const [replaceDict, setReplaceDict] = useState({"names": autoReplaceTerms.names ? autoReplaceTerms.names : "", "location": autoReplaceTerms.location ? autoReplaceTerms.location : "", "org": autoReplaceTerms.org ? autoReplaceTerms.org : "", "phone_number": autoReplaceTerms.phone_number ? autoReplaceTerms.phone_number : "", "postal_code": autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code : "", "credit_card": autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : ""})
+    //, "postal_code": autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code, "credit_card": autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : "")
     const autoReplaceTermsResetRef = useRef({});
+
+    let nameDict = {"names":  "Names", "location": "Locations", "org": "Organizations", "phone_number": "Phone Numbers", "postal_code": "Postal Code", "credit_card": "Credit Card"}
     
     useEffect(() => {
         // update autoReplaceTerms when any fields are updated
+        console.log("first true")
         let newTerms = {};
-    
-        if (nameSwitch) {
-            newTerms["names"] = replaceName;
-        }
-        if (locationSwitch) {
-            newTerms["location"] = replaceLocation;
-        }
-        if (orgSwitch) {
-            newTerms["org"] = replaceOrg;
-        }
-        if (phoneSwitch) {
-            newTerms["phone_number"] = replacePhone;
-        }
-        if (postalSwitch) {
-            newTerms["postal_code"] = replacePostal;
-        }
-        if (creditSwitch) {
-            newTerms["credit_card"] = replaceCredit;
-        }
+        // loop through keys of switchDict and set the values of newTerms according to value with same key in ReplaceDict
+        Object.keys(switchDict).forEach(key => {
+            if (switchDict[key]){
+                newTerms[key] = replaceDict[key];
+            }
+        })
         setAutoReplaceTerms(newTerms);
-    }, [replaceName, replaceLocation, replaceOrg, replacePhone, replacePostal, replaceCredit, nameSwitch, locationSwitch, orgSwitch, phoneSwitch, postalSwitch, creditSwitch, setAutoReplaceTerms]);
+    }, [replaceDict, switchDict, setAutoReplaceTerms]);
 
-    useEffect(() => {
-        if (Object.keys(autoReplaceTerms).length === 0 && autoReplaceTermsResetRef.current !== autoReplaceTerms) {
-            // clear button was pressed, reset all fields
-            setReplaceName("");
-            setReplaceLocation("");
-            setReplaceOrg("");
-            setReplacePhone("");
-            setReplacePostal("");
-            setReplaceCredit("")
-            setNameSwitch(false);
-            setLocationSwitch(false);
-            setOrgSwitch(false);
-            setPhoneSwitch(false);
-            setPostalSwitch(false);
-            setCreditSwitch(false);
-        } else {
-            autoReplaceTermsResetRef.current = autoReplaceTerms;
-        }
-    }, [autoReplaceTerms]);
-
+    // useEffect(() => {
+    //     if (Object.keys(autoReplaceTerms).length === 0 && autoReplaceTermsResetRef.current !== autoReplaceTerms) {
+    //         console.log("second true")
+    //         // clear button was pressed, reset all fields
+    //         setReplaceDict({"names": "", "location": "", "org": "", "phone_number": "", "postal_code": "", "credit_card": ""})
+    //         setSwitchDict({"names": false, "location": false, "org": false, "phone_number": false, "postal_code": false, "credit_card": false})
+    //     } else {
+    //         autoReplaceTermsResetRef.current = autoReplaceTerms;
+    //     }
+    // }, [autoReplaceTerms]);
 
     return (
         <AutoParametersStyled>
             <h3>Auto-Replace Parameters</h3>
             <div className="mb-4">
                 <Form>
-                    <Form.Group>
+                    {Object.keys(switchDict).map((replaceKey, i) => {
+                        return(<Form.Group key={i}>  
+                        {/* for each element in list, add unique key, value is the index of key in switchDict */}
+                            <Category>
+                                <h6>{nameDict[replaceKey]}</h6>
+                                <Form.Check 
+                                    type="switch"
+                                    id="switch-1"
+                                    label=""
+                                    checked={switchDict[replaceKey]}
+                                    onChange={() => setSwitchDict({...switchDict, [replaceKey]: !switchDict[replaceKey] })}
+                                />
+                            </Category>
+                            {switchDict[replaceKey] ? 
+                            <Form.Control
+                                type="text"
+                                value={replaceDict[replaceKey]}
+                                onChange={(e) => setReplaceDict({...replaceDict, [replaceKey]: e.target.value })}
+                                placeholder="Enter replacement"
+                                className="mb-2"
+                            /> : <></>}
+                        </Form.Group>)
+                     })
+                    }
+                    {/* <Form.Group>
                         <Category>
                             <h6>Names</h6>
                             <Form.Check 
@@ -204,7 +212,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
                             />
                             </>
                         : <></>}
-                    </Form.Group>
+                    </Form.Group> */}
                     {/* <Button type="submit" className="float-end">Add</Button> */}
                 </Form>
 
