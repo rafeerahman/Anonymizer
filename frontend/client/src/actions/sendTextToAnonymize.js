@@ -15,7 +15,7 @@ const convertToQueryString = (params) => {
  * 
  * @param {text data} data 
  */
-export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, notify) => {
+export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, notify, setLoading) => {
     if (file) {
         const URL = `${API_HOST + ENDPOINT_TEXT_FILE}`
         let data = new FormData()
@@ -26,6 +26,8 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
             method: 'post',
             body: data // FormData headers are included automatically. 
         })
+
+        setLoading(true)
 
         fetch(request)
         .then(res => {
@@ -45,6 +47,9 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
         })
         .catch(e => {
             notify(ENV.errors.requestFailed)
+        })
+        .finally(() => {
+            setLoading(false)
         })
     } else {
         const queryParams = {
@@ -67,6 +72,8 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
             }
         })
         
+        setLoading(true)
+
         fetch(request)
         .then((res) => {
             if (res.status !== 200) {
@@ -85,6 +92,9 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
         })
         .catch(e => {
             notify(ENV.errors.requestFailed)
+        })
+        .finally(() => {
+            setLoading(false)
         })
     }   
 }   

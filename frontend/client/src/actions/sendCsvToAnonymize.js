@@ -3,7 +3,7 @@ import ENV from '../config.js'
 const API_HOST = ENV.api_host 
 const ENDPOINT = ENV.endpoints.csv_file_replace
 
-export const sendCsvToAnonymize = (file, replaceTerms, setResponseText, notify) => {
+export const sendCsvToAnonymize = (file, replaceTerms, setResponseText, notify, setLoading) => {
     const URL = `${API_HOST + ENDPOINT}`
     let data = new FormData()
     data.append('inputFile', file)
@@ -13,6 +13,8 @@ export const sendCsvToAnonymize = (file, replaceTerms, setResponseText, notify) 
         method: 'post',
         body: data
     })
+
+    setLoading(true)
 
     fetch(request)
     .then(res => {
@@ -33,5 +35,8 @@ export const sendCsvToAnonymize = (file, replaceTerms, setResponseText, notify) 
     .catch(e => {
         console.log(e)
         notify(ENV.errors.requestFailed)
+    })
+    .finally(() => {
+        setLoading(false)
     })
 }

@@ -1,11 +1,13 @@
 import React from 'react'
+import { Spinner } from 'react-bootstrap'
 import styled from 'styled-components'
 
-export default function SubmitButton({onClick}) {
+export default function SubmitButton({loading, onClick}) {
   return (
     <BtnStyled>
-        <button onClick={onClick}>
-            Submit
+        <button
+          disabled={loading} onClick={onClick}>
+            {loading ? <Spinner animation='border' size='sm'/> : 'Submit'}
         </button>
     </BtnStyled>
 
@@ -26,6 +28,7 @@ const BtnStyled = styled.div`
         margin-top: 1rem;
         transition: background-color 0.3s;
     }
+
 
     button:hover {
       background-color: #127D63;

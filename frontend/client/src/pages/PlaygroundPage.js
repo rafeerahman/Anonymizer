@@ -16,6 +16,7 @@ import Col from 'react-bootstrap/Col';
 import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
 import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
 import AutoButton from '../components/AutoButton.js'
+import ConfirmDialog from '../components/ConfirmDialog.js'
 
 const endpoints = [
   {
@@ -48,6 +49,7 @@ export default function PlaygroundPage() {
   })
   const [responseText, setResponseText] = useState("")
   const [useAuto, setUseAuto] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const readFile = () => {
     let reader = new FileReader()
@@ -90,9 +92,9 @@ export default function PlaygroundPage() {
     }
 
     if (currentFileType.fileType === "text/plain") {
-      sendTextToAnonymize(text, file, replaceTerms, setResponseText, notify)
+      sendTextToAnonymize(text, file, replaceTerms, setResponseText, notify, setLoading)
     } else if (currentFileType.fileType === "text/csv") {
-      sendCsvToAnonymize(file, replaceTerms, setResponseText, notify);
+      sendCsvToAnonymize(file, replaceTerms, setResponseText, notify, setLoading);
     }
   }
 
@@ -128,6 +130,19 @@ export default function PlaygroundPage() {
       readFile() // sets textarea to contents of file. 
     }
   }, [file])
+  
+  // Leaving page or refresh confirmation.
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      const message = "Are you sure you want to leave? All provided data will be lost."
+      e.returnValue = message
+      return message
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => {window.removeEventListener('beforeunload', handleBeforeUnload)}
+  }, []);
 
   return (
     <>
@@ -167,6 +182,7 @@ export default function PlaygroundPage() {
         <Col md={8}>
           <TextArea
             file = {file}
+            fileType = {currentFileType.fileType}
             text = {text}
             setText = {setText}
           />
@@ -200,16 +216,18 @@ export default function PlaygroundPage() {
                   setResponseText={setResponseText}
                 />
               }
-              {/* if responseText == "", do not display download output button */
+              { /* if responseText == "", do not display download output button */
                 responseText !== "" && 
                 <BtnStyled>
                   <button onClick={() => handleDownload()}>download output</button>
                 </BtnStyled>
               }
-              { /* if no endpoint is selected, do not display submit button */
+              { 
+                /* if no endpoint is selected, do not display submit button */
                 currentFileType.fileType !== "" &&  
-                <SubmitButton onClick={handleSubmit}/>
+                <SubmitButton loading={loading} onClick={handleSubmit}/>
               }
+              
             </ButtonsContainer>
         </Col>
       </Row>
@@ -223,7 +241,7 @@ const ButtonsContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 990px) {
     justify-content: center;
   }

@@ -86,7 +86,7 @@ const BtnStyled = styled.div`
       right: 0;
       width: 30px;
       height: 100%;
-      background-color: red;
+      background-color: #D34643;
       color: white;
       border: none;
       border-radius: 0 10px 10px 0;
@@ -95,6 +95,11 @@ const BtnStyled = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background-color 0.3s;
+    }
+
+    .clear-file:hover {
+      background-color: #B13C39;
     }
 
 `
