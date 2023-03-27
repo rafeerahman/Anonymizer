@@ -7,9 +7,15 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
     const [replaceName, setReplaceName] = useState(autoReplaceTerms.names ? autoReplaceTerms.names : "");
     const [replaceLocation, setReplaceLocation] = useState(autoReplaceTerms.location ? autoReplaceTerms.location : "");
     const [replaceOrg, setReplaceOrg] = useState(autoReplaceTerms.org ? autoReplaceTerms.org : "");
+    const [replacePhone, setReplacePhone] = useState(autoReplaceTerms.phone_number ? autoReplaceTerms.phone_number : "")
+    const [replacePostal, setReplacePostal] = useState(autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code : "")
+    const [replaceCredit, setReplaceCredit] = useState(autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : "")
     const [nameSwitch, setNameSwitch] = useState(autoReplaceTerms.names);
     const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.location);
     const [orgSwitch, setOrgSwitch] = useState(autoReplaceTerms.org);
+    const [phoneSwitch, setPhoneSwitch] = useState(autoReplaceTerms.phone_number);
+    const [postalSwitch, setPostalSwitch] = useState(autoReplaceTerms.postal_code);
+    const [creditSwitch, setCreditSwitch] = useState(autoReplaceTerms.credit_card);
     const autoReplaceTermsResetRef = useRef({});
     
     useEffect(() => {
@@ -25,8 +31,17 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
         if (orgSwitch) {
             newTerms["org"] = replaceOrg;
         }
+        if (phoneSwitch) {
+            newTerms["phone_number"] = replacePhone;
+        }
+        if (postalSwitch) {
+            newTerms["postal_code"] = replacePostal;
+        }
+        if (creditSwitch) {
+            newTerms["credit_card"] = replaceCredit;
+        }
         setAutoReplaceTerms(newTerms);
-    }, [replaceName, replaceLocation, replaceOrg, nameSwitch, locationSwitch, orgSwitch, setAutoReplaceTerms]);
+    }, [replaceName, replaceLocation, replaceOrg, replacePhone, replacePostal, replaceCredit, nameSwitch, locationSwitch, orgSwitch, phoneSwitch, postalSwitch, creditSwitch, setAutoReplaceTerms]);
 
     useEffect(() => {
         if (Object.keys(autoReplaceTerms).length === 0 && autoReplaceTermsResetRef.current !== autoReplaceTerms) {
@@ -34,9 +49,15 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
             setReplaceName("");
             setReplaceLocation("");
             setReplaceOrg("");
+            setReplacePhone("");
+            setReplacePostal("");
+            setReplaceCredit("")
             setNameSwitch(false);
             setLocationSwitch(false);
             setOrgSwitch(false);
+            setPhoneSwitch(false);
+            setPostalSwitch(false);
+            setCreditSwitch(false);
         } else {
             autoReplaceTermsResetRef.current = autoReplaceTerms;
         }
@@ -109,6 +130,75 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
                                 type="text"
                                 value={replaceOrg}
                                 onChange={(e) => setReplaceOrg(e.target.value)}
+                                placeholder="Enter replacement organization"
+                                className="mb-2"
+                            />
+                            </>
+                        : <></>}
+                    </Form.Group>
+                    <Form.Group>
+                        <Category>
+                            <h6>Phone Number</h6>
+                            <Form.Check 
+                                type="switch"
+                                id="phone-switch"
+                                label=""
+                                checked={phoneSwitch}
+                                onChange={() => setPhoneSwitch(!phoneSwitch)}
+                            />
+                        </Category>
+                        {phoneSwitch ?
+                            <>
+                            <Form.Control
+                                type="text"
+                                value={replacePhone}
+                                onChange={(e) => setReplacePhone(e.target.value)}
+                                placeholder="Enter replacement Phone number"
+                                className="mb-2"
+                            />
+                            </>
+                        : <></>}
+                    </Form.Group>
+                    <Form.Group>
+                        <Category>
+                            <h6>Postal Code</h6>
+                            <Form.Check 
+                                type="switch"
+                                id="postal-switch"
+                                label=""
+                                checked={postalSwitch}
+                                onChange={() => setPostalSwitch(!postalSwitch)}
+                            />
+                        </Category>
+                        {postalSwitch ?
+                            <>
+                            <Form.Control
+                                type="text"
+                                value={replacePostal}
+                                onChange={(e) => setReplacePostal(e.target.value)}
+                                placeholder="Enter replacement Postal Code"
+                                className="mb-2"
+                            />
+                            </>
+                        : <></>}
+                    </Form.Group>
+                    <Form.Group>
+                        <Category>
+                            <h6>Credit Card</h6>
+                            <Form.Check 
+                                type="switch"
+                                id="credit-switch"
+                                label=""
+                                checked={creditSwitch}
+                                onChange={() => setCreditSwitch(!creditSwitch)}
+                            />
+                        </Category>
+                        {creditSwitch ?
+                            <>
+                            <Form.Control
+                                type="text"
+                                value={replaceCredit}
+                                onChange={(e) => setReplaceCredit(e.target.value)}
                                 placeholder="Enter replacement organization"
                                 className="mb-2"
                             />
