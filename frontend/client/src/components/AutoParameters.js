@@ -4,12 +4,12 @@ import { Form } from 'react-bootstrap';
 import AutoParameterItem from './AutoParameterItem';
 
 const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
-    const [replaceName, setReplaceName] = useState("");
-    const [replaceLocation, setReplaceLocation] = useState("");
-    const [replaceOrg, setReplaceOrg] = useState("");
-    const [nameSwitch, setNameSwitch] = useState(false);
-    const [locationSwitch, setLocationSwitch] = useState(false);
-    const [orgSwitch, setOrgSwitch] = useState(false);
+    const [replaceName, setReplaceName] = useState(autoReplaceTerms.names ? autoReplaceTerms.names : "");
+    const [replaceLocation, setReplaceLocation] = useState(autoReplaceTerms.locations ? autoReplaceTerms.locations : "");
+    const [replaceOrg, setReplaceOrg] = useState(autoReplaceTerms.org ? autoReplaceTerms.org : "");
+    const [nameSwitch, setNameSwitch] = useState(autoReplaceTerms.names ? true : false);
+    const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.locations ? true : false);
+    const [orgSwitch, setOrgSwitch] = useState(autoReplaceTerms.org ? true : false);
     const autoReplaceTermsResetRef = useRef({});
     
     useEffect(() => {
