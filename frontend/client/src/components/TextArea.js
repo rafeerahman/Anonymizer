@@ -2,9 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 
 export default function TextArea({file, fileType, text, setText}) {
-  console.log(file)
-  console.log('yo')
-  
   return (
     <TextAreaStyled>
         <textarea

@@ -57,7 +57,6 @@ export default function PlaygroundPage() {
     reader.onload = function(e) {
         let content = reader.result
         setText(content)
-        console.log('Successfully read file')
     }
     reader.readAsText(file)
     setResponseText("") //to reset download button/output
@@ -114,7 +113,6 @@ export default function PlaygroundPage() {
 
   const handleDownload = () => {
     const element = document.createElement("a");
-    console.log(currentFileType.fileType)
     const file = new Blob([responseText], {type: currentFileType.fileType});
     element.href = URL.createObjectURL(file);
     if (currentFileType.fileType === "text/csv") {

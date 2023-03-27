@@ -20,7 +20,6 @@ export default function UploadFileButton({fileName, setFileName, file, setFile, 
           accept={currentFileType.fileType}
           disabled={currentFileType.fileType.length === 0}
           onChange={e => {
-            console.log(e.target.files[0].type)
             if (e.target.files[0].type !== currentFileType.fileType) {
               notify(`Please upload a valid ${currentFileType.fileType} file`)
             }

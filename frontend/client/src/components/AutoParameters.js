@@ -7,9 +7,9 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
     const [replaceName, setReplaceName] = useState(autoReplaceTerms.names ? autoReplaceTerms.names : "");
     const [replaceLocation, setReplaceLocation] = useState(autoReplaceTerms.locations ? autoReplaceTerms.locations : "");
     const [replaceOrg, setReplaceOrg] = useState(autoReplaceTerms.org ? autoReplaceTerms.org : "");
-    const [nameSwitch, setNameSwitch] = useState(autoReplaceTerms.names ? true : false);
-    const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.locations ? true : false);
-    const [orgSwitch, setOrgSwitch] = useState(autoReplaceTerms.org ? true : false);
+    const [nameSwitch, setNameSwitch] = useState(autoReplaceTerms.names);
+    const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.locations);
+    const [orgSwitch, setOrgSwitch] = useState(autoReplaceTerms.org);
     const autoReplaceTermsResetRef = useRef({});
     
     useEffect(() => {
