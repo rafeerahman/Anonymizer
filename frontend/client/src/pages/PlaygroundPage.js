@@ -31,7 +31,8 @@ const endpoints = [
 const errors = {
   missingCsvFile: 'You must upload a CSV file',
   missingReplacementParams: 'You must input atleast one replacement parameter',
-  missingText: 'You must input some text'
+  missingText: 'You must input some text',
+  missingAutoReplacementParams: 'You must input at least one replacement parameter for auto replace'
 }
 
 const notify = (message) => toast(message);
@@ -74,12 +75,18 @@ export default function PlaygroundPage() {
         flag = true
       } 
     }
-
-    if (Object.keys(replaceTerms).length === 0) {
-      notify(errors.missingReplacementParams)
-      flag = true
+    if (!useAuto){
+      if (Object.keys(replaceTerms).length === 0) {
+        notify(errors.missingReplacementParams)
+        flag = true
+      }
     }
-    
+    else{
+      if (Object.keys(autoReplaceTerms).length === 0) {
+        notify(errors.missingAutoReplacementParams)
+        flag = true
+      }
+    }
     return flag
   }
 
