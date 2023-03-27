@@ -7,8 +7,6 @@ import Row from 'react-bootstrap/Row';
 export default function AutoButton({useAuto, setUseAuto}){
     return (
         <>
-          <Row>
-            <Col>
               <Buttons>
                 <label className="custom-example">
                   <input
@@ -23,8 +21,6 @@ export default function AutoButton({useAuto, setUseAuto}){
                 </label>
                 <InfoModal/>
               </Buttons>
-            </Col>
-          </Row>
         </>
       )
   }
