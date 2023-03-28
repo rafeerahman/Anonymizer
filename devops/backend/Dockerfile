@@ -23,7 +23,7 @@ RUN . venv/bin/activate
 
 RUN ls -la
 
-RUN pip install -r ./backend/requirements.txt
+RUN pip install -r ./requirements.txt
 
 WORKDIR /var/www/backend/anonymizer/
 

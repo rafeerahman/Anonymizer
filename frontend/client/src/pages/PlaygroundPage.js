@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import DropdownMenu from '../components/Dropdown.js'
 import MainNavbar from '../components/Navbars/MainNavbar.js'
 import Parameters from '../components/Parameters.js'
+import AutoParameters from '../components/AutoParameters.js'
 import SubmitButton from '../components/SubmitButton.js'
 import TextArea from '../components/TextArea.js'
 import UploadFileButton from '../components/UploadFileButton.js'
-import ExampleButton from '../components/ExampleButton.js'
+import ExampleOrResetButton from '../components/ExampleOrResetButton.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Container from 'react-bootstrap/Container';
@@ -14,16 +15,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
 import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
+import AutoButton from '../components/AutoButton.js'
+import ConfirmDialog from '../components/ConfirmDialog.js'
 
 const endpoints = [
   {
     displayName: "Text Replace",
-    URL: "endpoint-url-for/text-replace",
     fileType: "text/plain"
   },
   {
     displayName: "CSV Replace",
-    URL: "endpoint-url-for/csv-replace",
     fileType: "text/csv"
   }
 ]
@@ -31,29 +32,31 @@ const endpoints = [
 const errors = {
   missingCsvFile: 'You must upload a CSV file',
   missingReplacementParams: 'You must input atleast one replacement parameter',
-  missingText: 'You must input some text'
+  missingText: 'You must input some text',
+  missingAutoReplacementParams: 'You must input at least one replacement parameter for auto replace'
 }
 
 const notify = (message) => toast(message);
 
 export default function PlaygroundPage() {
   const [replaceTerms, setReplaceTerms] = useState({})
+  const [autoReplaceTerms, setAutoReplaceTerms] = useState({})
   const [text, setText] = useState("")
-  const [fileName, setFileName] = useState("upload file")
+  const [fileName, setFileName] = useState("Upload file")
   const [file, setFile] = useState(undefined)
-  const [currentEndpoint, setCurrentEndpoint] = useState({
-    displayName: "Select Endpoint",
-    URL: "",
+  const [currentFileType, setCurrentFileType] = useState({
+    displayName: "Select File Type",
     fileType: ""
   })
   const [responseText, setResponseText] = useState("")
+  const [useAuto, setUseAuto] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const readFile = () => {
     let reader = new FileReader()
     reader.onload = function(e) {
         let content = reader.result
         setText(content)
-        console.log('Successfully read file')
     }
     reader.readAsText(file)
     setResponseText("") //to reset download button/output
@@ -62,23 +65,29 @@ export default function PlaygroundPage() {
   const handleInputErrors = () => {
     let flag = false;
 
-    if (currentEndpoint.fileType === 'text/plain') {
+    if (currentFileType.fileType === 'text/plain') {
       if (text.length === 0) {
         notify(errors.missingText)
         flag = true
       }
-    } else if (currentEndpoint.fileType === 'text/csv') {
+    } else if (currentFileType.fileType === 'text/csv') {
       if (!file) {
         notify(errors.missingCsvFile)
         flag = true
       } 
     }
-
-    if (Object.keys(replaceTerms).length === 0) {
-      notify(errors.missingReplacementParams)
-      flag = true
+    if (!useAuto){
+      if (Object.keys(replaceTerms).length === 0) {
+        notify(errors.missingReplacementParams)
+        flag = true
+      }
     }
-    
+    else{
+      if (Object.keys(autoReplaceTerms).length === 0) {
+        notify(errors.missingAutoReplacementParams)
+        flag = true
+      }
+    }
     return flag
   }
 
@@ -88,29 +97,25 @@ export default function PlaygroundPage() {
       return
     }
 
-    if (currentEndpoint.fileType === "text/plain") {
-      sendTextToAnonymize(text, file, replaceTerms, setResponseText, notify)
-    } else if (currentEndpoint.fileType === "text/csv") {
-      sendCsvToAnonymize(file, replaceTerms, setResponseText, notify);
+    if (currentFileType.fileType === "text/plain") {
+      sendTextToAnonymize(text, file, replaceTerms, setResponseText, notify, setLoading)
+    } else if (currentFileType.fileType === "text/csv") {
+      sendCsvToAnonymize(file, replaceTerms, setResponseText, notify, setLoading);
     }
   }
 
   const resetParams = () => {
     setText("")
-    setFileName("upload file")
-    if (file) {
-      setFile(undefined)
-    }
+    setFile(undefined)
     // setReplaceTerms({})
     setResponseText("") //to reset download button/output 
   }
 
   const handleDownload = () => {
     const element = document.createElement("a");
-    console.log(currentEndpoint.fileType)
-    const file = new Blob([responseText], {type: currentEndpoint.fileType});
+    const file = new Blob([responseText], {type: currentFileType.fileType});
     element.href = URL.createObjectURL(file);
-    if (currentEndpoint.fileType === "text/csv") {
+    if (currentFileType.fileType === "text/csv") {
       element.download = "output.csv";
     } else {
       element.download = "output.txt";
@@ -120,14 +125,29 @@ export default function PlaygroundPage() {
   }
 
   useEffect(() => {
-    setFileName(`upload ${currentEndpoint.fileType} file`)
-  }, [currentEndpoint])
+    if (!file) {
+      setFileName(`Upload ${currentFileType.fileType} file`)
+    }
+  }, [currentFileType, file])
 
   useEffect(() => {
     if (file) {
       readFile() // sets textarea to contents of file. 
     }
   }, [file])
+  
+  // Leaving page or refresh confirmation.
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      const message = "Are you sure you want to leave? All provided data will be lost."
+      e.returnValue = message
+      return message
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => {window.removeEventListener('beforeunload', handleBeforeUnload)}
+  }, []);
 
   return (
     <>
@@ -139,24 +159,27 @@ export default function PlaygroundPage() {
             <DropdownStyled>
               <DropdownMenu className="dropDown"
                 endpoints={endpoints}
-                currentEndpoint={currentEndpoint}
-                setCurrentEndpoint={setCurrentEndpoint}
+                currentFileType={currentFileType}
+                setCurrentFileType={setCurrentFileType}
                 resetParams={resetParams}
               />
             </DropdownStyled>
           </Col>
           <Col md={4}>
-            <ExampleButton
+            <ExampleOrResetButton
               text={text}
               setText={setText}
               file={file}
               setFile={setFile}
               resetParams={resetParams}
+              autoReplaceTerms={autoReplaceTerms}
+              setAutoReplaceTerms={setAutoReplaceTerms}
               replaceTerms={replaceTerms}
               setReplaceTerms={setReplaceTerms}
-              setCurrentEndpoint={setCurrentEndpoint}
+              setCurrentFileType={setCurrentFileType}
               setResponseText={setResponseText}
             />
+            <AutoButton useAuto={useAuto} setUseAuto={setUseAuto}/>
           <ToastContainer />
           </Col>
         </Row>
@@ -164,42 +187,52 @@ export default function PlaygroundPage() {
         <Col md={8}>
           <TextArea
             file = {file}
+            fileType = {currentFileType.fileType}
             text = {text}
             setText = {setText}
           />
         </Col>
         <Col md={4}>
+          {/* if Else statement, if useAuto, display autoParameters, otherwise display Parameters */
+            useAuto ?
+            <AutoParameters
+            autoReplaceTerms={autoReplaceTerms}
+            setAutoReplaceTerms={setAutoReplaceTerms}
+          /> : 
           <Parameters
-            replaceTerms={replaceTerms}
-            setReplaceTerms={setReplaceTerms}
-          />
+          replaceTerms={replaceTerms}
+          setReplaceTerms={setReplaceTerms}
+        />
+          }
         </Col>
       </Row>
       <Row>
         <Col md={8}>
           <ButtonsContainer>
               {/* if Else statement, if endpoint.filetype == "", do not display button */
-                currentEndpoint.fileType !== "" && 
+                currentFileType.fileType !== "" && 
                 <UploadFileButton className="uploadBtn" 
                   fileName={fileName}
                   file={file}
                   setFile={setFile}
                   setFileName={setFileName}
                   setText={setText}
-                  currentEndpoint={currentEndpoint}
+                  currentFileType={currentFileType}
                   setResponseText={setResponseText}
                 />
               }
-              {/* if responseText == "", do not display download output button */
+              { /* if responseText == "", do not display download output button */
                 responseText !== "" && 
                 <BtnStyled>
                   <button onClick={() => handleDownload()}>download output</button>
                 </BtnStyled>
               }
-              { /* if no endpoint is selected, do not display submit button */
-                currentEndpoint.fileType !== "" &&  
-                <SubmitButton onClick={handleSubmit}/>
+              { 
+                /* if no endpoint is selected, do not display submit button */
+                currentFileType.fileType !== "" &&  
+                <SubmitButton loading={loading} onClick={handleSubmit}/>
               }
+              
             </ButtonsContainer>
         </Col>
       </Row>
@@ -213,7 +246,7 @@ const ButtonsContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 990px) {
     justify-content: center;
   }

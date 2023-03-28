@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function TextArea({file, text, setText}) {
+export default function TextArea({file, fileType, text, setText}) {
   return (
     <TextAreaStyled>
         <textarea
-          disabled={file}
+          disabled={file || fileType === "text/csv"}
           maxLength="500"
-          placeholder='Enter text here'
+          placeholder = {fileType === "text/csv" ? 'You must upload a CSV file to continue' : 'Enter text'}
           value={text}
           onChange={e => (setText(e.target.value))}>
         </textarea>

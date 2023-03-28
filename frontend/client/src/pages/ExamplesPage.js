@@ -20,11 +20,14 @@ export default function ExamplesPage() {
   `;
 
   const textAPIContent = `
-    <b>Inputted text</b>
+    <b>Expected Input</b>
+    <p>Any variation of text, including multi-line text.</p>
+    <h5><b>Example</b></h5>
+    <b>Inputted Text</b>
     <p>"My name is Jack, and you can reach me at 647-123-321"</p>
-    <b>Replacement parameters</b>
+    <b>Replacement Parameters</b>
     <p>Replace "Jack" with "NAME", and replace "647-123-321" with "XXX-XXX-XXX"</p>
-    <b>Expected response</b>
+    <b>Expected Response</b>
     <p>"My name is NAME, and you can reach me at XXX-XXX-XXX"</p>
     <b>API Request Example</b>
   `
@@ -43,6 +46,9 @@ export default function ExamplesPage() {
   `;
 
   const csvAPIContent = `
+    <b>Expected Input</b>
+    <p>A comma seperated value (CSV) file.</p>
+    <h5><b>Example</b></h5>
     <b>Inputted CSV file</b>
     <p>Name, City, Occupation</p>
     <p>John, Toronto, Student</p>
