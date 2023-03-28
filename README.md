@@ -70,7 +70,7 @@ pip install pipenv
 python -m virtualenv venv
 .\venv\Scripts\activate 
 ```
-There are other installations that need to be made in the virtual environment. These can all be found in `backend/requirements.txt`:
+There are other installations that need to be made in the virtual environment. These can all be found in `backend/requirements.txt`. You must comment out the 'uwsgi' in the requirements.txt.
 ```bash
 pip install -r backend/requirements.txt
 cd backend/anonymizer/
