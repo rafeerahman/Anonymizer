@@ -54,10 +54,10 @@ class TXTFileReplace(Resource):
         #     autoReplace = False
         if autoReplace:
             replaceTerms = None
-            autoReplaceTerms = eval(args["autoReplaceTerms"])
+            autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
         else:
             autoReplaceTerms = None
-            replaceTerms = eval(args["replaceTerms"])
+            replaceTerms = eval(args["replaceTerms"] or "{}")
 
         print(inputTextFile)
         #  (not autoReplace and not replaceTerms) or not ( autoReplace and not autoReplaceTerms)
