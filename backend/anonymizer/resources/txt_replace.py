@@ -62,7 +62,7 @@ class TXTReplace(Resource):
 
             # ensure match was found
             if not cleanedAutoReplaceTerms:
-                return {"message": "unable to detect any replaceable terms"}, 400
+                return {"message": "We were unable to detect any replaceable terms"}, 400
 
             # apply found terms to specified mapping, and then apply mapping to inputText
             replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
