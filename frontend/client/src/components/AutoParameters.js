@@ -5,6 +5,8 @@ import AutoParameterItem from './AutoParameterItem';
 import _ from 'lodash';
 
 const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
+    // the keys must be the same in switchDict, replaceDict and nameDict for the code below to work properly
+
     const [switchDict, setSwitchDict] = useState(
         {
             "names": autoReplaceTerms.names ? true : false,
@@ -42,6 +44,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
         // loop through keys of switchDict and set the values of newTerms according to value with same key in ReplaceDict
         Object.keys(switchDict).forEach(key => {
             if (switchDict[key]){
+                // if the switch variable for that key is true, add the replace value of that key to newTerms
                 newTerms[key] = replaceDict[key];
             }
         })
@@ -66,7 +69,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
                 <Form>
                     {Object.keys(switchDict).map((replaceKey, i) => {
                         return(<Form.Group key={i}>  
-                        {/* for each element in list, add unique key, value is the index of key in switchDict */}
+                        {/* for each element in list, add unique key, value is the index i of key in switchDict */}
                             <Category>
                                 <h6>{nameDict[replaceKey]}</h6>
                                 <Form.Check 
