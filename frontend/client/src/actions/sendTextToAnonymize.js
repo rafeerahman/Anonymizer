@@ -15,12 +15,16 @@ const convertToQueryString = (params) => {
  * 
  * @param {text data} data 
  */
-export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, notify, setLoading) => {
+export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, notify, setLoading, useAuto, autoReplaceTerms) => {
     if (file) {
         const URL = `${API_HOST + ENDPOINT_TEXT_FILE}`
         let data = new FormData()
         data.append('inputTextFile', file)
-        data.append('replaceTerms', JSON.stringify(replaceTerms))
+        data.append('replaceTerms', JSON.stringify(replaceTerms)) 
+        data.append('autoReplace', useAuto) // 
+        if (useAuto) { 
+            data.append('autoReplaceTerms', JSON.stringify(autoReplaceTerms))
+        }
 
         const request = new Request(URL, {
             method: 'post',
@@ -52,20 +56,21 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
             setLoading(false)
         })
     } else {
-        const queryParams = {
-            inputText: encodeURIComponent(text),
-            replaceTerms: JSON.stringify(replaceTerms)
-        };
-
-        const queryString = convertToQueryString(queryParams)
         const URL = `${API_HOST + ENDPOINT_TEXT}`;
         
+        let body = {
+            inputText: text,
+            replaceTerms: replaceTerms,
+            autoReplace: useAuto // Boolean, true or false
+        }
+
+        if (useAuto) {
+            body.autoReplaceTerms = autoReplaceTerms
+        }
+
         const request = new Request(URL, {
             method: 'post',
-            body: JSON.stringify({
-                inputText: text,
-                replaceTerms: replaceTerms
-            }),
+            body: JSON.stringify(body),
             headers: {
                 Accept: "application/json, text/plain, */*",
                 "Content-Type": "application/json"
