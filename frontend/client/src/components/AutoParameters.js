@@ -2,120 +2,95 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Form } from 'react-bootstrap';
 import AutoParameterItem from './AutoParameterItem';
+import _ from 'lodash';
 
 const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
-    const [replaceName, setReplaceName] = useState(autoReplaceTerms.names ? autoReplaceTerms.names : "");
-    const [replaceLocation, setReplaceLocation] = useState(autoReplaceTerms.location ? autoReplaceTerms.location : "");
-    const [replaceOrg, setReplaceOrg] = useState(autoReplaceTerms.org ? autoReplaceTerms.org : "");
-    const [nameSwitch, setNameSwitch] = useState(autoReplaceTerms.names);
-    const [locationSwitch, setLocationSwitch] = useState(autoReplaceTerms.location);
-    const [orgSwitch, setOrgSwitch] = useState(autoReplaceTerms.org);
+    // the keys must be the same in switchDict, replaceDict and nameDict for the code below to work properly
+
+    const [switchDict, setSwitchDict] = useState(
+        {
+            "names": autoReplaceTerms.names ? true : false,
+            "location": autoReplaceTerms.location ? true : false,
+            "org": autoReplaceTerms.org ? true : false,
+            "phone_number": autoReplaceTerms.phone_number ? true : false,
+            "postal_code": autoReplaceTerms.postal_code ? true : false,
+            "credit_card": autoReplaceTerms.credit_card ? true : false
+        }
+    )
+    const [replaceDict, setReplaceDict] = useState(
+        {
+            "names": autoReplaceTerms.names ? autoReplaceTerms.names : "",
+            "location": autoReplaceTerms.location ? autoReplaceTerms.location : "",
+            "org": autoReplaceTerms.org ? autoReplaceTerms.org : "",
+            "phone_number": autoReplaceTerms.phone_number ? autoReplaceTerms.phone_number : "",
+            "postal_code": autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code : "",
+            "credit_card": autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : ""
+        }
+    )
     const autoReplaceTermsResetRef = useRef({});
-    
+
+    let nameDict = {
+        "names":  "Names",
+        "location": "Locations",
+        "org": "Organizations",
+        "phone_number": "Phone Numbers",
+        "postal_code": "Postal Code",
+        "credit_card": "Credit Card"
+    }
+
     useEffect(() => {
         // update autoReplaceTerms when any fields are updated
         let newTerms = {};
-    
-        if (nameSwitch) {
-            newTerms["names"] = replaceName;
-        }
-        if (locationSwitch) {
-            newTerms["location"] = replaceLocation;
-        }
-        if (orgSwitch) {
-            newTerms["org"] = replaceOrg;
-        }
+        // loop through keys of switchDict and set the values of newTerms according to value with same key in ReplaceDict
+        Object.keys(switchDict).forEach(key => {
+            if (switchDict[key]){
+                // if the switch variable for that key is true, add the replace value of that key to newTerms
+                newTerms[key] = replaceDict[key];
+            }
+        })
         setAutoReplaceTerms(newTerms);
-    }, [replaceName, replaceLocation, replaceOrg, nameSwitch, locationSwitch, orgSwitch, setAutoReplaceTerms]);
+    }, [replaceDict, switchDict, setAutoReplaceTerms]);
 
     useEffect(() => {
-        if (Object.keys(autoReplaceTerms).length === 0 && autoReplaceTermsResetRef.current !== autoReplaceTerms) {
+        if (Object.keys(autoReplaceTerms).length === 0 && !_.isEqual(autoReplaceTermsResetRef.current, autoReplaceTerms)) {
             // clear button was pressed, reset all fields
-            setReplaceName("");
-            setReplaceLocation("");
-            setReplaceOrg("");
-            setNameSwitch(false);
-            setLocationSwitch(false);
-            setOrgSwitch(false);
+            setReplaceDict({"names": "", "location": "", "org": "", "phone_number": "", "postal_code": "", "credit_card": ""})
+            setSwitchDict({"names": false, "location": false, "org": false, "phone_number": false, "postal_code": false, "credit_card": false})
+            autoReplaceTermsResetRef.current = {};
         } else {
             autoReplaceTermsResetRef.current = autoReplaceTerms;
         }
     }, [autoReplaceTerms]);
-
 
     return (
         <AutoParametersStyled>
             <h3>Auto-Replace Parameters</h3>
             <div className="mb-4">
                 <Form>
-                    <Form.Group>
-                        <Category>
-                            <h6>Names</h6>
-                            <Form.Check 
-                                type="switch"
-                                id="name-switch"
-                                label=""
-                                checked={nameSwitch}
-                                onChange={() => setNameSwitch(!nameSwitch)}
-                            />
-                        </Category>
-                        {nameSwitch ? 
-                        <Form.Control
-                            type="text"
-                            value={replaceName}
-                            onChange={(e) => setReplaceName(e.target.value)}
-                            placeholder="Enter replacement name"
-                            className="mb-2"
-                        /> : <></>}
-                    </Form.Group>
-                    <Form.Group>
-                        <Category>
-                            <h6>Locations</h6>
-                            <Form.Check 
-                                type="switch"
-                                id="location-switch"
-                                label=""
-                                checked={locationSwitch}
-                                onChange={() => setLocationSwitch(!locationSwitch)}
-                            />
-                        </Category>
-
-                        {locationSwitch ?
-                        <>
+                    {Object.keys(switchDict).map((replaceKey, i) => {
+                        return(<Form.Group key={i}>  
+                        {/* for each element in list, add unique key, value is the index i of key in switchDict */}
+                            <Category>
+                                <h6>{nameDict[replaceKey]}</h6>
+                                <Form.Check 
+                                    type="switch"
+                                    id="switch-1"
+                                    label=""
+                                    checked={switchDict[replaceKey]}
+                                    onChange={() => setSwitchDict({...switchDict, [replaceKey]: !switchDict[replaceKey] })}
+                                />
+                            </Category>
+                            {switchDict[replaceKey] ? 
                             <Form.Control
                                 type="text"
-                                value={replaceLocation}
-                                onChange={(e) => setReplaceLocation(e.target.value)}
-                                placeholder="Enter replacement location"
+                                value={replaceDict[replaceKey]}
+                                onChange={(e) => setReplaceDict({...replaceDict, [replaceKey]: e.target.value })}
+                                placeholder="Enter replacement"
                                 className="mb-2"
-                            />
-                        </>
-                        : <></>}
-                    </Form.Group>
-                    <Form.Group>
-                        <Category>
-                            <h6>Organizations</h6>
-                            <Form.Check 
-                                type="switch"
-                                id="org-switch"
-                                label=""
-                                checked={orgSwitch}
-                                onChange={() => setOrgSwitch(!orgSwitch)}
-                            />
-                        </Category>
-                        {orgSwitch ?
-                            <>
-                            <Form.Control
-                                type="text"
-                                value={replaceOrg}
-                                onChange={(e) => setReplaceOrg(e.target.value)}
-                                placeholder="Enter replacement organization"
-                                className="mb-2"
-                            />
-                            </>
-                        : <></>}
-                    </Form.Group>
-                    {/* <Button type="submit" className="float-end">Add</Button> */}
+                            /> : <></>}
+                        </Form.Group>)
+                     })
+                    }
                 </Form>
 
                 <div className="mt-5">
