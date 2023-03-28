@@ -9,7 +9,7 @@ const prod = {
     errors: {
         requestFailed: "Failed to request resource",
         badRequest: "Invalid request. Please try again.",
-        autoReplaceFail: "We were unable to detect any replaceable terms"
+        "630": "We were unable to detect any replaceable terms"
     }
 };
 
@@ -24,7 +24,7 @@ const dev = {
     errors: {
         requestFailed: "Failed to request resource",
         badRequest: "Invalid request. Please try again.",
-        autoReplaceFail: "We were unable to detect any replaceable terms"
+        "630": "We were unable to detect any replaceable terms"
     }
 };
 

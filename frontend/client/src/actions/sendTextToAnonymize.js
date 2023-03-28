@@ -60,7 +60,7 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
             replaceTerms: replaceTerms,
             autoReplace: useAuto // Boolean, true or false
         }
-
+        
         if (useAuto) {
             body.autoReplaceTerms = autoReplaceTerms
         }
@@ -78,18 +78,17 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
 
         fetch(request)
         .then(res => {
-            return res.json().then((data) => {
-                if (res.status !== 200) {
-                    if (data.message) {
-                        notify(data.message);
-                        return Promise.reject(USER_HAS_BEEN_NOTIFIED)
-                    } else {
-                        return Promise.reject(new Error(res.status));
-                    }
+            if (res.status !== 200) {
+                let customStatus = res.status.toString()
+                if (ENV.errors[customStatus]) {
+                    notify(ENV.errors[customStatus]);
+                    return Promise.reject(USER_HAS_BEEN_NOTIFIED)
+                } else {
+                    return Promise.reject(new Error(res.status));
                 }
+            }
 
-                return data;
-            })
+            return res.json()
         })
         .then(data => {
             setResponseText(data.message)
