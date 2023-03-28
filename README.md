@@ -38,6 +38,7 @@ Documents from prior assignments and deliverables are in the `documents` folder.
 
 ### Backend
 Our backend uses Python version 3.10.
+
 ```
 black
 Flask
@@ -49,8 +50,56 @@ markupsafe==2.0.1
 pandas
 ```
 
+#### Local Startup Steps (Linux)
+Firstly, to setup the virtual environment, install pipenv and make the following initializations:
+```bash
+pip install pipenv
+python3 -m virtualenv venv
+source venv/bin/activate
+```
+There are other installations that need to be made in the virtual environment. These can all be found in `backend/requirements.txt`:
+```bash
+pip install -r backend/requirements.txt
+cd backend/anonymizer/
+```
+
+#### Local Startup Steps (Windows)
+Firstly, to setup the virtual environment, install pipenv and make the following initializations:
+```bash
+pip install pipenv
+python -m virtualenv venv
+.\venv\Scripts\activate 
+```
+There are other installations that need to be made in the virtual environment. These can all be found in `backend/requirements.txt`:
+```bash
+pip install -r backend/requirements.txt
+cd backend/anonymizer/
+```
+
+#### Local Running Steps: Development Server
+We have setup both a development and production server. To run the development server, execute the following command:
+```bash
+python3 -m flask run
+```
+For windows, type
+```bash
+python -m flask run
+```
+
+#### Startup Script (Linux)
+This entire setup process is included in the `start.sh` script. Execute the following to run the development server:
+```bash
+source ./start_dev.sh
+```
+Execute the following to run the production server:
+```bash
+source ./start_prod.sh
+```
+
+
 ### Frontend
-TODO: node version
+Node version: v14.17.5
+
 ```
 {
   "name": "client",
@@ -101,7 +150,22 @@ TODO: node version
     ]
   }
 }
+```
 
+#### Local Startup Steps (Windows)
+To begin, you must download the dependencies as mentioned above by using the following commands in your terminal.
+
+```bash
+cd frontend/client
+npm install
+```
+
+#### Local Running Steps
+
+To view our client-side locally, type npm start in the frontend/client directory.
+
+```bash
+npm start
 ```
 
 ## Git/GitHub Workflow
