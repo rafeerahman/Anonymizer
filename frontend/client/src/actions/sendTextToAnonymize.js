@@ -3,11 +3,8 @@ import ENV from '../config.js'
 const API_HOST = ENV.api_host 
 const ENDPOINT_TEXT = ENV.endpoints.text_replace 
 const ENDPOINT_TEXT_FILE = ENV.endpoints.text_file_replace
+const USER_HAS_BEEN_NOTIFIED = "User has been notified"
 
-
-const convertToQueryString = (params) => {
-    return Object.entries(params).map(([key, value]) => `${key}=${value}`).join('&');
-}
 
 /**
  * The max-chars for the textarea is 500. If the user uploaded a file,
@@ -36,7 +33,7 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
         fetch(request)
         .then(res => {
             if (res.status !== 200) {
-                notify("Error " + res.status)
+                notify("Error: " + res.status)
                 return 
             }
 
@@ -80,23 +77,32 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
         setLoading(true)
 
         fetch(request)
-        .then((res) => {
-            if (res.status !== 200) {
-                notify("Error: " + res.status)
-                return 
-            }
+        .then(res => {
+            return res.json().then((data) => {
+                if (res.status !== 200) {
+                    if (data.message) {
+                        notify(data.message);
+                        return Promise.reject(USER_HAS_BEEN_NOTIFIED)
+                    } else {
+                        return Promise.reject(new Error(res.status));
+                    }
+                }
 
-            return res.json();
+                return data;
+            })
         })
         .then(data => {
-            if (!data) {
-                return
-            }
             setResponseText(data.message)
             notify("Success! The output is ready for download.")
         })
         .catch(e => {
-            notify(ENV.errors.requestFailed)
+            if (e === USER_HAS_BEEN_NOTIFIED) {
+                return 
+            } else if (e.message === "400") {
+                notify(ENV.errors.badRequest)
+            } else {
+                notify(ENV.errors.requestFailed)
+            }
         })
         .finally(() => {
             setLoading(false)

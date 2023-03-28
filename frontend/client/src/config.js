@@ -7,7 +7,9 @@ const prod = {
         csv_file_replace: '/api/anonymize/file/csv',
     },
     errors: {
-        requestFailed: "Failed to request resource"
+        requestFailed: "Failed to request resource",
+        badRequest: "Invalid request. Please try again.",
+        autoReplaceFail: "We were unable to detect any replaceable terms"
     }
 };
 
@@ -20,7 +22,9 @@ const dev = {
         csv_file_replace: '/api/anonymize/file/csv',
     },
     errors: {
-        requestFailed: "Failed to request resource"
+        requestFailed: "Failed to request resource",
+        badRequest: "Invalid request. Please try again.",
+        autoReplaceFail: "We were unable to detect any replaceable terms"
     }
 };
 
