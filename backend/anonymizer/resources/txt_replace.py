@@ -40,10 +40,10 @@ class TXTReplace(Resource):
         # collect input
         args = parser.parse_args()
         inputText = args["inputText"]
-        autoReplace = True if args["autoReplace"].lower() == "true" else False  
+        autoReplace = True if args["autoReplace"].lower() == "true" else False
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
-        
+
         # error checking
         if inputText == "":
             return {"message": "Invalid input"}, 400
@@ -63,7 +63,9 @@ class TXTReplace(Resource):
             # ensure match was found
             if not cleanedAutoReplaceTerms:
                 # (Rafee): Changed to custom error code, so we can notify the user of the message on frontend. Might be good to put these in a errors.json file but its fine for now
-                return {"message": "We were unable to detect any replaceable terms"}, 630 
+                return {
+                    "message": "We were unable to detect any replaceable terms"
+                }, 630
 
             # apply found terms to specified mapping, and then apply mapping to inputText
             replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
