@@ -41,6 +41,74 @@
 			"response": []
 		},
 		{
+			"name": "Text test (Auto=false)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputText\": \"Hi my name is Sayna Saynaabzadeh and I work at Goggglee\",\r\n    \"replaceTerms\": {\"Sayna\": \"Name1\", \"Saynaabzadeh\": \"Name2\"},\r\n    \"autoReplace\": false,\r\n    \"autoReplaceTerms\": {\"names\": \"Name\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//api/anonymize/text",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"api",
+						"anonymize",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Text test (Auto=true)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputText\": \"Hi my name is Sayna Saynaabzadeh and I work at Goggglee\",\r\n    \"replaceTerms\": {\"Sayna\": \"Name1\", \"Saynaabzadeh\": \"Name2\"},\r\n    \"autoReplace\": \"true\",\r\n    \"autoReplaceTerms\": {\"names\": \"Name\", \"org\": \"ORGANIZATION\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//api/anonymize/text",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"api",
+						"anonymize",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Non-empty text/ Empty keys",
 			"request": {
 				"method": "POST",
@@ -81,7 +149,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner2, Johhn and I had a great semester working with them!\",\r\n    \"replaceTerms\": {\"Partner1\": \"AnonPartner\", \"John\": \"Classmate\"}\r\n}",
+					"raw": "{\r\n    \"inputText\": \"My favorite partner to work with was Partner2, Johhn and I had a great semester working with them!\",\r\n    \"replaceTerms\": {\"partner2\": \"AnonPartner\", \"John\": \"Classmate\"}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -203,10 +271,118 @@
 							"type": "text"
 						},
 						{
+							"key": "autoReplace",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "autoReplaceTerms",
+							"value": "{\"names\": \"NAME\", \"org\":\"ORGANIZATION\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/txt",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"txt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TextFile test (Auto=true)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
 							"key": "inputTextFile",
-							"value": "\"Sayna jonahan\"",
-							"type": "text",
-							"disabled": true
+							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"type": "file",
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/postman-testing/txt-files/example1.txt"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"George\": \"Name2\", \"george\": \"Partner1\", \"jonathan\": \"Name3\"}",
+							"type": "text"
+						},
+						{
+							"key": "autoReplace",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "autoReplaceTerms",
+							"value": "{\"names\": \"NAME\", \"org\":\"ORGANIZATION\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/txt",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"txt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TextFile test (Auto=false)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputTextFile",
+							"description": "example1.txt in the backend/postman-testing/txt-files folder ",
+							"type": "file",
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/postman-testing/txt-files/example1.txt"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"George\": \"Name2\", \"george\": \"Partner1\", \"jonathan\": \"Name3\"}",
+							"type": "text"
+						},
+						{
+							"key": "autoReplace",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "autoReplaceTerms",
+							"value": "{\"names\": \"NAME\", \"org\":\"ORGANIZATION\"}",
+							"type": "text"
 						}
 					]
 				},

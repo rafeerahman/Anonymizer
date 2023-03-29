@@ -48,10 +48,10 @@ class TXTFileReplace(Resource):
         print(autoReplace)
         print(type(autoReplace))
         # TODO: see if front end can run with boolean
-        # if autoReplace == 'True':
-        #     autoReplace = True
-        # else:
-        #     autoReplace = False
+        if autoReplace == 'True' or autoReplace == 'true':
+            autoReplace = True
+        else:
+            autoReplace = False
         if autoReplace:
             replaceTerms = None
             autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
