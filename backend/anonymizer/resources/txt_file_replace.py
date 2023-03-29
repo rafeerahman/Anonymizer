@@ -44,12 +44,8 @@ class TXTFileReplace(Resource):
     def post(self):
         args = parser.parse_args()
         inputTextFile = args["inputTextFile"]
-        autoReplace = True if args["autoReplace"].lower() == "true" else False
-        print(autoReplace)
-        print(type(autoReplace))
-        # TODO: see if front end can run with boolean
-        if autoReplace == 'True' or autoReplace == 'true':
-            autoReplace = True
+        if args["autoReplace"]:
+            autoReplace = True if args["autoReplace"].lower() == "true" else False
         else:
             autoReplace = False
         if autoReplace:

@@ -600,7 +600,7 @@
 			"response": []
 		},
 		{
-			"name": "TestCSV1",
+			"name": "TestCSV1(Auto=false)",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -616,6 +616,63 @@
 						{
 							"key": "replaceTerms",
 							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"Bob\" :\"Name2\"}",
+							"type": "text"
+						},
+						{
+							"key": "autoReplace",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000//api/anonymize/file/csv",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"",
+						"api",
+						"anonymize",
+						"file",
+						"csv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestCSV1 (Auto=true)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputFile",
+							"description": "example1.csv in the backend/postman-testing/csv-files folder ",
+							"type": "file",
+							"src": "///wsl.localhost/Ubuntu-20.04/home/purplepaw/CSC301/project-17-UofT-T/backend/postman-testing/csv-files/example1.csv"
+						},
+						{
+							"key": "replaceTerms",
+							"value": "{\"Sayna\": \"Name1\", \"Sohrabzadeh\": \"LastName1\", \"Bob\" :\"Name2\"}",
+							"type": "text"
+						},
+						{
+							"key": "autoReplace",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "autoReplaceTerms",
+							"value": "{\"names\": \"NAME\", \"org\": \"ORG\"}",
 							"type": "text"
 						}
 					]

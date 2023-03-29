@@ -77,7 +77,10 @@ class CSVFileReplace(Resource):
         # Collect input
         args = parser.parse_args()
         inputFile = args["inputFile"]
-        autoReplace = True if args["autoReplace"].lower() == "true" else False
+        if args["autoReplace"]:
+            autoReplace = True if args["autoReplace"].lower() == "true" else False
+        else:
+            autoReplace = False
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
 
