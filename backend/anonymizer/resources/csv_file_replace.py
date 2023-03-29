@@ -31,7 +31,8 @@ def column_replace(
 
     # if autoReplace, then scan the row for potential replaceTerms
     if autoReplace:
-        cleanedAutoReplaceTerms = huggingface_model(",".join(str(arr)))
+        temp_arr = ['' if x is np.nan else x for x in arr]
+        cleanedAutoReplaceTerms = huggingface_model(",".join((temp_arr)))
         replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
 
         # lambda text and regex replace function
