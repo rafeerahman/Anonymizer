@@ -2,12 +2,6 @@ name: GCP Deploy
 
 on:
   workflow_dispatch:
-    inputs:
-      Version:
-        description: '[debug|production]'     
-        required: true
-        default: 'production'
-
 
 jobs:
 
@@ -40,8 +34,8 @@ jobs:
 
         - name: Build Docker image
           run: |
-            docker build -f ./devops/debug/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND --build-arg FRONTEND_DIR=$FRONTEND_DIR --build-arg VER=$Version
-            docker build -f ./devops/debug/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR --build-arg VER=$Version
+            docker build -f ./devops/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND --build-arg FRONTEND_DIR=$FRONTEND_DIR --build-arg VER=$Version
+            docker build -f ./devops/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR --build-arg VER=$Version
 
         # - name: Test Docker image
         #   run: docker run $IMAGE_NAME sh -c "go test -v"
