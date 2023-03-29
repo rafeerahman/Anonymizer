@@ -44,7 +44,7 @@ class TXTFileReplace(Resource):
     def post(self):
         args = parser.parse_args()
         inputTextFile = args["inputTextFile"]
-        autoReplace = args["autoReplace"]
+        autoReplace = True if args["autoReplace"].lower() == "true" else False
         print(autoReplace)
         print(type(autoReplace))
         # TODO: see if front end can run with boolean
@@ -54,15 +54,15 @@ class TXTFileReplace(Resource):
         #     autoReplace = False
         if autoReplace:
             replaceTerms = None
-            autoReplaceTerms = eval(args["autoReplaceTerms"])
+            autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
         else:
             autoReplaceTerms = None
-            replaceTerms = eval(args["replaceTerms"])
+            replaceTerms = eval(args["replaceTerms"] or "{}")
 
         print(inputTextFile)
         #  (not autoReplace and not replaceTerms) or not ( autoReplace and not autoReplaceTerms)
         if not inputTextFile or inputTextFile == "":
-            return {"message": "missing parameter(s)"}, 400
+            return {"message": "Missing parameter(s)"}, 400
 
         # get input text from the txt file
         inputText = inputTextFile.read()
