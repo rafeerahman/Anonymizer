@@ -25,7 +25,7 @@ RUN ls -la
 
 RUN pip install -r ./requirements.txt
 
-WORKDIR /var/www/backend/anonymizer/
+WORKDIR /var/www/anonymizer/
 
 # uwsgi --socket 127.0.0.1:5000 --protocol=http -w wsgi:app
 CMD ["uwsgi", "--socket", "0.0.0.0:5000", "--protocol=http", "-w", "wsgi:app"]
