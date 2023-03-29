@@ -5,12 +5,39 @@ const ENDPOINT_TEXT = ENV.endpoints.text_replace
 const ENDPOINT_TEXT_FILE = ENV.endpoints.text_file_replace
 const USER_HAS_BEEN_NOTIFIED = "User has been notified"
 
+/**
+ * Function that performs an action and sends a notification to the user
+ *
+ * @callback notify
+ * @param {string} message - The message to send as a notification
+ */
 
 /**
- * The max-chars for the textarea is 500. If the user uploaded a file,
- * we will use the file endpoint. Otherwise, we will use the text endpoint.
+ * Function that sets the response text state variable
+ *
+ * @callback setResponseText
+ * @param {string} text - The text to set as the response
+ */
+
+/**
+ * Function that sets the loading state variable to True or False
+ *
+ * @callback setLoading
+ * @param {boolean} loading - The new value of the loading state variable
+ */
+
+/**
  * 
- * @param {text data} data 
+ * If the user uploaded a file, we will send the file to the file endpoint. Otherwise, we will send the text to the text endpoint.
+ * 
+ * @param {string} text 
+ * @param {file} file 
+ * @param {object} replaceTerms 
+ * @param {setResponseText} setResponseText 
+ * @param {notify} notify 
+ * @param {setLoading} setLoading 
+ * @param {boolean} useAuto - The state variable that tells us whether "auto-parameters" is enabled
+ * @param {object} autoReplaceTerms 
  */
 export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, notify, setLoading, useAuto, autoReplaceTerms) => {
     if (file) {
