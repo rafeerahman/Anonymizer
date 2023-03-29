@@ -1,7 +1,7 @@
 # this is where all the common infrastructure will go
 import re
-from transformers import AutoTokenizer, AutoModelForTokenClassification
-from transformers import pipeline
+# from transformers import AutoTokenizer, AutoModelForTokenClassification
+# from transformers import pipeline
 
 
 def regex_match(match_str: str, regex_library: dict):
@@ -66,14 +66,22 @@ def textReplace(inputText: str, replaceTerms: dict) -> str:
 
 
 def huggingface_model(inputTxt: str):
-    tokenizer = AutoTokenizer.from_pretrained(
-        "Davlan/bert-base-multilingual-cased-ner-hrl"
-    )
-    model = AutoModelForTokenClassification.from_pretrained(
-        "Davlan/bert-base-multilingual-cased-ner-hrl"
-    )
-    nlp = pipeline("ner", model=model, tokenizer=tokenizer)
-    ner_results = nlp(inputTxt)
+    # tokenizer = AutoTokenizer.from_pretrained(
+    #     "Davlan/bert-base-multilingual-cased-ner-hrl"
+    # )
+    # model = AutoModelForTokenClassification.from_pretrained(
+    #     "Davlan/bert-base-multilingual-cased-ner-hrl"
+    # )
+    # nlp = pipeline("ner", model=model, tokenizer=tokenizer)
+
+    import requests
+
+    API_URL = "https://api-inference.huggingface.co/models/Davlan/bert-base-multilingual-cased-ner-hrl"
+    headers = {"Authorization": "Bearer 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"}
+    payload = {"inputs": inputTxt}
+    response = requests.post(API_URL, headers=headers, json=payload)
+
+    ner_results = response.json()
     print("this is the result:\n")
     print(ner_results)
     # make a for loop to add all tokens of orginization and persons together
@@ -89,18 +97,21 @@ def huggingface_model(inputTxt: str):
     # building the dictionary
     d = {}
     i = 0
+    print(replace)
     while i < len(ner_results):
         key = ner_results[i]["word"]
         j = i + 1
         while j < len(ner_results) and ner_results[j]["word"][0] == "#":
             key += ner_results[j]["word"][2:]
             j += 1
-        e = ner_results[i]["entity"]
-        if e == "B-PER" or e == "I-PER":
+        print("HHHHHHHHHH")
+        e = ner_results[i]["entity_group"]
+        print(e)
+        if e == "PER":
             d[key] = "PER"
-        if e == "B-ORG" or e == "I-ORG":
+        if e == "ORG":
             d[key] = "ORG"
-        if e == "B-LOC" or e == "I-LOC":
+        if e == "LOC":
             d[key] = "LOC"
         i = j
     return d
