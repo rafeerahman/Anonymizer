@@ -77,7 +77,7 @@ class CSVFileReplace(Resource):
         # Collect input
         args = parser.parse_args()
         inputFile = args["inputFile"]
-        autoReplace = args["autoReplace"] or False
+        autoReplace = True if args["autoReplace"].lower() == "true" else False
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
 
@@ -85,13 +85,13 @@ class CSVFileReplace(Resource):
         try:
             data = pd.read_csv(inputFile, dtype=str, header=None)
         except pandas.errors.EmptyDataError:
-            return {"message": "invalid csv formatting"}, 400
+            return {"message": "Invalid csv formatting"}, 400
 
         # error checking
         if not autoReplace and not replaceTerms:
-            return {"message": "missing replaceTerms"}, 400
+            return {"message": "Missing replaceTerms"}, 400
         elif autoReplace and not autoReplaceTerms:
-            return {"message": "missing autoReplaceTerms"}, 400
+            return {"message": "Missing autoReplaceTerms"}, 400
 
         # Update row by row
         df_updated = data.apply(

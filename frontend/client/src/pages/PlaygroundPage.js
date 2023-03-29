@@ -98,9 +98,9 @@ export default function PlaygroundPage() {
     }
 
     if (currentFileType.fileType === "text/plain") {
-      sendTextToAnonymize(text, file, replaceTerms, setResponseText, notify, setLoading)
+      sendTextToAnonymize(text, file, replaceTerms, setResponseText, notify, setLoading, useAuto, autoReplaceTerms)
     } else if (currentFileType.fileType === "text/csv") {
-      sendCsvToAnonymize(file, replaceTerms, setResponseText, notify, setLoading);
+      sendCsvToAnonymize(file, replaceTerms, setResponseText, notify, setLoading, useAuto, autoReplaceTerms);
     }
   }
 
