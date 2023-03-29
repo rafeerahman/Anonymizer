@@ -152,7 +152,7 @@ Node version: v14.17.5
 }
 ```
 
-#### Local Startup Steps (Windows)
+#### Local Startup Steps (Windows/Linux)
 To begin, you must download the dependencies as mentioned above by using the following commands in your terminal.
 
 ```bash
@@ -170,7 +170,7 @@ npm start
 
 ## Git/GitHub Workflow
 
-Our git workflow consisted of creating issues on the GitHub Issues board for features and tasks that each of our sub-teams (frontend, backend, devops) had. We assigned these issues to members of the team, and kept track of their progress within the issues board. In addition, we also used git branches for the separate features, and reviewed/merged pull requests for each of these branches. (Note: Some of us continued working in our A2 sub-team repositories, so most of our commit’s are included in those repos. We moved everything to the main repo near the end of the deadline).
+Our git workflow consisted of creating issues on the GitHub Issues board for features and tasks that each of our sub-teams (frontend, backend, devops) had. We assigned these issues to members of the team, and kept track of their progress within the issues board. In addition, we also used git branches for the separate features, and reviewed/merged pull requests for each of these branches.
 
 ## License
 
