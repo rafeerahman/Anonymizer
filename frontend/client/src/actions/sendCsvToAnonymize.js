@@ -3,6 +3,39 @@ import ENV from '../config.js'
 const API_HOST = ENV.api_host 
 const ENDPOINT = ENV.endpoints.csv_file_replace
 
+/**
+ * Function that performs an action and sends a notification to the user
+ *
+ * @callback notify
+ * @param {string} message - The message to send as a notification
+ */
+
+/**
+ * Function that sets the response text state variable
+ *
+ * @callback setResponseText
+ * @param {string} text - The text to set as the response
+ */
+
+/**
+ * Function that sets the loading state variable to True or False
+ *
+ * @callback setLoading
+ * @param {boolean} loading - The new value of the loading state variable
+ */
+
+/**
+ * This function sends a request to our CSV File endpoint, and applies the users anonymization terms to their CSV.
+ * If successful, the response is retrieved and put in a downloadable file.
+ * 
+ * @param {file} file 
+ * @param {object} replaceTerms 
+ * @param {setResponseText} setResponseText 
+ * @param {notify} notify 
+ * @param {setLoading} setLoading 
+ * @param {boolean} useAuto - The state variable that tells us whether "auto-parameters" is enabled
+ * @param {object} autoReplaceTerms 
+ */
 export const sendCsvToAnonymize = (file, replaceTerms, setResponseText, notify, setLoading, useAuto, autoReplaceTerms) => {
     const URL = `${API_HOST + ENDPOINT}`
     let data = new FormData()
