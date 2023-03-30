@@ -16,7 +16,7 @@ def regexReplace(inputText: str, replaceTerms: dict):
     # dictionary of supported regex replacement
     regex_library = {
         "phone_number": r"\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})",
-        "credit_card": r"^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$",
+        "credit_card": r"(([0-9][ \-,]?){15})[0-9]",
         "postal_code": r"[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d",
     }
 
@@ -30,14 +30,14 @@ def regexReplace(inputText: str, replaceTerms: dict):
 
     # error checking
     if not replaceTerms:
-        return inputText
+        return inputText, False
 
     # perform replacement
     outputText = replacePattern.sub(
         lambda m: replaceTerms[regex_match(m.group(0), regex_library)], inputText
     )
 
-    return outputText
+    return outputText, True
 
 
 def textReplace(inputText: str, replaceTerms: dict) -> str:
@@ -82,8 +82,6 @@ def huggingface_model(inputTxt: str):
     response = requests.post(API_URL, headers=headers, json=payload)
 
     ner_results = response.json()
-    print("this is the result:\n")
-    print(ner_results)
     # make a for loop to add all tokens of orginization and persons together
     replace = []
     count_r = -1
@@ -97,16 +95,13 @@ def huggingface_model(inputTxt: str):
     # building the dictionary
     d = {}
     i = 0
-    print(replace)
     while i < len(ner_results):
         key = ner_results[i]["word"]
         j = i + 1
         while j < len(ner_results) and ner_results[j]["word"][0] == "#":
             key += ner_results[j]["word"][2:]
             j += 1
-        print("HHHHHHHHHH")
         e = ner_results[i]["entity_group"]
-        print(e)
         if e == "PER":
             d[key] = "PER"
         if e == "ORG":
