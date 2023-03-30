@@ -11,21 +11,39 @@ parser.add_argument("autoReplaceTerms")
 
 
 class TXTReplace(Resource):
-    "Simple text-replace anonymization tool for strings"
-
+    """
+    This endpoint allows users to easily mask or redact sensitive information from text-based data. \
+    Users have the option to specify a set of desired key-value replacement terms, or have it automatically detected.
+    """
     @swagger.operation(
         responseClass="json",
         parameters=[
             {
                 "name": "inputText",
-                "description": "String containing text that the user wises to anonymize.",
+                "description": "Non-anonymized string that the user wishes to redact sensitive information from. \
+                                This parameter is able to contain all character data that would be accepted in the standard Python string. \
+                                (alphanumerical characters, punctuation, newline characters, etc)",
                 "required": True,
                 "allowMultiple": False,
                 "dataType": "String",
             },
             {
+                "name": "autoReplace",
+                "description": "Boolean switch where True implies that we will be performing smart replace, and False implies that the user will be specifying their replaceTerms",
+                "required": False,
+                "allowMultiple": False,
+                "dataType": "Bool",
+            },
+            {
                 "name": "replaceTerms",
                 "description": "Dictionary of all all key-term pairs that the user wishes to anonymize.",
+                "required": False,
+                "allowMultiple": False,
+                "dataType": "Dict",
+            },
+            {
+                "name": "autoReplaceTerms",
+                "description": "Dictionary with keys from the following set {names, org, location, phone_number, credit_card, postal_code}",
                 "required": False,
                 "allowMultiple": False,
                 "dataType": "Dict",
