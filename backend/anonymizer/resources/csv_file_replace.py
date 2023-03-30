@@ -77,12 +77,14 @@ class CSVFileReplace(Resource):
         # Collect input
         args = parser.parse_args()
         inputFile = args["inputFile"]
-        if args["autoReplace"]:
-            autoReplace = True if args["autoReplace"].lower() == "true" else False
-        else:
-            autoReplace = False
+        autoReplace = args["autoReplace"] or False
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
+        
+        if autoReplace == "true":
+            autoReplace = True
+        elif autoReplace == "false":
+            autoReplace = False
 
         # Read from the csv and input into a dataset
         try:

@@ -44,16 +44,25 @@ class TXTFileReplace(Resource):
     def post(self):
         args = parser.parse_args()
         inputTextFile = args["inputTextFile"]
-        if args["autoReplace"]:
-            autoReplace = True if args["autoReplace"].lower() == "true" else False
-        else:
+        autoReplace = args["autoReplace"] or False
+
+        if autoReplace == "true":
+            autoReplace = True
+        elif autoReplace == "false":
             autoReplace = False
+            
         if autoReplace:
             replaceTerms = None
             autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
         else:
             autoReplaceTerms = None
             replaceTerms = eval(args["replaceTerms"] or "{}")
+
+        # error checking
+        if not autoReplace and not replaceTerms:
+            return {"message": "Missing replaceTerms"}, 400
+        elif autoReplace and not autoReplaceTerms:
+            return {"message": "Missing auto replacement terms"}, 400
 
         print(inputTextFile)
         #  (not autoReplace and not replaceTerms) or not ( autoReplace and not autoReplaceTerms)
