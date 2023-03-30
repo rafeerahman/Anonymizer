@@ -39,10 +39,15 @@ class TXTReplace(Resource):
     def post(self):
         # collect input
         args = parser.parse_args()
-        inputText = args["inputText"]
-        autoReplace = True if args["autoReplace"].lower() == "true" else False
+        inputText = args["inputText"] or ""
+        autoReplace = args["autoReplace"] or False
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
+
+        if autoReplace == "true":
+            autoReplace = True
+        elif autoReplace == "false":
+            autoReplace = False
 
         # error checking
         if inputText == "":
