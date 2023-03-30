@@ -165,8 +165,8 @@ class TestCSVFileReplace(unittest.TestCase):
             "names": "Person",
             "org": "Company",
             "phone_number": "Phone",
-            "credit_card": "CreditCard",
-            "postal_code": "PostalCode",
+            "credit_card": "Credit Card",
+            "postal_code": "Postal Code",
         }
 
         data = {
@@ -182,7 +182,7 @@ class TestCSVFileReplace(unittest.TestCase):
         # Assuming the ML model successfully detects the entities and replaces them
         self.assertEqual(
             response.data.decode("utf-8"),
-            "Person,Company,Phone,CreditCard,PostalCode\n",
+            "Person,Company,Phone,Credit Card,Postal Code\n",
         )
 
 
@@ -224,8 +224,8 @@ class TestTXTFileReplace(unittest.TestCase):
             "names": "Person",
             "org": "Company",
             "phone_number": "Phone",
-            "credit_card": "CreditCard",
-            "postal_code": "PostalCode",
+            "credit_card": "Credit Card",
+            "postal_code": "Postal Code",
         }
 
         data = {
@@ -241,7 +241,7 @@ class TestTXTFileReplace(unittest.TestCase):
         # Assuming the ML model successfully detects the entities and replaces them
         self.assertEqual(
             response.data.decode("utf-8"),
-            "Person,Company,Phone,CreditCard,PostalCode\n",
+            "Person,Company,Phone,Credit Card,Postal Code",
         )
 
     def test_anonymize_txt_auto_replace_missing_terms(self):
