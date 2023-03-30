@@ -3,7 +3,8 @@ import json
 from app import app
 import io
 import pandas as pd
-import tempfile
+
+
 class TestTXTReplace(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
@@ -154,7 +155,7 @@ class TestCSVFileReplace(unittest.TestCase):
         )
 
         self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.json, {"message": "Missing autoReplaceTerms"})
+        self.assertEqual(response.json, {"message": "Missing auto replacement terms"})
 
     def test_anonymize_csv_auto_replace_phone_credit_postal_success(self):
         csv_content = (
@@ -183,6 +184,7 @@ class TestCSVFileReplace(unittest.TestCase):
             response.data.decode("utf-8"),
             "Person,Company,Phone,CreditCard,PostalCode\n",
         )
+
 
 class TestTXTFileReplace(unittest.TestCase):
     def setUp(self):
@@ -213,6 +215,49 @@ class TestTXTFileReplace(unittest.TestCase):
 
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json, {"message": "Missing replaceTerms"})
+
+    def test_anonymize_txt_auto_replace_success(self):
+        txt_content = (
+            "John Doe,University of Useless,555-123-4567,1234 5678 9012 3456,M1A1A1"
+        )
+        autoReplaceTerms = {
+            "names": "Person",
+            "org": "Company",
+            "phone_number": "Phone",
+            "credit_card": "CreditCard",
+            "postal_code": "PostalCode",
+        }
+
+        data = {
+            "inputTextFile": (io.BytesIO(txt_content.encode("utf-8")), "test.txt"),
+            "autoReplace": "true",
+            "autoReplaceTerms": json.dumps(autoReplaceTerms),
+        }
+        response = self.app.post(
+            "/api/anonymize/file/txt", content_type="multipart/form-data", data=data
+        )
+
+        print(response.data.decode("utf-8") + '*********************************')
+        self.assertEqual(response.status_code, 200)
+        # Assuming the ML model successfully detects the entities and replaces them
+        self.assertEqual(
+            response.data.decode("utf-8"),
+            "Person,Company,Phone,CreditCard,PostalCode\n",
+    )
+
+    def test_anonymize_txt_auto_replace_missing_terms(self):
+        txt_content = "John Doe,XYZ company\nJane Doe,ABC company"
+
+        data = {
+            "inputTextFile": (io.BytesIO(txt_content.encode("utf-8")), "test.txt"),
+            "autoReplace": "true",
+        }
+        response = self.app.post(
+            "/api/anonymize/file/txt", content_type="multipart/form-data", data=data
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json, {"message": "Missing auto replacement terms"})
 
 
 if __name__ == "__main__":
