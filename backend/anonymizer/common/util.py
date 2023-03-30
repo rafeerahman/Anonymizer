@@ -1,7 +1,6 @@
 # this is where all the common infrastructure will go
 import re
-# from transformers import AutoTokenizer, AutoModelForTokenClassification
-# from transformers import pipeline
+import requests
 
 
 def regex_match(match_str: str, regex_library: dict):
@@ -66,6 +65,7 @@ def textReplace(inputText: str, replaceTerms: dict) -> str:
 
 
 def huggingface_model(inputTxt: str):
+    # this would be the code if we were to use the model locally
     # tokenizer = AutoTokenizer.from_pretrained(
     #     "Davlan/bert-base-multilingual-cased-ner-hrl"
     # )
@@ -77,7 +77,7 @@ def huggingface_model(inputTxt: str):
     import requests
 
     API_URL = "https://api-inference.huggingface.co/models/Davlan/bert-base-multilingual-cased-ner-hrl"
-    headers = {"Authorization": "Bearer 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"}
+    headers = {"Authorization": "Bearer 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"}
     payload = {"inputs": inputTxt}
     response = requests.post(API_URL, headers=headers, json=payload)
 
