@@ -82,8 +82,6 @@ def huggingface_model(inputTxt: str):
     response = requests.post(API_URL, headers=headers, json=payload)
 
     ner_results = response.json()
-    print("this is the result:\n")
-    print(ner_results)
     # make a for loop to add all tokens of orginization and persons together
     replace = []
     count_r = -1
@@ -97,16 +95,13 @@ def huggingface_model(inputTxt: str):
     # building the dictionary
     d = {}
     i = 0
-    print(replace)
     while i < len(ner_results):
         key = ner_results[i]["word"]
         j = i + 1
         while j < len(ner_results) and ner_results[j]["word"][0] == "#":
             key += ner_results[j]["word"][2:]
             j += 1
-        print("HHHHHHHHHH")
         e = ner_results[i]["entity_group"]
-        print(e)
         if e == "PER":
             d[key] = "PER"
         if e == "ORG":
