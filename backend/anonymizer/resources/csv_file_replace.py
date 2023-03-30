@@ -17,7 +17,7 @@ parser.add_argument("autoReplaceTerms", location="form")
 
 
 def regex_text_replace(inputText: str, replaceTerms: dict, autoReplaceTerms: dict):
-    inputText = regexReplace(inputText, autoReplaceTerms)
+    inputText = regexReplace(inputText, autoReplaceTerms)[0]
     return textReplace(inputText, replaceTerms)
 
 
