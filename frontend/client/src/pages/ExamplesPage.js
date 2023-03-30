@@ -10,7 +10,8 @@ export default function ExamplesPage() {
       method: 'post',  
       body: {
           "inputText": "My name is Jack, and you can reach me at 647-123-321",
-          "replaceTerms": {"Jack": "NAME", "647-123-321": "XXX-XXX-XXX"}
+          "replaceTerms": {"Jack": "NAME", "647-123-321": "XXX-XXX-XXX"},
+          "autoReplace": false
       },
       headers: {
           Accept: "application/json, text/plain, */*",
@@ -37,7 +38,15 @@ export default function ExamplesPage() {
       method: 'post',  
       body: {
           "inputFile": file.csv,
-          "replaceTerms": {"John": "NAME", "Toronto": "CITY"}
+          "replaceTerms": {},
+          "autoReplace": true,
+          "autoReplaceTerms": {
+              "names":"name",
+              "location":"location",
+              "org":"organization",
+              "phone_number":"phone-number",
+              "postal_code":"postal-code"
+            }
       },
       headers: {
           Accept: "*/*"
