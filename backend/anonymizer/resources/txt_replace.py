@@ -14,6 +14,7 @@ class TXTReplace(Resource):
     """
     This endpoint allows users to easily mask or redact sensitive information from text-based data.
     """
+
     @swagger.operation(
         notes="Users are given the option to manually specify a set of key-value replacement terms, or use our detection algorithm to do so automatically.",
         responseClass="json",
