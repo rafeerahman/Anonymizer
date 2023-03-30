@@ -96,7 +96,7 @@ class CSVFileReplace(Resource):
         if not autoReplace and not replaceTerms:
             return {"message": "Missing replaceTerms"}, 400
         elif autoReplace and not autoReplaceTerms:
-            return {"message": "Missing autoReplaceTerms"}, 400
+            return {"message": "Missing auto replacement terms"}, 400
 
         # Update row by row
         df_updated = data.apply(
