@@ -46,9 +46,9 @@ class TXTFileReplace(Resource):
         inputTextFile = args["inputTextFile"]
         autoReplace = args["autoReplace"] or False
 
-        if autoReplace == "true":
+        if autoReplace == "true" or autoReplace == "True":
             autoReplace = True
-        elif autoReplace == "false":
+        elif autoReplace == "false" or autoReplace == "False":
             autoReplace = False
 
         if autoReplace:

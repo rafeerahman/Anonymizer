@@ -30,14 +30,14 @@ def regexReplace(inputText: str, replaceTerms: dict):
 
     # error checking
     if not replaceTerms:
-        return inputText
+        return inputText, False
 
     # perform replacement
     outputText = replacePattern.sub(
         lambda m: replaceTerms[regex_match(m.group(0), regex_library)], inputText
     )
 
-    return outputText
+    return outputText, True
 
 
 def textReplace(inputText: str, replaceTerms: dict) -> str:
