@@ -22,18 +22,35 @@ class TXTFileReplace(Resource):
         responseClass="text",
         parameters=[
             {
-                "name": "inputTextFile",
-                "description": "TXT file that the user wises to anonymize",
+                "name": "inputTextFile ",
+                "description": "Input TXT file that the user wishes to redact sensitive information from. \
+                                This parameter must contain a valid file upload. Any proper TXT file (regardless of its formatting) will be accepted and anonymized",
                 "required": True,
                 "allowMultiple": False,
-                "dataType": "text",
+                "dataType": "String",
+            },
+            {
+                "name": "autoReplace",
+                "description": "Boolean switch for the user to decide if they want to manually specify their anonymization terms, or have our algorithm do it for them. \
+                                True -> smart replace and False -> manual replace.",
+                "required": "False (autoReplace=False if unspecified)",
+                "allowMultiple": False,
+                "dataType": "Boolean",
             },
             {
                 "name": "replaceTerms",
-                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize",
+                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize. This parameter is only utilized if autoReplace=True.",
                 "required": False,
                 "allowMultiple": False,
-                "dataType": "Dict",
+                "dataType": "Object (Dictionary)",
+            },
+            {
+                "name": "autoReplaceTerms",
+                "description": "Dictionary specifying the terms that the user wants our algorithm to find, and what they should be replaced to. \
+                                The available keys are specified in the following set {names, org, location, phone_number, credit_card, postal_code}",
+                "required": False,
+                "allowMultiple": False,
+                "dataType": "Object (Dictionary)",
             },
         ],
         responseMessages=[

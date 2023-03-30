@@ -12,15 +12,15 @@ parser.add_argument("autoReplaceTerms")
 
 class TXTReplace(Resource):
     """
-    This endpoint allows users to easily mask or redact sensitive information from text-based data. \
-    Users have the option to specify a set of desired key-value replacement terms, or have it automatically detected.
+    This endpoint allows users to easily mask or redact sensitive information from text-based data.
     """
     @swagger.operation(
+        notes="Users are given the option to manually specify a set of key-value replacement terms, or use our detection algorithm to do so automatically.",
         responseClass="json",
         parameters=[
             {
                 "name": "inputText",
-                "description": "Non-anonymized string that the user wishes to redact sensitive information from. \
+                "description": "Input string that the user wishes to redact sensitive information from. \
                                 This parameter is able to contain all character data that would be accepted in the standard Python string. \
                                 (alphanumerical characters, punctuation, newline characters, etc)",
                 "required": True,
@@ -29,29 +29,34 @@ class TXTReplace(Resource):
             },
             {
                 "name": "autoReplace",
-                "description": "Boolean switch where True implies that we will be performing smart replace, and False implies that the user will be specifying their replaceTerms",
-                "required": False,
+                "description": "Boolean switch for the user to decide if they want to manually specify their anonymization terms, or have our algorithm do it for them. \
+                                True -> smart replace and False -> manual replace.",
+                "required": "False (autoReplace=False if unspecified)",
                 "allowMultiple": False,
-                "dataType": "Bool",
+                "dataType": "Boolean",
             },
             {
                 "name": "replaceTerms",
-                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize.",
+                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize. This parameter is only utilized if autoReplace=True.",
                 "required": False,
                 "allowMultiple": False,
-                "dataType": "Dict",
+                "dataType": "Object (Dictionary)",
             },
             {
                 "name": "autoReplaceTerms",
-                "description": "Dictionary with keys from the following set {names, org, location, phone_number, credit_card, postal_code}",
+                "description": "Dictionary specifying the terms that the user wants our algorithm to find, and what they should be replaced to. \
+                                The available keys are specified in the following set {names, org, location, phone_number, credit_card, postal_code}",
                 "required": False,
                 "allowMultiple": False,
-                "dataType": "Dict",
+                "dataType": "Object (Dictionary)",
             },
         ],
         responseMessages=[
             {"code": 200, "message": "[ANONYMIZED USER TEXT]"},
-            {"code": 400, "message": "missing parameter(s)"},
+            {"code": 400, "message": "Invalid input"},
+            {"code": 400, "message": "Missing replaceTerms"},
+            {"code": 400, "message": "Missing auto replacement terms"},
+            {"code": 630, "message": "We were unable to detect any replaceable terms"},
         ],
     )
     def post(self):
