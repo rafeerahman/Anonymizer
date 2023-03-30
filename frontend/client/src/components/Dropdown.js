@@ -15,9 +15,8 @@ const DropdownMenu = ({ endpoints, currentFileType, setCurrentFileType, resetPar
                     {endpoints.map((item) => {
                         const displayName = item["displayName"]
                         const fileType = item["fileType"]
-                        return <>
+                        return (<div key={fileType}>
                             <Dropdown.Item
-                                key={fileType}
                                 active={currentFileType.fileType === fileType}
                                 onClick={() => {
                                     if (selectedItem !== item || currentFileType.fileType !== selectedItem.fileType){ 
@@ -39,7 +38,7 @@ const DropdownMenu = ({ endpoints, currentFileType, setCurrentFileType, resetPar
                             >
                                 {displayName}
                             </Dropdown.Item>
-                        </>
+                        </div>)
                     })}
                 </Dropdown.Menu>
             </Dropdown>
