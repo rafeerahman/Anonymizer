@@ -4,7 +4,6 @@ from app import app
 import io
 import pandas as pd
 import tempfile
-
 class TestTXTReplace(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
@@ -26,7 +25,13 @@ class TestTXTReplace(unittest.TestCase):
         inputText = "John Doe works at University of Based."
         autoReplaceTerms = {"names": "Person A", "org": "Company A"}
 
-        data = json.dumps({"inputText": inputText, "autoReplace": True, "autoReplaceTerms": autoReplaceTerms})
+        data = json.dumps(
+            {
+                "inputText": inputText,
+                "autoReplace": True,
+                "autoReplaceTerms": autoReplaceTerms,
+            }
+        )
 
         response = self.app.post(
             "/api/anonymize/text", content_type="application/json", data=data
@@ -38,7 +43,13 @@ class TestTXTReplace(unittest.TestCase):
         inputText = "John Doe works at XYZ company."
         autoReplaceTerms = {}
 
-        data = json.dumps({"inputText": inputText, "autoReplace": True, "autoReplaceTerms": autoReplaceTerms})
+        data = json.dumps(
+            {
+                "inputText": inputText,
+                "autoReplace": True,
+                "autoReplaceTerms": autoReplaceTerms,
+            }
+        )
 
         response = self.app.post(
             "/api/anonymize/text", content_type="application/json", data=data
@@ -107,9 +118,10 @@ class TestCSVFileReplace(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json, {"message": "Invalid csv formatting"})
 
-    
     def test_anonymize_csv_auto_replace_success(self):
-        csv_content = "John Doe,University of Based\nJane Doe,Toronto Transit Commission"
+        csv_content = (
+            "John Doe,University of Based\nJane Doe,Toronto Transit Commission"
+        )
         autoReplaceTerms = {
             "names": "Person",
             "org": "Company",
@@ -145,7 +157,9 @@ class TestCSVFileReplace(unittest.TestCase):
         self.assertEqual(response.json, {"message": "Missing autoReplaceTerms"})
 
     def test_anonymize_csv_auto_replace_phone_credit_postal_success(self):
-        csv_content = "John Doe,University of Useless,555-123-4567,1234 5678 9012 3456,M1A1A1"
+        csv_content = (
+            "John Doe,University of Useless,555-123-4567,1234 5678 9012 3456,M1A1A1"
+        )
         autoReplaceTerms = {
             "names": "Person",
             "org": "Company",
@@ -166,7 +180,8 @@ class TestCSVFileReplace(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         # Assuming the ML model successfully detects the entities and replaces them
         self.assertEqual(
-            response.data.decode("utf-8"), "Person,Company,Phone,CreditCard,PostalCode\n"
+            response.data.decode("utf-8"),
+            "Person,Company,Phone,CreditCard,PostalCode\n",
         )
 
 class TestTXTFileReplace(unittest.TestCase):
