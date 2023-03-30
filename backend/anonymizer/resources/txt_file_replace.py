@@ -50,7 +50,7 @@ class TXTFileReplace(Resource):
             autoReplace = True
         elif autoReplace == "false":
             autoReplace = False
-            
+
         if autoReplace:
             replaceTerms = None
             autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")

@@ -80,7 +80,7 @@ class CSVFileReplace(Resource):
         autoReplace = args["autoReplace"] or False
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
-        
+
         if autoReplace == "true":
             autoReplace = True
         elif autoReplace == "false":
