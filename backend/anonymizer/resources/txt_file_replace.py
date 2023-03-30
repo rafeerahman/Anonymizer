@@ -54,8 +54,10 @@ class TXTFileReplace(Resource):
             },
         ],
         responseMessages=[
+            {"code": 400, "message": "Missing replaceTerms"},
+            {"code": 400, "message": "Missing autoReplaceTerms"},
+            {"code": 400, "message": "Missing parameter(s)"},
             {"code": 200, "message": "[ANONYMIZED USER TXT FILE]"},
-            {"code": 400, "message": "missing parameter(s)"},
         ],
     )
     def post(self):
