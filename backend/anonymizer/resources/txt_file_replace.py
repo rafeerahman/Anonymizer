@@ -44,16 +44,25 @@ class TXTFileReplace(Resource):
     def post(self):
         args = parser.parse_args()
         inputTextFile = args["inputTextFile"]
-        if args["autoReplace"]:
-            autoReplace = True if args["autoReplace"].lower() == "true" else False
-        else:
+        autoReplace = args["autoReplace"] or False
+
+        if autoReplace == "true" or autoReplace == "True":
+            autoReplace = True
+        elif autoReplace == "false" or autoReplace == "False":
             autoReplace = False
+
         if autoReplace:
             replaceTerms = None
             autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
         else:
             autoReplaceTerms = None
             replaceTerms = eval(args["replaceTerms"] or "{}")
+
+        # error checking
+        if not autoReplace and not replaceTerms:
+            return {"message": "Missing replaceTerms"}, 400
+        elif autoReplace and not autoReplaceTerms:
+            return {"message": "Missing auto replacement terms"}, 400
 
         print(inputTextFile)
         #  (not autoReplace and not replaceTerms) or not ( autoReplace and not autoReplaceTerms)
@@ -67,7 +76,7 @@ class TXTFileReplace(Resource):
         if not autoReplace:
             outputText = textReplace(decoded_inputText, replaceTerms)
         else:
-            decoded_inputText = regexReplace(decoded_inputText, autoReplaceTerms)
+            decoded_inputText = regexReplace(decoded_inputText, autoReplaceTerms)[0]
             terms = huggingface_model(decoded_inputText)
             terms = dict_converter(terms, autoReplaceTerms)
             outputText = textReplace(decoded_inputText, terms)

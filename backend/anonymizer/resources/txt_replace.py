@@ -57,10 +57,15 @@ class TXTReplace(Resource):
     def post(self):
         # collect input
         args = parser.parse_args()
-        inputText = args["inputText"]
-        autoReplace = True if args["autoReplace"].lower() == "true" else False
+        inputText = args["inputText"] or ""
+        autoReplace = args["autoReplace"] or False
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
+
+        if autoReplace == "true" or autoReplace == "True":
+            autoReplace = True
+        elif autoReplace == "false" or autoReplace == "False":
+            autoReplace = False
 
         # error checking
         if inputText == "":
@@ -73,13 +78,13 @@ class TXTReplace(Resource):
         # call replacement function
         if autoReplace:
             # perform regex sweep
-            inputText = regexReplace(inputText, autoReplaceTerms)
+            inputText, regexResult = regexReplace(inputText, autoReplaceTerms)
 
             # search for terms to replace
             cleanedAutoReplaceTerms = huggingface_model(inputText)
 
             # ensure match was found
-            if not cleanedAutoReplaceTerms:
+            if not cleanedAutoReplaceTerms and not regexResult:
                 # (Rafee): Changed to custom error code, so we can notify the user of the message on frontend. Might be good to put these in a errors.json file but its fine for now
                 return {
                     "message": "We were unable to detect any replaceable terms"
