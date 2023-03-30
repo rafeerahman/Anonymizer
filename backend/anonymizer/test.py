@@ -237,13 +237,12 @@ class TestTXTFileReplace(unittest.TestCase):
             "/api/anonymize/file/txt", content_type="multipart/form-data", data=data
         )
 
-        print(response.data.decode("utf-8") + '*********************************')
         self.assertEqual(response.status_code, 200)
         # Assuming the ML model successfully detects the entities and replaces them
         self.assertEqual(
             response.data.decode("utf-8"),
             "Person,Company,Phone,CreditCard,PostalCode\n",
-    )
+        )
 
     def test_anonymize_txt_auto_replace_missing_terms(self):
         txt_content = "John Doe,XYZ company\nJane Doe,ABC company"
