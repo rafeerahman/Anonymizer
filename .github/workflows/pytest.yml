@@ -1,5 +1,5 @@
 # test API backend with pytest
-name: Pytest
+name: Pytest and Unittest
 
 on:
   # Trigger the workflow on push or pull request,
@@ -32,4 +32,8 @@ jobs:
       - name: Run pytest
         working-directory: backend/tests
         run: pytest test.py -v
+
+      - name: Run unittest
+        working-directory: backend/anonymizer
+        run: python test.py
 

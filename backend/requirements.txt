@@ -8,3 +8,4 @@ markupsafe==2.0.1
 pandas
 flask_cors
 requests
+tempfile
