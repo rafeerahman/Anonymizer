@@ -19,9 +19,24 @@ export default function InfoModal() {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>What is Auto Replace?</Modal.Title>
+          <Modal.Title>How to use auto replace?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Here is some information about the huggingface API option.</Modal.Body>
+        <Modal.Body>
+          <p>Auto-replace will automatically detect and anonymize the categories that you specify.</p>
+          <p>
+          The current categories that are available include Names, Locations, Organizations, Phone Numbers, Postal Codes, and Credit Cards. 
+          </p>
+          <p><b> Instructions: </b></p>
+          <p>
+          To specify a category you want to detect, click the toggle button. 
+          </p>
+          <p>
+          By default, anything that is detected will be deleted from the text. 
+          </p>
+          <p>
+          In the case you want something that is detected to be replaced with specific text, you can enter that text in the input after you toggle the parameter.
+          </p>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
