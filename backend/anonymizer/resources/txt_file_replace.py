@@ -46,9 +46,9 @@ class TXTFileReplace(Resource):
         inputTextFile = args["inputTextFile"]
         autoReplace = args["autoReplace"] or False
 
-        if autoReplace == "true":
+        if autoReplace == "true" or autoReplace == "True":
             autoReplace = True
-        elif autoReplace == "false":
+        elif autoReplace == "false" or autoReplace == "False":
             autoReplace = False
 
         if autoReplace:
@@ -76,7 +76,7 @@ class TXTFileReplace(Resource):
         if not autoReplace:
             outputText = textReplace(decoded_inputText, replaceTerms)
         else:
-            decoded_inputText = regexReplace(decoded_inputText, autoReplaceTerms)
+            decoded_inputText = regexReplace(decoded_inputText, autoReplaceTerms)[0]
             terms = huggingface_model(decoded_inputText)
             terms = dict_converter(terms, autoReplaceTerms)
             outputText = textReplace(decoded_inputText, terms)

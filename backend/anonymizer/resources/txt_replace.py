@@ -44,9 +44,9 @@ class TXTReplace(Resource):
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
 
-        if autoReplace == "true":
+        if autoReplace == "true" or autoReplace == "True":
             autoReplace = True
-        elif autoReplace == "false":
+        elif autoReplace == "false" or autoReplace == "False":
             autoReplace = False
 
         # error checking
@@ -60,13 +60,13 @@ class TXTReplace(Resource):
         # call replacement function
         if autoReplace:
             # perform regex sweep
-            inputText = regexReplace(inputText, autoReplaceTerms)
+            inputText, regexResult = regexReplace(inputText, autoReplaceTerms)
 
             # search for terms to replace
             cleanedAutoReplaceTerms = huggingface_model(inputText)
 
             # ensure match was found
-            if not cleanedAutoReplaceTerms:
+            if not cleanedAutoReplaceTerms and not regexResult:
                 # (Rafee): Changed to custom error code, so we can notify the user of the message on frontend. Might be good to put these in a errors.json file but its fine for now
                 return {
                     "message": "We were unable to detect any replaceable terms"

@@ -17,7 +17,7 @@ parser.add_argument("autoReplaceTerms", location="form")
 
 
 def regex_text_replace(inputText: str, replaceTerms: dict, autoReplaceTerms: dict):
-    inputText = regexReplace(inputText, autoReplaceTerms)
+    inputText = regexReplace(inputText, autoReplaceTerms)[0]
     return textReplace(inputText, replaceTerms)
 
 
@@ -81,9 +81,9 @@ class CSVFileReplace(Resource):
         replaceTerms = eval(args["replaceTerms"] or "{}")
         autoReplaceTerms = eval(args["autoReplaceTerms"] or "{}")
 
-        if autoReplace == "true":
+        if autoReplace == "true" or autoReplace == "True":
             autoReplace = True
-        elif autoReplace == "false":
+        elif autoReplace == "false" or autoReplace == "False":
             autoReplace = False
 
         # Read from the csv and input into a dataset
