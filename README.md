@@ -3,6 +3,9 @@
 The Student Anonymization API is a free and open-source service that allows users to desensitize private information from a file or body of text. Our service is accessible via request methods or a graphical user interface. The application is designed to provide educators with easy access to an array of online privatization tools. As a group, we are passionate about improving user privacy and making a difference to protect people’s sensitive information. We have instilled this passion into our project, to work towards a product that is valuable, accessible and intuitive for our userbase.
 
 ## Frontend Deployment: https://csc301-378115-frontend-4ic67og2pa-pd.a.run.app/
+
+#### D3 Slide deck: https://docs.google.com/presentation/d/1O6qeUsJYhrxbfmrDBzi-MZa-s2MzHhEXmBmYKN1xgJw/edit?usp=sharing
+
 ### Description & Instructions:
 
 Our frontend consists of four pages, the home page, a docs page, an examples page, and a playground page. The home page provides a description of our application, and the docs page provides our backend API documentation. Our examples page consists of two sections that describe the use-cases and expected results of how our text-anonymization and csv-anonymization endpoint features currently work. All pages of the frontend are also mobile responsive. 
