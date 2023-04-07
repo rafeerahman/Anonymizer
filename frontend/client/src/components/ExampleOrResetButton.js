@@ -35,7 +35,7 @@ export default function ExampleOrResetButton({
                   setAutoReplaceTerms({});
                   if (useAuto){
                     setText(`Here is my personal information:\n \
-                    \nName: John Smith\nAddress: 1234 Main Street, Toronto, Ontario, M64 3H6\nPhone Number: 555-123-4567\nCredit Card Number: 4637 2737 2791 0533\nCurrent Highschool: Cedar Valley Institute\n \
+                    \nName: John Smith\nAddress: 1234 Main Street, Toronto, Ontario, M5S 2E4\nPhone Number: 555-123-4567\nCredit Card Number: 4637 2737 2791 0533\nCurrent Highschool: Cedar Valley Institute\n \
                     \nSincerely, \nJohn Smith`);
                     setSwitchDict({"names": true, "location": true, "org": true, "phone_number": true, "postal_code": true, "credit_card": true});
                     setReplaceDict( {

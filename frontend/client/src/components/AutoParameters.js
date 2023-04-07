@@ -39,7 +39,7 @@ const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms, switchDict, set
         } else {
             autoReplaceTermsResetRef.current = autoReplaceTerms;
         }
-    }, [autoReplaceTerms]);
+    }, [autoReplaceTerms, setReplaceDict, setSwitchDict]);
 
     return (
         <AutoParametersStyled>
