@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
-import styled from 'styled-components';
-import { Form } from 'react-bootstrap';
-import AutoParameterItem from './AutoParameterItem';
 import _ from 'lodash';
+import React, { useEffect, useRef } from 'react';
+import { Form } from 'react-bootstrap';
+import styled from 'styled-components';
+import AutoParameterItem from './AutoParameterItem';
 
 const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms, switchDict, setSwitchDict, replaceDict, setReplaceDict}) => {
     // the keys must be the same in switchDict, replaceDict and nameDict for the code below to work properly

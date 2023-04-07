@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import ModalBox from '../components/ModalBox'
-import MainNavbar from '../components/Navbars/MainNavbar'
+import React from 'react';
+import styled from 'styled-components';
+import ModalBox from '../components/ModalBox';
+import MainNavbar from '../components/Navbars/MainNavbar';
 
 export default function ExamplesPage() {
   

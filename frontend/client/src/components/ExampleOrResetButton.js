@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import styled from 'styled-components';
 
 export default function ExampleOrResetButton({
     text, setText, file, setFile, resetParams, useAuto, setReplaceDict, setSwitchDict, autoReplaceTerms,
