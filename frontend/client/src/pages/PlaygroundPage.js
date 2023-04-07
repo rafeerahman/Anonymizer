@@ -53,6 +53,7 @@ export default function PlaygroundPage() {
   const [loading, setLoading] = useState(false)
 
   //State Variable Dictionary for switches of autoParameters Component
+  // the keys must be the same in switchDict, replaceDict and nameDict for the code below to work properly
   const [switchDict, setSwitchDict] = useState(
     {
         "names": autoReplaceTerms.names ? true : false,

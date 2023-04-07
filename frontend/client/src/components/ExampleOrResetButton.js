@@ -34,22 +34,10 @@ export default function ExampleOrResetButton({
                   setReplaceTerms({}); 
                   setAutoReplaceTerms({});
                   if (useAuto){
-                    setText(`Dear Admissions Committee, \n \nI am writing to express my interest in applying for admission to the University of Toronto for the upcoming academic year. I am a highly motivated student with a passion for Computer Science, and I believe that the University of Toronto would be the perfect place for me to pursue my academic and professional goals. \n \
-                    \nHere is my personal information:
-                    \nName: John Smith
-                    \nAddress: 1234 Main Street, Toronto, Ontario, M64 3H6
-                    \nPhone Number: 555-123-4567
-                    \nCredit Card Number: 4637 2737 2791 0533
-                    \nCurrent Highschool: Cedar Valley Institute
-                    
-                    \nIn addition to my personal information, I have included the following documents as part of my application:
-                    \nTranscripts from Cedar Valley Institute, showing my grades and academic achievements to date
-                    \nLetters of recommendation from Bob Sally, Jane Doe, and Sarah Lee, who can attest to my academic abilities and personal character
-                    \nAn essay outlining my academic and career goals, and why I believe that University of Toronto is the ideal place for me to achieve them
-                    \nAny additional documentation or information that may be required by your admissions committee
-                    \nI believe that my academic achievements, extracurricular activities, and personal qualities make me an excellent candidate for admission to the University of Toronto. I am eager to learn from your distinguished faculty, engage with my peers in meaningful discussions and collaborations, and contribute to the vibrant and diverse community that the University of Toronto fosters.
-                    \nThank you for considering my application. I look forward to hearing back from you soon. \n\nSincerely, \nJohn Smith`)
-                    setSwitchDict({"names": true, "location": true, "org": true, "phone_number": true, "postal_code": true, "credit_card": true})
+                    setText(`Here is my personal information:\n \
+                    \nName: John Smith\nAddress: 1234 Main Street, Toronto, Ontario, M64 3H6\nPhone Number: 555-123-4567\nCredit Card Number: 4637 2737 2791 0533\nCurrent Highschool: Cedar Valley Institute\n \
+                    \nSincerely, \nJohn Smith`);
+                    setSwitchDict({"names": true, "location": true, "org": true, "phone_number": true, "postal_code": true, "credit_card": true});
                     setReplaceDict( {
                       "names":  "name",
                       "location": "location",
@@ -58,7 +46,7 @@ export default function ExampleOrResetButton({
                       "postal_code": "postal-code",
                       "credit_card": "credit-card"
                       }
-                    )
+                    );
                     setCurrentFileType({
                       displayName: "Text Replace",
                       URL: "endpoint-url-for/text-replace",
