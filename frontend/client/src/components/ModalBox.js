@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import parse from 'html-react-parser';
+import React, { useState } from 'react';
+import { Form } from 'react-bootstrap';
 import Modal from "react-bootstrap/Modal";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Form } from 'react-bootstrap';
-import parse from 'html-react-parser';
+import styled from 'styled-components';
 
 export default function ModalBox({title, info, color, code, content}) {
     const [showModal, setShow] = useState(false);

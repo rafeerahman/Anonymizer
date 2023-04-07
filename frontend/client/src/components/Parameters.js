@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Form, Button } from 'react-bootstrap';
 import ParameterKeyValueItem from './ParameterKeyValueItem';
 
 const Parameters = ({ replaceTerms, setReplaceTerms}) => {

@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import styled from 'styled-components'
+import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
+import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
+import AutoButton from '../components/AutoButton.js'
+import AutoParameters from '../components/AutoParameters.js'
 import DropdownMenu from '../components/Dropdown.js'
+import ExampleOrResetButton from '../components/ExampleOrResetButton.js'
 import MainNavbar from '../components/Navbars/MainNavbar.js'
 import Parameters from '../components/Parameters.js'
-import AutoParameters from '../components/AutoParameters.js'
 import SubmitButton from '../components/SubmitButton.js'
 import TextArea from '../components/TextArea.js'
 import UploadFileButton from '../components/UploadFileButton.js'
-import ExampleOrResetButton from '../components/ExampleOrResetButton.js'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
-import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
-import AutoButton from '../components/AutoButton.js'
-import ConfirmDialog from '../components/ConfirmDialog.js'
 
 const endpoints = [
   {
@@ -255,7 +254,7 @@ const [replaceDict, setReplaceDict] = useState(
               { /* if responseText == "", do not display download output button */
                 responseText !== "" && 
                 <BtnStyled>
-                  <button onClick={() => handleDownload()}>download output</button>
+                  <button onClick={() => handleDownload()}>Download Output</button>
                 </BtnStyled>
               }
               { 

@@ -1,7 +1,7 @@
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const ParameterKeyValueItem = ({ name, replacementName, replaceTerms, setReplaceTerms }) => {
     const buttonStyle = { backgroundColor: "#A1E083", border: "none", cursor: "default"}
