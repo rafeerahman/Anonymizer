@@ -4,29 +4,8 @@ import { Form } from 'react-bootstrap';
 import AutoParameterItem from './AutoParameterItem';
 import _ from 'lodash';
 
-const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms }) => {
+const AutoParameters = ({ autoReplaceTerms, setAutoReplaceTerms, switchDict, setSwitchDict, replaceDict, setReplaceDict}) => {
     // the keys must be the same in switchDict, replaceDict and nameDict for the code below to work properly
-
-    const [switchDict, setSwitchDict] = useState(
-        {
-            "names": autoReplaceTerms.names ? true : false,
-            "location": autoReplaceTerms.location ? true : false,
-            "org": autoReplaceTerms.org ? true : false,
-            "phone_number": autoReplaceTerms.phone_number ? true : false,
-            "postal_code": autoReplaceTerms.postal_code ? true : false,
-            "credit_card": autoReplaceTerms.credit_card ? true : false
-        }
-    )
-    const [replaceDict, setReplaceDict] = useState(
-        {
-            "names": autoReplaceTerms.names ? autoReplaceTerms.names : "",
-            "location": autoReplaceTerms.location ? autoReplaceTerms.location : "",
-            "org": autoReplaceTerms.org ? autoReplaceTerms.org : "",
-            "phone_number": autoReplaceTerms.phone_number ? autoReplaceTerms.phone_number : "",
-            "postal_code": autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code : "",
-            "credit_card": autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : ""
-        }
-    )
     const autoReplaceTermsResetRef = useRef({});
 
     let nameDict = {

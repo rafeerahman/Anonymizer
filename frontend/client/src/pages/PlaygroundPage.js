@@ -52,6 +52,29 @@ export default function PlaygroundPage() {
   const [useAuto, setUseAuto] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  //State Variable Dictionary for switches of autoParameters Component
+  const [switchDict, setSwitchDict] = useState(
+    {
+        "names": autoReplaceTerms.names ? true : false,
+        "location": autoReplaceTerms.location ? true : false,
+        "org": autoReplaceTerms.org ? true : false,
+        "phone_number": autoReplaceTerms.phone_number ? true : false,
+        "postal_code": autoReplaceTerms.postal_code ? true : false,
+        "credit_card": autoReplaceTerms.credit_card ? true : false
+    }
+)
+//State Variable Dictionary for text field values of autoReplaceTerms for autoParameters Component
+const [replaceDict, setReplaceDict] = useState(
+    {
+        "names": autoReplaceTerms.names ? autoReplaceTerms.names : "",
+        "location": autoReplaceTerms.location ? autoReplaceTerms.location : "",
+        "org": autoReplaceTerms.org ? autoReplaceTerms.org : "",
+        "phone_number": autoReplaceTerms.phone_number ? autoReplaceTerms.phone_number : "",
+        "postal_code": autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code : "",
+        "credit_card": autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : ""
+    }
+)
+
   const readFile = () => {
     let reader = new FileReader()
     reader.onload = function(e) {
@@ -172,6 +195,9 @@ export default function PlaygroundPage() {
               file={file}
               setFile={setFile}
               resetParams={resetParams}
+              useAuto={useAuto}
+              setSwitchDict={setSwitchDict}
+              setReplaceDict={setReplaceDict}
               autoReplaceTerms={autoReplaceTerms}
               setAutoReplaceTerms={setAutoReplaceTerms}
               replaceTerms={replaceTerms}
@@ -198,6 +224,10 @@ export default function PlaygroundPage() {
             <AutoParameters
             autoReplaceTerms={autoReplaceTerms}
             setAutoReplaceTerms={setAutoReplaceTerms}
+            switchDict={switchDict}
+            setSwitchDict={setSwitchDict}
+            replaceDict={replaceDict}
+            setReplaceDict={setReplaceDict}
           /> : 
           <Parameters
           replaceTerms={replaceTerms}
