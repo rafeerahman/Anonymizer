@@ -49,7 +49,7 @@ export const sendTextToAnonymize = (text, file, replaceTerms, setResponseText, n
         if (useAuto) { 
             data.append('autoReplaceTerms', JSON.stringify(autoReplaceTerms))
         }
-
+        
         const request = new Request(URL, {
             method: 'post',
             body: data // FormData headers are included automatically. 
