@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ExampleOrResetButton({
-    text, setText, file, setFile, resetParams, autoReplaceTerms,
+    text, setText, file, setFile, resetParams, useAuto, setReplaceDict, setSwitchDict, autoReplaceTerms,
     setAutoReplaceTerms, replaceTerms, setReplaceTerms, setCurrentFileType,
     setResponseText
 }){
@@ -32,22 +32,45 @@ export default function ExampleOrResetButton({
                   // erase the currently existing file and parameters 
                   resetParams();
                   setReplaceTerms({}); 
-
-                  // populate based on example
-                  setText("My name is Jack, and you can reach me at 647-123-4321");
-                  setReplaceTerms({"Jack": "NAME", "647-123-4321": "XXX-XXX-XXXX"});
-                  setCurrentFileType({
-                    displayName: "Text Replace",
-                    URL: "endpoint-url-for/text-replace",
-                    fileType: "text/plain"
-                  });
-                  setChecked(true)
+                  setAutoReplaceTerms({});
+                  if (useAuto){
+                    setText(`Here is my personal information:\n \
+                    \nName: John Smith\nAddress: 1234 Main Street, Toronto, Ontario, M64 3H6\nPhone Number: 555-123-4567\nCredit Card Number: 4637 2737 2791 0533\nCurrent Highschool: Cedar Valley Institute\n \
+                    \nSincerely, \nJohn Smith`);
+                    setSwitchDict({"names": true, "location": true, "org": true, "phone_number": true, "postal_code": true, "credit_card": true});
+                    setReplaceDict( {
+                      "names":  "name",
+                      "location": "location",
+                      "org": "organization",
+                      "phone_number": "phone-number",
+                      "postal_code": "postal-code",
+                      "credit_card": "credit-card"
+                      }
+                    );
+                    setCurrentFileType({
+                      displayName: "Text Replace",
+                      URL: "endpoint-url-for/text-replace",
+                      fileType: "text/plain"
+                    });
+                    setChecked(true);
+                  }
+                  else{
+                    // populate based on example
+                    setText("My name is Jack, and you can reach me at 647-123-4321");
+                    setReplaceTerms({"Jack": "NAME", "647-123-4321": "XXX-XXX-XXXX"});
+                    setCurrentFileType({
+                      displayName: "Text Replace",
+                      URL: "endpoint-url-for/text-replace",
+                      fileType: "text/plain"
+                    });
+                    setChecked(true)
+                }
                 }
               }}
             />
             {checked ||text.length || file || 
               Object.keys(replaceTerms).length || Object.keys(autoReplaceTerms).length
-              ? "Clear": "Load Text Example"}
+              ? "Clear": useAuto? "Load Auto Text Example" : "Load Text Example"}
           </label>
         </BtnStyled>
       </>
