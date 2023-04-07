@@ -36,7 +36,7 @@ jobs:
         - name: Build Docker image
           run: |
             docker build -f ./devops/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND --build-arg FRONTEND_DIR=$FRONTEND_DIR --build-arg VER=$Version
-            docker build -f ./devops/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR --build-arg VER=$Version -e HF_BEARER_TOKEN=${{ secrets.HF_BEARER_TOKEN }}
+            docker build -f ./devops/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR --build-arg VER=$Version
 
         # - name: Test Docker image
         #   run: docker run $IMAGE_NAME sh -c "go test -v"
@@ -48,5 +48,16 @@ jobs:
 
         - name: Deploy Docker image
           run: |
-            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-frontend --image $IMAGE_NAME_FRONTEND --region northamerica-northeast2 --platform managed --port 3000 --allow-unauthenticated
-            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-backend --image $IMAGE_NAME_BACKEND --region northamerica-northeast2 --platform managed --port 5000 --allow-unauthenticated
+            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-frontend \
+            --image $IMAGE_NAME_FRONTEND \
+            --region northamerica-northeast2 \
+            --platform managed \
+            --port 3000 \
+            --allow-unauthenticated
+            gcloud run deploy ${{ secrets.GCP_PROJECT_ID }}-backend \
+            --image $IMAGE_NAME_BACKEND \
+            --region northamerica-northeast2 \
+            --platform managed \
+            --port 5000 \
+            --allow-unauthenticated \
+            --set-env-vars HF_BEARER_TOKEN=${{ secrets.HF_BEARER_TOKEN }}
