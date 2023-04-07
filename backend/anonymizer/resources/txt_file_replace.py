@@ -39,7 +39,7 @@ class TXTFileReplace(Resource):
             },
             {
                 "name": "replaceTerms",
-                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize. This parameter is only utilized if autoReplace=True.",
+                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize. This parameter is only utilized if autoReplace=False.",
                 "required": False,
                 "allowMultiple": False,
                 "dataType": "Object (Dictionary)",
@@ -95,9 +95,10 @@ class TXTFileReplace(Resource):
         if not autoReplace:
             outputText = textReplace(decoded_inputText, replaceTerms)
         else:
-            decoded_inputText = regexReplace(decoded_inputText, autoReplaceTerms)[0]
+            decoded_inputText, swapDict = regexReplace(decoded_inputText, autoReplaceTerms)[:2]
             terms = huggingface_model(decoded_inputText)
             terms = dict_converter(terms, autoReplaceTerms)
+            terms.update(swapDict)
             outputText = textReplace(decoded_inputText, terms)
         tmp = tempfile.TemporaryFile()
         b = bytes(outputText, "utf-8")
