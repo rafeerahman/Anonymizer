@@ -3,8 +3,11 @@
 import styled from "styled-components";
 import MainNavbar from "./components/Navbars/MainNavbar.js";
 import { useNavigate } from "react-router-dom";
+import TitleContext from "./contexts/TitleContext.js";
+import { useContext } from "react";
 
 function App() {
+  const { title } = useContext(TitleContext)
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -17,8 +20,8 @@ function App() {
       <HomeStyled>
 
         <div className="content">
-          <h1>Welcome to the Student Anonymization API</h1>
-          <p>Student Anonymization API is an open source API that enables automated data anonymization</p>
+          <h1>Welcome to {title}</h1>
+          <p>{title} is an open source API that enables automated data anonymization</p>
           <button className="tryNow" onClick={handleClick}>Try it out</button>
         </div>
       </HomeStyled>
@@ -37,9 +40,10 @@ const HomeStyled = styled.div`
     width: 50%;
     h1 {
       font-weight: 600;
+      font-size: 2.5rem;
     }
     p {
-      font-size: 24px;
+      font-size: 2rem;
     }
   }
 
