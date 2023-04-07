@@ -12,13 +12,7 @@ def regex_match(match_str: str, regex_library: dict):
             return regex_library[key]
 
 
-def regexReplace(inputText: str, swapTerms: dict):
-    inputReplaceTerms = {
-        "phone_number": "1111111111",
-        "credit_card": "4556415187865084",
-        "postal_code": "A2C 3E6",
-    }
-
+def regexReplace(inputText: str, replaceTerms: dict):
     # dictionary of supported regex replacement
     regex_library = {
         "phone_number": r"\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})",
@@ -29,27 +23,21 @@ def regexReplace(inputText: str, swapTerms: dict):
     # compile library and join into pattern
     replaceTerms = {
         regex_library[key]: value
-        for key, value in inputReplaceTerms.items()
+        for key, value in replaceTerms.items()
         if key in regex_library
     }
     replacePattern = re.compile("|".join(replaceTerms.keys()))
 
     # error checking
     if not replaceTerms:
-        return inputText, {}, False
+        return inputText, False
 
     # perform replacement
     outputText = replacePattern.sub(
         lambda m: replaceTerms[regex_match(m.group(0), regex_library)], inputText
     )
 
-    swapDict = {
-        inputReplaceTerms[key]: swapTerms[key]
-        for key, value in inputReplaceTerms.items()
-        if key in swapTerms
-    }
-
-    return outputText, swapDict, True
+    return outputText, True
 
 
 def textReplace(inputText: str, replaceTerms: dict) -> str:
@@ -77,16 +65,14 @@ def textReplace(inputText: str, replaceTerms: dict) -> str:
 
 
 def huggingface_model(inputTxt: str):
-    """
-    this would be the code if we were to use the model locally
-    tokenizer = AutoTokenizer.from_pretrained(
-        "Davlan/bert-base-multilingual-cased-ner-hrl"
-    )
-    model = AutoModelForTokenClassification.from_pretrained(
-        "Davlan/bert-base-multilingual-cased-ner-hrl"
-    )
-    nlp = pipeline("ner", model=model, tokenizer=tokenizer)
-    """
+    # this would be the code if we were to use the model locally
+    # tokenizer = AutoTokenizer.from_pretrained(
+    #     "Davlan/bert-base-multilingual-cased-ner-hrl"
+    # )
+    # model = AutoModelForTokenClassification.from_pretrained(
+    #     "Davlan/bert-base-multilingual-cased-ner-hrl"
+    # )
+    # nlp = pipeline("ner", model=model, tokenizer=tokenizer)
 
     import requests
     import os
