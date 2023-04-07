@@ -9,6 +9,7 @@ import ExamplesPage from './pages/ExamplesPage';
 import PlaygroundPage from './pages/PlaygroundPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TitleProvider from './contexts/TitleProvider';
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+    <TitleProvider>
+      <RouterProvider router={router} />
+    </TitleProvider>
   </React.StrictMode>
 );
 
