@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import styled from 'styled-components'
+import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
+import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
+import AutoButton from '../components/AutoButton.js'
+import AutoParameters from '../components/AutoParameters.js'
 import DropdownMenu from '../components/Dropdown.js'
+import ExampleOrResetButton from '../components/ExampleOrResetButton.js'
 import MainNavbar from '../components/Navbars/MainNavbar.js'
 import Parameters from '../components/Parameters.js'
-import AutoParameters from '../components/AutoParameters.js'
 import SubmitButton from '../components/SubmitButton.js'
 import TextArea from '../components/TextArea.js'
 import UploadFileButton from '../components/UploadFileButton.js'
-import ExampleOrResetButton from '../components/ExampleOrResetButton.js'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { sendTextToAnonymize } from '../actions/sendTextToAnonymize.js'
-import { sendCsvToAnonymize } from '../actions/sendCsvToAnonymize.js'
-import AutoButton from '../components/AutoButton.js'
-import ConfirmDialog from '../components/ConfirmDialog.js'
 
 const endpoints = [
   {
@@ -51,6 +50,30 @@ export default function PlaygroundPage() {
   const [responseText, setResponseText] = useState("")
   const [useAuto, setUseAuto] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  //State Variable Dictionary for switches of autoParameters Component
+  // the keys must be the same in switchDict, replaceDict and nameDict for the code below to work properly
+  const [switchDict, setSwitchDict] = useState(
+    {
+        "names": autoReplaceTerms.names ? true : false,
+        "location": autoReplaceTerms.location ? true : false,
+        "org": autoReplaceTerms.org ? true : false,
+        "phone_number": autoReplaceTerms.phone_number ? true : false,
+        "postal_code": autoReplaceTerms.postal_code ? true : false,
+        "credit_card": autoReplaceTerms.credit_card ? true : false
+    }
+)
+//State Variable Dictionary for text field values of autoReplaceTerms for autoParameters Component
+const [replaceDict, setReplaceDict] = useState(
+    {
+        "names": autoReplaceTerms.names ? autoReplaceTerms.names : "",
+        "location": autoReplaceTerms.location ? autoReplaceTerms.location : "",
+        "org": autoReplaceTerms.org ? autoReplaceTerms.org : "",
+        "phone_number": autoReplaceTerms.phone_number ? autoReplaceTerms.phone_number : "",
+        "postal_code": autoReplaceTerms.postal_code ? autoReplaceTerms.postal_code : "",
+        "credit_card": autoReplaceTerms.credit_card ? autoReplaceTerms.credit_card : ""
+    }
+)
 
   const readFile = () => {
     let reader = new FileReader()
@@ -172,6 +195,9 @@ export default function PlaygroundPage() {
               file={file}
               setFile={setFile}
               resetParams={resetParams}
+              useAuto={useAuto}
+              setSwitchDict={setSwitchDict}
+              setReplaceDict={setReplaceDict}
               autoReplaceTerms={autoReplaceTerms}
               setAutoReplaceTerms={setAutoReplaceTerms}
               replaceTerms={replaceTerms}
@@ -198,6 +224,10 @@ export default function PlaygroundPage() {
             <AutoParameters
             autoReplaceTerms={autoReplaceTerms}
             setAutoReplaceTerms={setAutoReplaceTerms}
+            switchDict={switchDict}
+            setSwitchDict={setSwitchDict}
+            replaceDict={replaceDict}
+            setReplaceDict={setReplaceDict}
           /> : 
           <Parameters
           replaceTerms={replaceTerms}
@@ -224,7 +254,7 @@ export default function PlaygroundPage() {
               { /* if responseText == "", do not display download output button */
                 responseText !== "" && 
                 <BtnStyled>
-                  <button onClick={() => handleDownload()}>download output</button>
+                  <button onClick={() => handleDownload()}>Download Output</button>
                 </BtnStyled>
               }
               { 

@@ -8,7 +8,7 @@ const SwaggerDoc = ({title, link}) => {
             src={link+".help.html"}
             title="My File"
             width="100%"
-            height="550px"
+            height="800px"
         ></iframe>
     </div>
   );
