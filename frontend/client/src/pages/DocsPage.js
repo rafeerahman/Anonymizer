@@ -15,6 +15,10 @@ export default function DocsPage() {
     <>
       <MainNavbar />
       <DivStyled>
+        <h1>Postman Collection</h1>
+        <h2><a target="_blank" href="https://github.com/csc301-2023-winter/project-17-UofT-T/tree/main/backend/postman-testing">Postman Collection</a></h2>
+        <p></p>
+        <h1>Endpoint Documentation</h1>
         <SwaggerDoc
           title="Text Replace"
           link={API_HOST + ENDPOINT_TEXT}
