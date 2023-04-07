@@ -71,7 +71,7 @@ class CSVFileReplace(Resource):
             },
             {
                 "name": "replaceTerms",
-                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize. This parameter is only utilized if autoReplace=True.",
+                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize. This parameter is only utilized if autoReplace=False.",
                 "required": False,
                 "allowMultiple": False,
                 "dataType": "Object (Dictionary)",
