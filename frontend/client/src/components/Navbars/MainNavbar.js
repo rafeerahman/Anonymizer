@@ -13,7 +13,7 @@ function MainNavbar(){
   // the Nav.Link with href pathname which corresponds with current url path
     return (
         <>
-          <Navbar expand="sm" bg="dark" variant="dark" style={{ height: '75px' }}>
+          <Navbar expand="sm" bg="dark" variant="dark">
             <Container>
               <Navbar.Brand href="/" >
                 <b>{title}</b>
