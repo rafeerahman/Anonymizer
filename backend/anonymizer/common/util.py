@@ -13,13 +13,12 @@ def regex_match(match_str: str, regex_library: dict):
 
 
 def regexReplace(inputText: str, swapTerms: dict):
-    
     inputReplaceTerms = {
         "phone_number": "1111111111",
         "credit_card": "4556415187865084",
         "postal_code": "A2C 3E6",
     }
-    
+
     # dictionary of supported regex replacement
     regex_library = {
         "phone_number": r"\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})",
@@ -43,7 +42,7 @@ def regexReplace(inputText: str, swapTerms: dict):
     outputText = replacePattern.sub(
         lambda m: replaceTerms[regex_match(m.group(0), regex_library)], inputText
     )
-    
+
     swapDict = {
         inputReplaceTerms[key]: swapTerms[key]
         for key, value in inputReplaceTerms.items()

@@ -95,7 +95,9 @@ class TXTFileReplace(Resource):
         if not autoReplace:
             outputText = textReplace(decoded_inputText, replaceTerms)
         else:
-            decoded_inputText, swapDict = regexReplace(decoded_inputText, autoReplaceTerms)[:2]
+            decoded_inputText, swapDict = regexReplace(
+                decoded_inputText, autoReplaceTerms
+            )[:2]
             terms = huggingface_model(decoded_inputText)
             terms = dict_converter(terms, autoReplaceTerms)
             terms.update(swapDict)
