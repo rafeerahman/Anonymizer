@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "*"}})
-api = swagger.docs(Api(app), apiVersion="1.0.1")
+api = swagger.docs(Api(app), apiVersion="0.0.3")
 
 
 @app.route("/")

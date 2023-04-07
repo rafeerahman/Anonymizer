@@ -38,7 +38,7 @@ class TXTReplace(Resource):
             },
             {
                 "name": "replaceTerms",
-                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize. This parameter is only utilized if autoReplace=False.",
+                "description": "Dictionary of all all key-term pairs that the user wishes to anonymize. This parameter is only utilized if autoReplace=True.",
                 "required": False,
                 "allowMultiple": False,
                 "dataType": "Object (Dictionary)",
@@ -84,20 +84,20 @@ class TXTReplace(Resource):
         # call replacement function
         if autoReplace:
             # perform regex sweep
-            inputText, swapDict, regexResult = regexReplace(inputText, autoReplaceTerms)
+            inputText, regexResult = regexReplace(inputText, autoReplaceTerms)
 
             # search for terms to replace
             cleanedAutoReplaceTerms = huggingface_model(inputText)
 
             # ensure match was found
             if not cleanedAutoReplaceTerms and not regexResult:
+                # (Rafee): Changed to custom error code, so we can notify the user of the message on frontend. Might be good to put these in a errors.json file but its fine for now
                 return {
                     "message": "We were unable to detect any replaceable terms"
                 }, 630
 
             # apply found terms to specified mapping, and then apply mapping to inputText
             replaceTerms = dict_converter(cleanedAutoReplaceTerms, autoReplaceTerms)
-            replaceTerms.update(swapDict)
 
         # replace inputText
         outputText = textReplace(inputText, replaceTerms)
