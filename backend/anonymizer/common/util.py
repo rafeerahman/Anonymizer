@@ -75,9 +75,10 @@ def huggingface_model(inputTxt: str):
     # nlp = pipeline("ner", model=model, tokenizer=tokenizer)
 
     import requests
+    import os
 
     API_URL = "https://api-inference.huggingface.co/models/Davlan/bert-base-multilingual-cased-ner-hrl"
-    headers = {"Authorization": "Bearer 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"}
+    headers = {"Authorization": f"Bearer {os.environ['HF_BEARER_TOKEN']}"}
     payload = {"inputs": inputTxt}
     response = requests.post(API_URL, headers=headers, json=payload)
 

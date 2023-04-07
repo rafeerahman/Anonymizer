@@ -14,6 +14,7 @@ jobs:
           IMAGE_NAME_BACKEND: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}-backend
           FRONTEND_DIR: ./frontend/client
           BACKEND_DIR: ./backend
+          HF_BEARER_TOKEN: ${{ secrets.HF_BEARER_TOKEN }}
 
         steps:
 
@@ -35,7 +36,7 @@ jobs:
         - name: Build Docker image
           run: |
             docker build -f ./devops/frontend/Dockerfile . -t $IMAGE_NAME_FRONTEND --build-arg FRONTEND_DIR=$FRONTEND_DIR --build-arg VER=$Version
-            docker build -f ./devops/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR --build-arg VER=$Version
+            docker build -f ./devops/backend/Dockerfile . -t $IMAGE_NAME_BACKEND --build-arg BACKEND_DIR=$BACKEND_DIR --build-arg VER=$Version -e HF_BEARER_TOKEN=${{ secrets.HF_BEARER_TOKEN }}
 
         # - name: Test Docker image
         #   run: docker run $IMAGE_NAME sh -c "go test -v"
