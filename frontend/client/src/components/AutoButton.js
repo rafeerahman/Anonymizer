@@ -1,8 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import InfoModal from './InfoModal';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 
 export default function AutoButton({useAuto, setUseAuto}){
     return (

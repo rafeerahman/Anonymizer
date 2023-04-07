@@ -1,8 +1,8 @@
 import React from 'react'
+import styled from 'styled-components'
 import MainNavbar from '../components/Navbars/MainNavbar'
 import SwaggerDoc from '../components/Swagger'
 import ENV from '../config.js'
-import styled from 'styled-components'
 
 
 const API_HOST = ENV.api_host 

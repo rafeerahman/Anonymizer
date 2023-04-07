@@ -60,6 +60,13 @@ pip install pipenv
 python3 -m virtualenv venv
 source venv/bin/activate
 ```
+
+##### WSL
+For WSL, you need to additionally set the bearer token for the Huggingface API. you can do so with the following command (replace `hf_token` with the actual value:
+```bash
+echo "export HF_BEARER_TOKEN=hf_token" >> ~/.bashrc
+```
+
 There are other installations that need to be made in the virtual environment. These can all be found in `backend/requirements.txt`:
 ```bash
 pip install -r backend/requirements.txt

@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import styled from 'styled-components';
 
 const DropdownMenu = ({ endpoints, currentFileType, setCurrentFileType, resetParams}) => {
     const [selectedItem, setSelectedItem] = useState("")
