@@ -1,18 +1,48 @@
-# Student Anonymization API
+# Anonymization API
 
 The Student Anonymization API is a free and open-source service that allows users to desensitize private information from a file or body of text. Our service is accessible via request methods or a graphical user interface. The application is designed to provide educators with easy access to an array of online privatization tools. As a group, we are passionate about improving user privacy and making a difference to protect people’s sensitive information. We have instilled this passion into our project, to work towards a product that is valuable, accessible and intuitive for our userbase.
 
 ## Frontend Deployment: https://csc301-378115-frontend-4ic67og2pa-pd.a.run.app/
 
-#### D3 Slide deck: https://docs.google.com/presentation/d/1O6qeUsJYhrxbfmrDBzi-MZa-s2MzHhEXmBmYKN1xgJw/edit?usp=sharing
-
 ### Description & Instructions:
 
 Our frontend consists of four pages, the home page, a docs page, an examples page, and a playground page. The home page provides a description of our application, and the docs page provides our backend API documentation. Our examples page consists of two sections that describe the use-cases and expected results of how our text-anonymization and csv-anonymization endpoint features currently work. All pages of the frontend are also mobile responsive. 
 
-The playground page is the main frontend feature we worked on that allows a user to anonymize text, or a csv file using our user interface. The user can select which endpoint they want to access using by clicking a drop-down menu that toggles either ‘text replace’ or ‘csv replace’. The ‘text replace’ works by the user uploading a text file or inputting text into the text area provided, and inserting key-value input parameters of what they want to replace. The key represents the word in the text the user wants to replace, and the value represents what the key within the text is being replaced with. The ‘csv replace’ works in the same way, except the user must upload a CSV file. Currently, our API supports key-value replacement for both the CSV and text endpoints, however in the future we plan to expand this to a variety of anonymization techniques.
+#### Playground Page Instructions:
 
-When the user is done inputting the parameters as defined, they can click submit, and upon a successful request, they are able to click ‘download output’ to download the anonymized file. 
+#### Key value replace anonymization:
+
+* The playground page is the main frontend feature we worked on that allows a user to anonymize text, or a csv file using our user interface. 
+
+* The user can select which endpoint they want to access using by clicking a drop-down menu that toggles either ‘text replace’ or ‘csv replace’.
+
+* The ‘text replace’ works by the user uploading a text file or inputting text into the text area provided. 
+
+* The user can then insert key-value input parameters.
+
+* The key represents the word in the text the user wants to replace, and the value represents what the key within the text is being replaced with. 
+
+* The ‘csv replace’ works in the same way as 'text replace', except the user must upload a CSV file. 
+
+* When the user is done inputting the parameters as defined, they can click submit, and upon a successful request, they are able to click ‘download output’ to download the anonymized file. 
+
+#### Auto replace anonymization:
+
+* Auto-replace will automatically detect and anonymize the categories that you specify.
+
+* The current categories that are available include Names, Locations, Organizations, Phone Numbers, Postal Codes, and Credit Cards.
+
+* You can use the 'csv replace' endpoint by clicking 'csv replace' under the drop down menu. You can then upload a file enable auto-replace by clicking 'Enable auto replace'. 
+
+* Similarly, you can use the 'text replace' endpoint by clicking 'text replace' under the drop down menu, input or upload some text, and then enable auto-replace by clicking 'Enable auto replace'.
+
+* To detect words within a certain category, click the toggle button, and enter the replacement term for words found to be in that category within the text field. 
+
+* If you leave the text field blank, words determined to be in that category will be deleted rather than replaced. 
+
+* When the user is done toggling the auto-replace parameters, they can click submit, and upon a successful request, they are able to click ‘download output’ to download the anonymized file. 
+
+* Note: The auto replace feature functions by sending an API request to a Huggingface BERT Named Entity Recognition Model (More information here [huggingface.co](https://huggingface.co/Davlan/bert-base-multilingual-cased-ner-hrl). If nothing is detected, a notification will pop up and there will be no downloadable output.
 
 ## Backend Deployment: https://csc301-378115-backend-4ic67og2pa-pd.a.run.app/
 
